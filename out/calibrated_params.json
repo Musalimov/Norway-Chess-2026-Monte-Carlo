@@ -1,0 +1,9 @@
+{
+ "WA": 35,
+ "DBASE": 0.7,
+ "DDEC": 0.0018,
+ "ARM_H": -30,
+ "lambda": 0.1,
+ "method": "RPS + MAP regularization + leave-one-tournament-out CV",
+ "oos_2026_rps": 0.1902
+}

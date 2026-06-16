@@ -1,0 +1,11 @@
+{
+  "name": "v4_classical",
+  "white_advantage": 35.0,
+  "draw_base": 0.70,
+  "draw_decay": 0.0018,
+  "armageddon_handicap": -30.0,
+  "form_k": 32.0,
+  "armageddon_strength": "classical",
+  "draw_probability_cap": 0.85,
+  "min_outcome_probability": 0.01
+}

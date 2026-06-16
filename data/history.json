@@ -1,0 +1,2426 @@
+[
+ {
+  "year": "2022",
+  "day": 1,
+  "round": 1,
+  "white": "Carlsen, Magnus",
+  "black": "Wang, Hao",
+  "white_elo": 2864,
+  "black_elo": 2744,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Carlsen, Magnus",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 1,
+  "round": 1,
+  "white": "So, Wesley",
+  "black": "Radjabov, Teimour",
+  "white_elo": 2765,
+  "black_elo": 2753,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2022",
+  "day": 1,
+  "round": 1,
+  "white": "Giri, Anish",
+  "black": "Topalov, Veselin",
+  "white_elo": 2761,
+  "black_elo": 2730,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Giri, Anish",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 1,
+  "round": 1,
+  "white": "Anand, Viswanathan",
+  "black": "Vachier-Lagrave, Maxime",
+  "white_elo": 2751,
+  "black_elo": 2750,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2022",
+  "day": 1,
+  "round": 1,
+  "white": "Mamedyarov, Shakhriyar",
+  "black": "Tari, Aryan",
+  "white_elo": 2770,
+  "black_elo": 2654,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Mamedyarov, Shakhriyar",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 2,
+  "round": 3,
+  "white": "So, Wesley",
+  "black": "Carlsen, Magnus",
+  "white_elo": 2766,
+  "black_elo": 2864,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "So, Wesley",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 2,
+  "round": 3,
+  "white": "Vachier-Lagrave, Maxime",
+  "black": "Mamedyarov, Shakhriyar",
+  "white_elo": 2750,
+  "black_elo": 2770,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Vachier-Lagrave, Maxime",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 2,
+  "round": 3,
+  "white": "Wang, Hao",
+  "black": "Giri, Anish",
+  "white_elo": 2744,
+  "black_elo": 2761,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Wang, Hao",
+   "white_won_minimatch": false,
+   "result": "1/2-1/2"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 2,
+  "round": 3,
+  "white": "Topalov, Veselin",
+  "black": "Anand, Viswanathan",
+  "white_elo": 2730,
+  "black_elo": 2751,
+  "classical_result_white": 0.0,
+  "armageddon": null
+ },
+ {
+  "year": "2022",
+  "day": 2,
+  "round": 3,
+  "white": "Radjabov, Teimour",
+  "black": "Tari, Aryan",
+  "white_elo": 2753,
+  "black_elo": 2654,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Radjabov, Teimour",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 3,
+  "round": 5,
+  "white": "Carlsen, Magnus",
+  "black": "Radjabov, Teimour",
+  "white_elo": 2864,
+  "black_elo": 2753,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2022",
+  "day": 3,
+  "round": 5,
+  "white": "Giri, Anish",
+  "black": "So, Wesley",
+  "white_elo": 2761,
+  "black_elo": 2766,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Giri, Anish",
+   "white_won_minimatch": false,
+   "result": "1/2-1/2"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 3,
+  "round": 5,
+  "white": "Anand, Viswanathan",
+  "black": "Wang, Hao",
+  "white_elo": 2751,
+  "black_elo": 2744,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Anand, Viswanathan",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 3,
+  "round": 5,
+  "white": "Mamedyarov, Shakhriyar",
+  "black": "Topalov, Veselin",
+  "white_elo": 2770,
+  "black_elo": 2730,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Mamedyarov, Shakhriyar",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 3,
+  "round": 5,
+  "white": "Tari, Aryan",
+  "black": "Vachier-Lagrave, Maxime",
+  "white_elo": 2654,
+  "black_elo": 2750,
+  "classical_result_white": 0.0,
+  "armageddon": null
+ },
+ {
+  "year": "2022",
+  "day": 4,
+  "round": 7,
+  "white": "Carlsen, Magnus",
+  "black": "Giri, Anish",
+  "white_elo": 2864,
+  "black_elo": 2761,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2022",
+  "day": 4,
+  "round": 7,
+  "white": "So, Wesley",
+  "black": "Anand, Viswanathan",
+  "white_elo": 2766,
+  "black_elo": 2751,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "So, Wesley",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 4,
+  "round": 7,
+  "white": "Radjabov, Teimour",
+  "black": "Vachier-Lagrave, Maxime",
+  "white_elo": 2753,
+  "black_elo": 2750,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Radjabov, Teimour",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 4,
+  "round": 7,
+  "white": "Topalov, Veselin",
+  "black": "Tari, Aryan",
+  "white_elo": 2730,
+  "black_elo": 2654,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Topalov, Veselin",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 4,
+  "round": 7,
+  "white": "Wang, Hao",
+  "black": "Mamedyarov, Shakhriyar",
+  "white_elo": 2744,
+  "black_elo": 2770,
+  "classical_result_white": 0.0,
+  "armageddon": null
+ },
+ {
+  "year": "2022",
+  "day": 5,
+  "round": 9,
+  "white": "Anand, Viswanathan",
+  "black": "Carlsen, Magnus",
+  "white_elo": 2751,
+  "black_elo": 2864,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Anand, Viswanathan",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 5,
+  "round": 9,
+  "white": "Mamedyarov, Shakhriyar",
+  "black": "So, Wesley",
+  "white_elo": 2770,
+  "black_elo": 2766,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Mamedyarov, Shakhriyar",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 5,
+  "round": 9,
+  "white": "Vachier-Lagrave, Maxime",
+  "black": "Topalov, Veselin",
+  "white_elo": 2750,
+  "black_elo": 2730,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Vachier-Lagrave, Maxime",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 5,
+  "round": 9,
+  "white": "Tari, Aryan",
+  "black": "Wang, Hao",
+  "white_elo": 2654,
+  "black_elo": 2744,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2022",
+  "day": 5,
+  "round": 9,
+  "white": "Giri, Anish",
+  "black": "Radjabov, Teimour",
+  "white_elo": 2761,
+  "black_elo": 2753,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2022",
+  "day": 6,
+  "round": 11,
+  "white": "Carlsen, Magnus",
+  "black": "Mamedyarov, Shakhriyar",
+  "white_elo": 2864,
+  "black_elo": 2770,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2022",
+  "day": 6,
+  "round": 11,
+  "white": "So, Wesley",
+  "black": "Tari, Aryan",
+  "white_elo": 2766,
+  "black_elo": 2654,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "So, Wesley",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 6,
+  "round": 11,
+  "white": "Giri, Anish",
+  "black": "Anand, Viswanathan",
+  "white_elo": 2761,
+  "black_elo": 2751,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Giri, Anish",
+   "white_won_minimatch": false,
+   "result": "1/2-1/2"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 6,
+  "round": 11,
+  "white": "Wang, Hao",
+  "black": "Vachier-Lagrave, Maxime",
+  "white_elo": 2744,
+  "black_elo": 2750,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Wang, Hao",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 6,
+  "round": 11,
+  "white": "Radjabov, Teimour",
+  "black": "Topalov, Veselin",
+  "white_elo": 2753,
+  "black_elo": 2730,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Radjabov, Teimour",
+   "white_won_minimatch": false,
+   "result": "1/2-1/2"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 7,
+  "round": 13,
+  "white": "Tari, Aryan",
+  "black": "Carlsen, Magnus",
+  "white_elo": 2654,
+  "black_elo": 2864,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Tari, Aryan",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 7,
+  "round": 13,
+  "white": "Vachier-Lagrave, Maxime",
+  "black": "So, Wesley",
+  "white_elo": 2750,
+  "black_elo": 2766,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2022",
+  "day": 7,
+  "round": 13,
+  "white": "Anand, Viswanathan",
+  "black": "Radjabov, Teimour",
+  "white_elo": 2751,
+  "black_elo": 2753,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Anand, Viswanathan",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 7,
+  "round": 13,
+  "white": "Mamedyarov, Shakhriyar",
+  "black": "Giri, Anish",
+  "white_elo": 2770,
+  "black_elo": 2761,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2022",
+  "day": 7,
+  "round": 13,
+  "white": "Topalov, Veselin",
+  "black": "Wang, Hao",
+  "white_elo": 2730,
+  "black_elo": 2744,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Topalov, Veselin",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 8,
+  "round": 15,
+  "white": "Carlsen, Magnus",
+  "black": "Vachier-Lagrave, Maxime",
+  "white_elo": 2864,
+  "black_elo": 2750,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Carlsen, Magnus",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 8,
+  "round": 15,
+  "white": "So, Wesley",
+  "black": "Topalov, Veselin",
+  "white_elo": 2766,
+  "black_elo": 2730,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "So, Wesley",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 8,
+  "round": 15,
+  "white": "Giri, Anish",
+  "black": "Tari, Aryan",
+  "white_elo": 2761,
+  "black_elo": 2654,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2022",
+  "day": 8,
+  "round": 15,
+  "white": "Anand, Viswanathan",
+  "black": "Mamedyarov, Shakhriyar",
+  "white_elo": 2751,
+  "black_elo": 2770,
+  "classical_result_white": 0.0,
+  "armageddon": null
+ },
+ {
+  "year": "2022",
+  "day": 8,
+  "round": 15,
+  "white": "Radjabov, Teimour",
+  "black": "Wang, Hao",
+  "white_elo": 2753,
+  "black_elo": 2744,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Radjabov, Teimour",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 9,
+  "round": 17,
+  "white": "Topalov, Veselin",
+  "black": "Carlsen, Magnus",
+  "white_elo": 2730,
+  "black_elo": 2864,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Topalov, Veselin",
+   "white_won_minimatch": false,
+   "result": "1/2-1/2"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 9,
+  "round": 17,
+  "white": "Mamedyarov, Shakhriyar",
+  "black": "Radjabov, Teimour",
+  "white_elo": 2770,
+  "black_elo": 2753,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Mamedyarov, Shakhriyar",
+   "white_won_minimatch": false,
+   "result": "1/2-1/2"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 9,
+  "round": 17,
+  "white": "Wang, Hao",
+  "black": "So, Wesley",
+  "white_elo": 2744,
+  "black_elo": 2766,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Wang, Hao",
+   "white_won_minimatch": false,
+   "result": "1/2-1/2"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 9,
+  "round": 17,
+  "white": "Vachier-Lagrave, Maxime",
+  "black": "Giri, Anish",
+  "white_elo": 2750,
+  "black_elo": 2761,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Vachier-Lagrave, Maxime",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2022",
+  "day": 9,
+  "round": 17,
+  "white": "Tari, Aryan",
+  "black": "Anand, Viswanathan",
+  "white_elo": 2654,
+  "black_elo": 2751,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Tari, Aryan",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 1,
+  "round": 1,
+  "white": "Caruana, Fabiano",
+  "black": "Carlsen, Magnus",
+  "white_elo": 2764,
+  "black_elo": 2853,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2023",
+  "day": 1,
+  "round": 1,
+  "white": "Firouzja, Alireza",
+  "black": "Gukesh D",
+  "white_elo": 2785,
+  "black_elo": 2732,
+  "classical_result_white": 0.0,
+  "armageddon": null
+ },
+ {
+  "year": "2023",
+  "day": 1,
+  "round": 1,
+  "white": "Mamedyarov, Shakhriyar",
+  "black": "Tari, Aryan",
+  "white_elo": 2738,
+  "black_elo": 2642,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Mamedyarov, Shakhriyar",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 1,
+  "round": 1,
+  "white": "Abdusattorov, Nodirbek",
+  "black": "Giri, Anish",
+  "white_elo": 2731,
+  "black_elo": 2768,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Abdusattorov, Nodirbek",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 1,
+  "round": 1,
+  "white": "So, Wesley",
+  "black": "Nakamura, Hikaru",
+  "white_elo": 2760,
+  "black_elo": 2775,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "So, Wesley",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 2,
+  "round": 3,
+  "white": "Carlsen, Magnus",
+  "black": "So, Wesley",
+  "white_elo": 2853,
+  "black_elo": 2760,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Carlsen, Magnus",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 2,
+  "round": 3,
+  "white": "Tari, Aryan",
+  "black": "Abdusattorov, Nodirbek",
+  "white_elo": 2642,
+  "black_elo": 2731,
+  "classical_result_white": 0.0,
+  "armageddon": null
+ },
+ {
+  "year": "2023",
+  "day": 2,
+  "round": 3,
+  "white": "Gukesh D",
+  "black": "Nakamura, Hikaru",
+  "white_elo": 2732,
+  "black_elo": 2775,
+  "classical_result_white": 0.0,
+  "armageddon": null
+ },
+ {
+  "year": "2023",
+  "day": 2,
+  "round": 3,
+  "white": "Giri, Anish",
+  "black": "Caruana, Fabiano",
+  "white_elo": 2768,
+  "black_elo": 2764,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Giri, Anish",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 2,
+  "round": 3,
+  "white": "Firouzja, Alireza",
+  "black": "Mamedyarov, Shakhriyar",
+  "white_elo": 2785,
+  "black_elo": 2738,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2023",
+  "day": 3,
+  "round": 5,
+  "white": "Nakamura, Hikaru",
+  "black": "Carlsen, Magnus",
+  "white_elo": 2775,
+  "black_elo": 2853,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Nakamura, Hikaru",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 3,
+  "round": 5,
+  "white": "Abdusattorov, Nodirbek",
+  "black": "Firouzja, Alireza",
+  "white_elo": 2731,
+  "black_elo": 2785,
+  "classical_result_white": 0.0,
+  "armageddon": null
+ },
+ {
+  "year": "2023",
+  "day": 3,
+  "round": 5,
+  "white": "Caruana, Fabiano",
+  "black": "Tari, Aryan",
+  "white_elo": 2764,
+  "black_elo": 2642,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2023",
+  "day": 3,
+  "round": 5,
+  "white": "So, Wesley",
+  "black": "Giri, Anish",
+  "white_elo": 2760,
+  "black_elo": 2768,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "So, Wesley",
+   "white_won_minimatch": false,
+   "result": "1/2-1/2"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 3,
+  "round": 5,
+  "white": "Mamedyarov, Shakhriyar",
+  "black": "Gukesh D",
+  "white_elo": 2738,
+  "black_elo": 2732,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Mamedyarov, Shakhriyar",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 4,
+  "round": 7,
+  "white": "Gukesh D",
+  "black": "Carlsen, Magnus",
+  "white_elo": 2732,
+  "black_elo": 2853,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Gukesh D",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 4,
+  "round": 7,
+  "white": "Giri, Anish",
+  "black": "Nakamura, Hikaru",
+  "white_elo": 2768,
+  "black_elo": 2775,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Giri, Anish",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 4,
+  "round": 7,
+  "white": "Tari, Aryan",
+  "black": "So, Wesley",
+  "white_elo": 2642,
+  "black_elo": 2760,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Tari, Aryan",
+   "white_won_minimatch": false,
+   "result": "1/2-1/2"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 4,
+  "round": 7,
+  "white": "Firouzja, Alireza",
+  "black": "Caruana, Fabiano",
+  "white_elo": 2785,
+  "black_elo": 2764,
+  "classical_result_white": 0.0,
+  "armageddon": null
+ },
+ {
+  "year": "2023",
+  "day": 4,
+  "round": 7,
+  "white": "Mamedyarov, Shakhriyar",
+  "black": "Abdusattorov, Nodirbek",
+  "white_elo": 2738,
+  "black_elo": 2731,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Mamedyarov, Shakhriyar",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 5,
+  "round": 9,
+  "white": "Carlsen, Magnus",
+  "black": "Giri, Anish",
+  "white_elo": 2853,
+  "black_elo": 2768,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Carlsen, Magnus",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 5,
+  "round": 9,
+  "white": "Caruana, Fabiano",
+  "black": "Mamedyarov, Shakhriyar",
+  "white_elo": 2764,
+  "black_elo": 2738,
+  "classical_result_white": 0.0,
+  "armageddon": null
+ },
+ {
+  "year": "2023",
+  "day": 5,
+  "round": 9,
+  "white": "So, Wesley",
+  "black": "Firouzja, Alireza",
+  "white_elo": 2760,
+  "black_elo": 2785,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "So, Wesley",
+   "white_won_minimatch": false,
+   "result": "1/2-1/2"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 5,
+  "round": 9,
+  "white": "Nakamura, Hikaru",
+  "black": "Tari, Aryan",
+  "white_elo": 2775,
+  "black_elo": 2642,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2023",
+  "day": 5,
+  "round": 9,
+  "white": "Abdusattorov, Nodirbek",
+  "black": "Gukesh D",
+  "white_elo": 2731,
+  "black_elo": 2732,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Abdusattorov, Nodirbek",
+   "white_won_minimatch": false,
+   "result": "1/2-1/2"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 6,
+  "round": 11,
+  "white": "Tari, Aryan",
+  "black": "Carlsen, Magnus",
+  "white_elo": 2642,
+  "black_elo": 2853,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Tari, Aryan",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 6,
+  "round": 11,
+  "white": "Gukesh D",
+  "black": "Giri, Anish",
+  "white_elo": 2732,
+  "black_elo": 2768,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Gukesh D",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 6,
+  "round": 11,
+  "white": "Firouzja, Alireza",
+  "black": "Nakamura, Hikaru",
+  "white_elo": 2785,
+  "black_elo": 2775,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Firouzja, Alireza",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 6,
+  "round": 11,
+  "white": "Mamedyarov, Shakhriyar",
+  "black": "So, Wesley",
+  "white_elo": 2738,
+  "black_elo": 2760,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Mamedyarov, Shakhriyar",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 6,
+  "round": 11,
+  "white": "Abdusattorov, Nodirbek",
+  "black": "Caruana, Fabiano",
+  "white_elo": 2731,
+  "black_elo": 2764,
+  "classical_result_white": 0.0,
+  "armageddon": null
+ },
+ {
+  "year": "2023",
+  "day": 7,
+  "round": 13,
+  "white": "Carlsen, Magnus",
+  "black": "Firouzja, Alireza",
+  "white_elo": 2853,
+  "black_elo": 2785,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Carlsen, Magnus",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 7,
+  "round": 13,
+  "white": "So, Wesley",
+  "black": "Abdusattorov, Nodirbek",
+  "white_elo": 2760,
+  "black_elo": 2731,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2023",
+  "day": 7,
+  "round": 13,
+  "white": "Caruana, Fabiano",
+  "black": "Gukesh D",
+  "white_elo": 2764,
+  "black_elo": 2732,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Caruana, Fabiano",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 7,
+  "round": 13,
+  "white": "Nakamura, Hikaru",
+  "black": "Mamedyarov, Shakhriyar",
+  "white_elo": 2775,
+  "black_elo": 2738,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Nakamura, Hikaru",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 7,
+  "round": 13,
+  "white": "Giri, Anish",
+  "black": "Tari, Aryan",
+  "white_elo": 2768,
+  "black_elo": 2642,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2023",
+  "day": 8,
+  "round": 15,
+  "white": "Mamedyarov, Shakhriyar",
+  "black": "Carlsen, Magnus",
+  "white_elo": 2738,
+  "black_elo": 2853,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Mamedyarov, Shakhriyar",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 8,
+  "round": 15,
+  "white": "Firouzja, Alireza",
+  "black": "Giri, Anish",
+  "white_elo": 2785,
+  "black_elo": 2768,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Firouzja, Alireza",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 8,
+  "round": 15,
+  "white": "Abdusattorov, Nodirbek",
+  "black": "Nakamura, Hikaru",
+  "white_elo": 2731,
+  "black_elo": 2775,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Abdusattorov, Nodirbek",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 8,
+  "round": 15,
+  "white": "Gukesh D",
+  "black": "Tari, Aryan",
+  "white_elo": 2732,
+  "black_elo": 2642,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2023",
+  "day": 8,
+  "round": 15,
+  "white": "Caruana, Fabiano",
+  "black": "So, Wesley",
+  "white_elo": 2764,
+  "black_elo": 2760,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Caruana, Fabiano",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 9,
+  "round": 17,
+  "white": "Carlsen, Magnus",
+  "black": "Abdusattorov, Nodirbek",
+  "white_elo": 2853,
+  "black_elo": 2731,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Carlsen, Magnus",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 9,
+  "round": 17,
+  "white": "So, Wesley",
+  "black": "Gukesh D",
+  "white_elo": 2760,
+  "black_elo": 2732,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "So, Wesley",
+   "white_won_minimatch": false,
+   "result": "1/2-1/2"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 9,
+  "round": 17,
+  "white": "Nakamura, Hikaru",
+  "black": "Caruana, Fabiano",
+  "white_elo": 2775,
+  "black_elo": 2764,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2023",
+  "day": 9,
+  "round": 17,
+  "white": "Giri, Anish",
+  "black": "Mamedyarov, Shakhriyar",
+  "white_elo": 2768,
+  "black_elo": 2738,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Giri, Anish",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2023",
+  "day": 9,
+  "round": 17,
+  "white": "Tari, Aryan",
+  "black": "Firouzja, Alireza",
+  "white_elo": 2642,
+  "black_elo": 2785,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2024",
+  "day": 1,
+  "round": 1,
+  "white": "Ding, Liren",
+  "black": "Carlsen, Magnus",
+  "white_elo": 2762,
+  "black_elo": 2830,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Ding, Liren",
+   "white_won_minimatch": false,
+   "result": "1/2-1/2"
+  }
+ },
+ {
+  "year": "2024",
+  "day": 1,
+  "round": 1,
+  "white": "Praggnanandhaa R",
+  "black": "Firouzja, Alireza",
+  "white_elo": 2747,
+  "black_elo": 2737,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Praggnanandhaa R",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2024",
+  "day": 1,
+  "round": 1,
+  "white": "Caruana, Fabiano",
+  "black": "Nakamura, Hikaru",
+  "white_elo": 2805,
+  "black_elo": 2794,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Caruana, Fabiano",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2024",
+  "day": 2,
+  "round": 3,
+  "white": "Carlsen, Magnus",
+  "black": "Nakamura, Hikaru",
+  "white_elo": 2830,
+  "black_elo": 2794,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Carlsen, Magnus",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2024",
+  "day": 2,
+  "round": 3,
+  "white": "Firouzja, Alireza",
+  "black": "Caruana, Fabiano",
+  "white_elo": 2737,
+  "black_elo": 2805,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Firouzja, Alireza",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2024",
+  "day": 2,
+  "round": 3,
+  "white": "Ding, Liren",
+  "black": "Praggnanandhaa R",
+  "white_elo": 2762,
+  "black_elo": 2747,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Ding, Liren",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2024",
+  "day": 3,
+  "round": 5,
+  "white": "Praggnanandhaa R",
+  "black": "Carlsen, Magnus",
+  "white_elo": 2747,
+  "black_elo": 2830,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2024",
+  "day": 3,
+  "round": 5,
+  "white": "Caruana, Fabiano",
+  "black": "Ding, Liren",
+  "white_elo": 2805,
+  "black_elo": 2762,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2024",
+  "day": 3,
+  "round": 5,
+  "white": "Nakamura, Hikaru",
+  "black": "Firouzja, Alireza",
+  "white_elo": 2794,
+  "black_elo": 2737,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Nakamura, Hikaru",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2024",
+  "day": 4,
+  "round": 7,
+  "white": "Caruana, Fabiano",
+  "black": "Carlsen, Magnus",
+  "white_elo": 2805,
+  "black_elo": 2830,
+  "classical_result_white": 0.0,
+  "armageddon": null
+ },
+ {
+  "year": "2024",
+  "day": 4,
+  "round": 7,
+  "white": "Nakamura, Hikaru",
+  "black": "Praggnanandhaa R",
+  "white_elo": 2794,
+  "black_elo": 2747,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2024",
+  "day": 4,
+  "round": 7,
+  "white": "Firouzja, Alireza",
+  "black": "Ding, Liren",
+  "white_elo": 2737,
+  "black_elo": 2762,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2024",
+  "day": 5,
+  "round": 9,
+  "white": "Carlsen, Magnus",
+  "black": "Firouzja, Alireza",
+  "white_elo": 2830,
+  "black_elo": 2737,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2024",
+  "day": 5,
+  "round": 9,
+  "white": "Ding, Liren",
+  "black": "Nakamura, Hikaru",
+  "white_elo": 2762,
+  "black_elo": 2794,
+  "classical_result_white": 0.0,
+  "armageddon": null
+ },
+ {
+  "year": "2024",
+  "day": 5,
+  "round": 9,
+  "white": "Praggnanandhaa R",
+  "black": "Caruana, Fabiano",
+  "white_elo": 2747,
+  "black_elo": 2805,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2024",
+  "day": 6,
+  "round": 11,
+  "white": "Carlsen, Magnus",
+  "black": "Ding, Liren",
+  "white_elo": 2830,
+  "black_elo": 2762,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2024",
+  "day": 6,
+  "round": 11,
+  "white": "Firouzja, Alireza",
+  "black": "Praggnanandhaa R",
+  "white_elo": 2737,
+  "black_elo": 2747,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Firouzja, Alireza",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2024",
+  "day": 6,
+  "round": 11,
+  "white": "Nakamura, Hikaru",
+  "black": "Caruana, Fabiano",
+  "white_elo": 2794,
+  "black_elo": 2805,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Nakamura, Hikaru",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2024",
+  "day": 7,
+  "round": 13,
+  "white": "Nakamura, Hikaru",
+  "black": "Carlsen, Magnus",
+  "white_elo": 2794,
+  "black_elo": 2830,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Nakamura, Hikaru",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2024",
+  "day": 7,
+  "round": 13,
+  "white": "Caruana, Fabiano",
+  "black": "Firouzja, Alireza",
+  "white_elo": 2805,
+  "black_elo": 2737,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Caruana, Fabiano",
+   "white_won_minimatch": false,
+   "result": "1/2-1/2"
+  }
+ },
+ {
+  "year": "2024",
+  "day": 7,
+  "round": 13,
+  "white": "Praggnanandhaa R",
+  "black": "Ding, Liren",
+  "white_elo": 2747,
+  "black_elo": 2762,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Praggnanandhaa R",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2024",
+  "day": 8,
+  "round": 15,
+  "white": "Carlsen, Magnus",
+  "black": "Praggnanandhaa R",
+  "white_elo": 2830,
+  "black_elo": 2747,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Carlsen, Magnus",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2024",
+  "day": 8,
+  "round": 15,
+  "white": "Ding, Liren",
+  "black": "Caruana, Fabiano",
+  "white_elo": 2762,
+  "black_elo": 2805,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Ding, Liren",
+   "white_won_minimatch": false,
+   "result": "1/2-1/2"
+  }
+ },
+ {
+  "year": "2024",
+  "day": 8,
+  "round": 15,
+  "white": "Firouzja, Alireza",
+  "black": "Nakamura, Hikaru",
+  "white_elo": 2737,
+  "black_elo": 2794,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Firouzja, Alireza",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2024",
+  "day": 9,
+  "round": 17,
+  "white": "Firouzja, Alireza",
+  "black": "Carlsen, Magnus",
+  "white_elo": 2737,
+  "black_elo": 2830,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Firouzja, Alireza",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2024",
+  "day": 9,
+  "round": 17,
+  "white": "Nakamura, Hikaru",
+  "black": "Ding, Liren",
+  "white_elo": 2794,
+  "black_elo": 2762,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Nakamura, Hikaru",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2024",
+  "day": 9,
+  "round": 17,
+  "white": "Caruana, Fabiano",
+  "black": "Praggnanandhaa R",
+  "white_elo": 2805,
+  "black_elo": 2747,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Caruana, Fabiano",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2024",
+  "day": 10,
+  "round": 19,
+  "white": "Carlsen, Magnus",
+  "black": "Caruana, Fabiano",
+  "white_elo": 2830,
+  "black_elo": 2805,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Carlsen, Magnus",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2024",
+  "day": 10,
+  "round": 19,
+  "white": "Praggnanandhaa R",
+  "black": "Nakamura, Hikaru",
+  "white_elo": 2747,
+  "black_elo": 2794,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Praggnanandhaa R",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2024",
+  "day": 10,
+  "round": 19,
+  "white": "Ding, Liren",
+  "black": "Firouzja, Alireza",
+  "white_elo": 2762,
+  "black_elo": 2737,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Ding, Liren",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2025",
+  "day": 1,
+  "round": 1,
+  "white": "Wei, Yi",
+  "black": "Erigaisi Arjun",
+  "white_elo": 2758,
+  "black_elo": 2782,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Wei, Yi",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2025",
+  "day": 1,
+  "round": 1,
+  "white": "Caruana, Fabiano",
+  "black": "Nakamura, Hikaru",
+  "white_elo": 2776,
+  "black_elo": 2804,
+  "classical_result_white": 0.0,
+  "armageddon": null
+ },
+ {
+  "year": "2025",
+  "day": 1,
+  "round": 1,
+  "white": "Carlsen, Magnus",
+  "black": "Gukesh D",
+  "white_elo": 2837,
+  "black_elo": 2787,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2025",
+  "day": 2,
+  "round": 3,
+  "white": "Erigaisi Arjun",
+  "black": "Gukesh D",
+  "white_elo": 2782,
+  "black_elo": 2787,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2025",
+  "day": 2,
+  "round": 3,
+  "white": "Nakamura, Hikaru",
+  "black": "Carlsen, Magnus",
+  "white_elo": 2804,
+  "black_elo": 2837,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Nakamura, Hikaru",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2025",
+  "day": 2,
+  "round": 3,
+  "white": "Wei, Yi",
+  "black": "Caruana, Fabiano",
+  "white_elo": 2758,
+  "black_elo": 2776,
+  "classical_result_white": 0.0,
+  "armageddon": null
+ },
+ {
+  "year": "2025",
+  "day": 3,
+  "round": 5,
+  "white": "Caruana, Fabiano",
+  "black": "Erigaisi Arjun",
+  "white_elo": 2776,
+  "black_elo": 2782,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2025",
+  "day": 3,
+  "round": 5,
+  "white": "Carlsen, Magnus",
+  "black": "Wei, Yi",
+  "white_elo": 2837,
+  "black_elo": 2758,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Carlsen, Magnus",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2025",
+  "day": 3,
+  "round": 5,
+  "white": "Gukesh D",
+  "black": "Nakamura, Hikaru",
+  "white_elo": 2787,
+  "black_elo": 2804,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2025",
+  "day": 4,
+  "round": 7,
+  "white": "Carlsen, Magnus",
+  "black": "Erigaisi Arjun",
+  "white_elo": 2837,
+  "black_elo": 2782,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2025",
+  "day": 4,
+  "round": 7,
+  "white": "Gukesh D",
+  "black": "Caruana, Fabiano",
+  "white_elo": 2787,
+  "black_elo": 2776,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Gukesh D",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2025",
+  "day": 4,
+  "round": 7,
+  "white": "Nakamura, Hikaru",
+  "black": "Wei, Yi",
+  "white_elo": 2804,
+  "black_elo": 2758,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Nakamura, Hikaru",
+   "white_won_minimatch": false,
+   "result": "1/2-1/2"
+  }
+ },
+ {
+  "year": "2025",
+  "day": 5,
+  "round": 9,
+  "white": "Erigaisi Arjun",
+  "black": "Nakamura, Hikaru",
+  "white_elo": 2782,
+  "black_elo": 2804,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Erigaisi Arjun",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2025",
+  "day": 5,
+  "round": 9,
+  "white": "Wei, Yi",
+  "black": "Gukesh D",
+  "white_elo": 2758,
+  "black_elo": 2787,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Wei, Yi",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2025",
+  "day": 5,
+  "round": 9,
+  "white": "Caruana, Fabiano",
+  "black": "Carlsen, Magnus",
+  "white_elo": 2776,
+  "black_elo": 2837,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Caruana, Fabiano",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2025",
+  "day": 6,
+  "round": 11,
+  "white": "Erigaisi Arjun",
+  "black": "Wei, Yi",
+  "white_elo": 2782,
+  "black_elo": 2758,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Erigaisi Arjun",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2025",
+  "day": 6,
+  "round": 11,
+  "white": "Nakamura, Hikaru",
+  "black": "Caruana, Fabiano",
+  "white_elo": 2804,
+  "black_elo": 2777,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Nakamura, Hikaru",
+   "white_won_minimatch": false,
+   "result": "1/2-1/2"
+  }
+ },
+ {
+  "year": "2025",
+  "day": 6,
+  "round": 11,
+  "white": "Gukesh D",
+  "black": "Carlsen, Magnus",
+  "white_elo": 2776,
+  "black_elo": 2837,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2025",
+  "day": 7,
+  "round": 13,
+  "white": "Gukesh D",
+  "black": "Erigaisi Arjun",
+  "white_elo": 2776,
+  "black_elo": 2782,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2025",
+  "day": 7,
+  "round": 13,
+  "white": "Carlsen, Magnus",
+  "black": "Nakamura, Hikaru",
+  "white_elo": 2837,
+  "black_elo": 2804,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Carlsen, Magnus",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2025",
+  "day": 7,
+  "round": 13,
+  "white": "Caruana, Fabiano",
+  "black": "Wei, Yi",
+  "white_elo": 2777,
+  "black_elo": 2758,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2025",
+  "day": 8,
+  "round": 15,
+  "white": "Erigaisi Arjun",
+  "black": "Caruana, Fabiano",
+  "white_elo": 2782,
+  "black_elo": 2777,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2025",
+  "day": 8,
+  "round": 15,
+  "white": "Wei, Yi",
+  "black": "Carlsen, Magnus",
+  "white_elo": 2758,
+  "black_elo": 2837,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Wei, Yi",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2025",
+  "day": 8,
+  "round": 15,
+  "white": "Nakamura, Hikaru",
+  "black": "Gukesh D",
+  "white_elo": 2804,
+  "black_elo": 2776,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2025",
+  "day": 9,
+  "round": 17,
+  "white": "Nakamura, Hikaru",
+  "black": "Erigaisi Arjun",
+  "white_elo": 2804,
+  "black_elo": 2782,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Nakamura, Hikaru",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2025",
+  "day": 9,
+  "round": 17,
+  "white": "Gukesh D",
+  "black": "Wei, Yi",
+  "white_elo": 2776,
+  "black_elo": 2758,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2025",
+  "day": 9,
+  "round": 17,
+  "white": "Carlsen, Magnus",
+  "black": "Caruana, Fabiano",
+  "white_elo": 2837,
+  "black_elo": 2777,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2025",
+  "day": 10,
+  "round": 19,
+  "white": "Erigaisi Arjun",
+  "black": "Carlsen, Magnus",
+  "white_elo": 2782,
+  "black_elo": 2837,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Erigaisi Arjun",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2025",
+  "day": 10,
+  "round": 19,
+  "white": "Caruana, Fabiano",
+  "black": "Gukesh D",
+  "white_elo": 2777,
+  "black_elo": 2776,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2025",
+  "day": 10,
+  "round": 19,
+  "white": "Wei, Yi",
+  "black": "Nakamura, Hikaru",
+  "white_elo": 2758,
+  "black_elo": 2804,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Wei, Yi",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2026",
+  "day": 1,
+  "round": 1,
+  "white": "Firouzja, Alireza",
+  "black": "Carlsen, Magnus",
+  "white_elo": 2759,
+  "black_elo": 2840,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2026",
+  "day": 1,
+  "round": 1,
+  "white": "Praggnanandhaa R",
+  "black": "So, Wesley",
+  "white_elo": 2733,
+  "black_elo": 2754,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Praggnanandhaa R",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2026",
+  "day": 1,
+  "round": 1,
+  "white": "Gukesh D",
+  "black": "Keymer, Vincent",
+  "white_elo": 2732,
+  "black_elo": 2759,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Gukesh D",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2026",
+  "day": 2,
+  "round": 3,
+  "white": "Carlsen, Magnus",
+  "black": "Keymer, Vincent",
+  "white_elo": 2840,
+  "black_elo": 2759,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Carlsen, Magnus",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2026",
+  "day": 2,
+  "round": 3,
+  "white": "So, Wesley",
+  "black": "Gukesh D",
+  "white_elo": 2754,
+  "black_elo": 2732,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "So, Wesley",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2026",
+  "day": 2,
+  "round": 3,
+  "white": "Firouzja, Alireza",
+  "black": "Praggnanandhaa R",
+  "white_elo": 2759,
+  "black_elo": 2733,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2026",
+  "day": 3,
+  "round": 5,
+  "white": "Praggnanandhaa R",
+  "black": "Carlsen, Magnus",
+  "white_elo": 2733,
+  "black_elo": 2840,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2026",
+  "day": 3,
+  "round": 5,
+  "white": "Gukesh D",
+  "black": "Firouzja, Alireza",
+  "white_elo": 2732,
+  "black_elo": 2759,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Gukesh D",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2026",
+  "day": 3,
+  "round": 5,
+  "white": "Keymer, Vincent",
+  "black": "So, Wesley",
+  "white_elo": 2759,
+  "black_elo": 2754,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Keymer, Vincent",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2026",
+  "day": 4,
+  "round": 7,
+  "white": "Gukesh D",
+  "black": "Carlsen, Magnus",
+  "white_elo": 2732,
+  "black_elo": 2840,
+  "classical_result_white": 0.0,
+  "armageddon": null
+ },
+ {
+  "year": "2026",
+  "day": 4,
+  "round": 7,
+  "white": "Keymer, Vincent",
+  "black": "Praggnanandhaa R",
+  "white_elo": 2759,
+  "black_elo": 2733,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Keymer, Vincent",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2026",
+  "day": 4,
+  "round": 7,
+  "white": "So, Wesley",
+  "black": "Firouzja, Alireza",
+  "white_elo": 2754,
+  "black_elo": 2759,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "So, Wesley",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2026",
+  "day": 5,
+  "round": 9,
+  "white": "Carlsen, Magnus",
+  "black": "So, Wesley",
+  "white_elo": 2840,
+  "black_elo": 2754,
+  "classical_result_white": 0.0,
+  "armageddon": null
+ },
+ {
+  "year": "2026",
+  "day": 5,
+  "round": 9,
+  "white": "Firouzja, Alireza",
+  "black": "Keymer, Vincent",
+  "white_elo": 2759,
+  "black_elo": 2759,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Firouzja, Alireza",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2026",
+  "day": 5,
+  "round": 9,
+  "white": "Praggnanandhaa R",
+  "black": "Gukesh D",
+  "white_elo": 2733,
+  "black_elo": 2732,
+  "classical_result_white": 0.0,
+  "armageddon": null
+ },
+ {
+  "year": "2026",
+  "day": 6,
+  "round": 11,
+  "white": "Carlsen, Magnus",
+  "black": "Firouzja, Alireza",
+  "white_elo": 2840,
+  "black_elo": 2759,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2026",
+  "day": 6,
+  "round": 11,
+  "white": "So, Wesley",
+  "black": "Praggnanandhaa R",
+  "white_elo": 2754,
+  "black_elo": 2733,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2026",
+  "day": 6,
+  "round": 11,
+  "white": "Keymer, Vincent",
+  "black": "Gukesh D",
+  "white_elo": 2759,
+  "black_elo": 2732,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2026",
+  "day": 7,
+  "round": 13,
+  "white": "Praggnanandhaa R",
+  "black": "Firouzja, Alireza",
+  "white_elo": 2735,
+  "black_elo": 2744,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2026",
+  "day": 7,
+  "round": 13,
+  "white": "Keymer, Vincent",
+  "black": "Carlsen, Magnus",
+  "white_elo": 2767,
+  "black_elo": 2841,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Keymer, Vincent",
+   "white_won_minimatch": false,
+   "result": "1/2-1/2"
+  }
+ },
+ {
+  "year": "2026",
+  "day": 7,
+  "round": 13,
+  "white": "Gukesh D",
+  "black": "So, Wesley",
+  "white_elo": 2732,
+  "black_elo": 2753,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Gukesh D",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2026",
+  "day": 8,
+  "round": 15,
+  "white": "Firouzja, Alireza",
+  "black": "Gukesh D",
+  "white_elo": 2744,
+  "black_elo": 2732,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2026",
+  "day": 8,
+  "round": 15,
+  "white": "Carlsen, Magnus",
+  "black": "Praggnanandhaa R",
+  "white_elo": 2841,
+  "black_elo": 2735,
+  "classical_result_white": 0.0,
+  "armageddon": null
+ },
+ {
+  "year": "2026",
+  "day": 8,
+  "round": 15,
+  "white": "So, Wesley",
+  "black": "Keymer, Vincent",
+  "white_elo": 2753,
+  "black_elo": 2767,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "So, Wesley",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2026",
+  "day": 9,
+  "round": 17,
+  "white": "Keymer, Vincent",
+  "black": "Firouzja, Alireza",
+  "white_elo": 2767,
+  "black_elo": 2744,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Keymer, Vincent",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2026",
+  "day": 9,
+  "round": 17,
+  "white": "So, Wesley",
+  "black": "Carlsen, Magnus",
+  "white_elo": 2753,
+  "black_elo": 2841,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "So, Wesley",
+   "white_won_minimatch": true,
+   "result": "1-0"
+  }
+ },
+ {
+  "year": "2026",
+  "day": 9,
+  "round": 17,
+  "white": "Gukesh D",
+  "black": "Praggnanandhaa R",
+  "white_elo": 2732,
+  "black_elo": 2735,
+  "classical_result_white": 0.0,
+  "armageddon": null
+ },
+ {
+  "year": "2026",
+  "day": 10,
+  "round": 19,
+  "white": "Firouzja, Alireza",
+  "black": "So, Wesley",
+  "white_elo": 2744,
+  "black_elo": 2753,
+  "classical_result_white": 0.5,
+  "armageddon": {
+   "white_player": "Firouzja, Alireza",
+   "white_won_minimatch": false,
+   "result": "0-1"
+  }
+ },
+ {
+  "year": "2026",
+  "day": 10,
+  "round": 19,
+  "white": "Carlsen, Magnus",
+  "black": "Gukesh D",
+  "white_elo": 2841,
+  "black_elo": 2732,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ },
+ {
+  "year": "2026",
+  "day": 10,
+  "round": 19,
+  "white": "Praggnanandhaa R",
+  "black": "Keymer, Vincent",
+  "white_elo": 2735,
+  "black_elo": 2767,
+  "classical_result_white": 1.0,
+  "armageddon": null
+ }
+]

@@ -1,0 +1,389 @@
+{
+  "id": "norway2026",
+  "name": "Norway Chess 2026",
+  "format": "norway_chess",
+  "players": [
+    {
+      "id": "carlsen",
+      "name": "Carlsen",
+      "classical": 2840,
+      "live_adj": 0,
+      "trend_mo": 0.1,
+      "rapid": 2832,
+      "blitz": 2869,
+      "style": 1.07
+    },
+    {
+      "id": "keymer",
+      "name": "Keymer",
+      "classical": 2765,
+      "live_adj": 5,
+      "trend_mo": 3.5,
+      "rapid": 2627,
+      "blitz": 2621,
+      "style": 1.0
+    },
+    {
+      "id": "firouzja",
+      "name": "Firouzja",
+      "classical": 2759,
+      "live_adj": -12,
+      "trend_mo": -0.7,
+      "rapid": 2755,
+      "blitz": 2796,
+      "style": 0.99
+    },
+    {
+      "id": "so",
+      "name": "So",
+      "classical": 2754,
+      "live_adj": 0,
+      "trend_mo": 0.9,
+      "rapid": 2705,
+      "blitz": 2798,
+      "style": 1.3
+    },
+    {
+      "id": "gukesh",
+      "name": "Gukesh",
+      "classical": 2734,
+      "live_adj": 0,
+      "trend_mo": -4.2,
+      "rapid": 2682,
+      "blitz": 2646,
+      "style": 0.66
+    },
+    {
+      "id": "pragg",
+      "name": "Pragg",
+      "classical": 2733,
+      "live_adj": 2,
+      "trend_mo": -4.6,
+      "rapid": 2663,
+      "blitz": 2698,
+      "style": 1.09
+    }
+  ],
+  "rounds": [
+    {
+      "round": 1,
+      "games": [
+        {
+          "p1": "firouzja",
+          "p2": "carlsen",
+          "color": "p1_white",
+          "result": {
+            "p1_points": 3.0,
+            "type": "classical"
+          }
+        },
+        {
+          "p1": "keymer",
+          "p2": "gukesh",
+          "color": "unknown",
+          "result": {
+            "p1_points": 1.0,
+            "type": "armageddon"
+          }
+        },
+        {
+          "p1": "so",
+          "p2": "pragg",
+          "color": "unknown",
+          "result": {
+            "p1_points": 1.0,
+            "type": "armageddon"
+          }
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "games": [
+        {
+          "p1": "firouzja",
+          "p2": "pragg",
+          "color": "unknown",
+          "result": {
+            "p1_points": 3.0,
+            "type": "classical"
+          }
+        },
+        {
+          "p1": "carlsen",
+          "p2": "keymer",
+          "color": "p1_white",
+          "result": {
+            "p1_points": 1.5,
+            "type": "armageddon"
+          }
+        },
+        {
+          "p1": "gukesh",
+          "p2": "so",
+          "color": "unknown",
+          "result": {
+            "p1_points": 1.0,
+            "type": "armageddon"
+          }
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "games": [
+        {
+          "p1": "gukesh",
+          "p2": "firouzja",
+          "color": "p1_white",
+          "result": {
+            "p1_points": 1.0,
+            "type": "armageddon"
+          }
+        },
+        {
+          "p1": "keymer",
+          "p2": "so",
+          "color": "p1_white",
+          "result": {
+            "p1_points": 1.0,
+            "type": "armageddon"
+          }
+        },
+        {
+          "p1": "pragg",
+          "p2": "carlsen",
+          "color": "unknown",
+          "result": {
+            "p1_points": 3.0,
+            "type": "classical"
+          }
+        }
+      ]
+    },
+    {
+      "round": 4,
+      "games": [
+        {
+          "p1": "gukesh",
+          "p2": "carlsen",
+          "color": "p1_white",
+          "result": {
+            "p1_points": 0.0,
+            "type": "classical"
+          }
+        },
+        {
+          "p1": "keymer",
+          "p2": "pragg",
+          "color": "p1_white",
+          "result": {
+            "p1_points": 1.0,
+            "type": "armageddon"
+          }
+        },
+        {
+          "p1": "so",
+          "p2": "firouzja",
+          "color": "p1_white",
+          "result": {
+            "p1_points": 1.5,
+            "type": "armageddon"
+          }
+        }
+      ]
+    },
+    {
+      "round": 5,
+      "games": [
+        {
+          "p1": "carlsen",
+          "p2": "so",
+          "color": "p1_white",
+          "result": {
+            "p1_points": 0.0,
+            "type": "classical"
+          }
+        },
+        {
+          "p1": "pragg",
+          "p2": "gukesh",
+          "color": "p1_white",
+          "result": {
+            "p1_points": 0.0,
+            "type": "classical"
+          }
+        },
+        {
+          "p1": "keymer",
+          "p2": "firouzja",
+          "color": "unknown",
+          "result": {
+            "p1_points": 1.0,
+            "type": "armageddon"
+          }
+        }
+      ]
+    },
+    {
+      "round": 6,
+      "games": [
+        {
+          "p1": "so",
+          "p2": "pragg",
+          "color": "p1_white",
+          "result": {
+            "p1_points": 3.0,
+            "type": "classical"
+          }
+        },
+        {
+          "p1": "carlsen",
+          "p2": "firouzja",
+          "color": "p1_white",
+          "result": {
+            "p1_points": 3.0,
+            "type": "classical"
+          }
+        },
+        {
+          "p1": "keymer",
+          "p2": "gukesh",
+          "color": "p1_white",
+          "result": {
+            "p1_points": 3.0,
+            "type": "classical"
+          }
+        }
+      ]
+    },
+    {
+      "round": 7,
+      "games": [
+        {
+          "p1": "pragg",
+          "p2": "firouzja",
+          "color": "unknown",
+          "result": {
+            "p1_points": 3.0,
+            "type": "classical"
+          }
+        },
+        {
+          "p1": "so",
+          "p2": "gukesh",
+          "color": "unknown",
+          "result": {
+            "p1_points": 1.0,
+            "type": "armageddon"
+          }
+        },
+        {
+          "p1": "keymer",
+          "p2": "carlsen",
+          "color": "p1_white",
+          "result": {
+            "p1_points": 1.0,
+            "type": "armageddon"
+          }
+        }
+      ]
+    },
+    {
+      "round": 8,
+      "games": [
+        {
+          "p1": "carlsen",
+          "p2": "pragg",
+          "color": "p1_white",
+          "result": {
+            "p1_points": 0.0,
+            "type": "classical"
+          }
+        },
+        {
+          "p1": "firouzja",
+          "p2": "gukesh",
+          "color": "unknown",
+          "result": {
+            "p1_points": 3.0,
+            "type": "classical"
+          }
+        },
+        {
+          "p1": "so",
+          "p2": "keymer",
+          "color": "unknown",
+          "result": {
+            "p1_points": 1.5,
+            "type": "armageddon"
+          }
+        }
+      ]
+    },
+    {
+      "round": 9,
+      "games": [
+        {
+          "p1": "so",
+          "p2": "carlsen",
+          "color": "p1_white",
+          "result": {
+            "p1_points": 1.5,
+            "type": "armageddon"
+          }
+        },
+        {
+          "p1": "gukesh",
+          "p2": "pragg",
+          "color": "p1_white",
+          "result": {
+            "p1_points": 0.0,
+            "type": "classical"
+          }
+        },
+        {
+          "p1": "keymer",
+          "p2": "firouzja",
+          "color": "p1_white",
+          "result": {
+            "p1_points": 1.0,
+            "type": "armageddon"
+          }
+        }
+      ]
+    },
+    {
+      "round": 10,
+      "games": [
+        {
+          "p1": "pragg",
+          "p2": "keymer",
+          "color": "unknown",
+          "result": {
+            "p1_points": 3.0,
+            "type": "classical"
+          }
+        },
+        {
+          "p1": "carlsen",
+          "p2": "gukesh",
+          "color": "unknown",
+          "result": {
+            "p1_points": 3.0,
+            "type": "classical"
+          }
+        },
+        {
+          "p1": "firouzja",
+          "p2": "so",
+          "color": "unknown",
+          "result": {
+            "p1_points": 1.0,
+            "type": "armageddon"
+          }
+        }
+      ]
+    }
+  ]
+}

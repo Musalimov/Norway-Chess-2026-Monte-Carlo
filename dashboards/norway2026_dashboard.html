@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
+<title>Norway Chess 2026 · Monte Carlo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Spectral:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>@media (prefers-color-scheme: dark){
+    :root{--bg:#EEF2F5!important;--paper:#F8FAFC!important;--paper2:#E8EDF2!important;--paper3:#DDE5EC!important;--ink:#17202B!important;--ink2:#334152!important;--muted:#6E7B88!important;--rule:#1D2B3A!important;--hair:#C9D3DD!important;--red:#BA0C2F!important;--navy:#002868!important;}
+    html,body{background:#EEF2F5!important;color:#17202B!important}
+  }
+  :root{
+    color-scheme: light only;
+    --bg:#EEF2F5; --paper:#F8FAFC; --paper2:#E8EDF2; --paper3:#DDE5EC; --ink:#17202B; --ink2:#334152; --muted:#6E7B88;
+    --rule:#1D2B3A; --hair:#C9D3DD; --red:#BA0C2F; --navy:#002868;
+    --red-soft:#D99098; --navy-soft:#7E97B8; --blue-tint:#E5EBF3;
+    --serif:'Spectral', Georgia, serif; --display:'Playfair Display', Georgia, serif;
+    --mono:'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--serif);line-height:1.55;
+       background-image:radial-gradient(rgba(0,40,104,.028) 1px,transparent 1px);background-size:3px 3px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 26px}
+  ::selection{background:var(--red);color:var(--paper)}
+
+  .masthead{padding:24px 0 0}
+  .topline{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--hair);padding-bottom:8px;margin-bottom:18px}
+  .topline .flag{display:inline-flex;gap:8px;align-items:center}
+  .noflag{width:22px;height:16px;display:inline-block;box-shadow:0 0 0 1px rgba(33,29,24,.18)}
+  .nameplate{font-family:var(--display);font-weight:900;text-align:center;font-size:clamp(40px,9vw,104px);line-height:.9;letter-spacing:-.025em}
+  .nameplate .red{color:var(--red)}
+  .yearline{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:8px}
+  .yearline .yl-rule{height:1px;flex:0 1 90px;background:var(--hair)}
+  .year{font-family:var(--display);font-weight:400;font-style:italic;color:var(--navy);font-size:clamp(34px,7vw,68px);line-height:1;letter-spacing:.06em}
+  .sub{text-align:center;margin-top:14px;padding-top:13px;border-top:1px solid var(--hair)}
+  .sub .mono{font-family:var(--mono);font-style:normal;font-size:clamp(10px,1.5vw,12px);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  /* norwegian tricolour signature rule */
+  .tricolour{display:flex;height:5px;margin:18px 0 0}
+  .tricolour i{flex:1}
+  .tricolour i:nth-child(1){background:var(--red)}
+  .tricolour i:nth-child(2){background:var(--paper);box-shadow:inset 0 0 0 1px var(--hair)}
+  .tricolour i:nth-child(3){background:var(--navy)}
+
+  nav{position:sticky;top:0;z-index:50;background:rgba(248,250,252,.92);backdrop-filter:blur(10px);border-bottom:2px solid var(--rule);padding:9px 0;margin-bottom:6px}
+  nav .wrap{display:flex;gap:4px;flex-wrap:wrap;align-items:center}
+  nav .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-right:8px}
+  nav a{font-family:var(--mono);font-size:11.5px;color:var(--ink2);text-decoration:none;padding:4px 10px;border:1px solid transparent;transition:.12s}
+  nav a:hover{border-color:var(--rule);background:var(--paper2)}
+
+  section{padding:34px 0 6px}
+  .head{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;border-bottom:2px solid var(--rule);padding-bottom:8px;margin-bottom:20px}
+  .head .no{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--red)}
+  .head h2{font-family:var(--display);font-weight:700;font-size:clamp(22px,3.2vw,30px);line-height:1}
+  .head .tag{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--muted)}
+
+  /* bracket-corner interactive card (like the original) */
+  .card{position:relative;background:var(--paper);border:1px solid var(--hair);padding:24px}
+  .card::before,.card::after{content:"";position:absolute;width:16px;height:16px;border:2px solid var(--rule);opacity:0;transition:opacity .18s, width .18s, height .18s}
+  .card::before{top:-1px;left:-1px;border-right:none;border-bottom:none}
+  .card::after{bottom:-1px;right:-1px;border-left:none;border-top:none}
+  .card:hover::before,.card:hover::after{opacity:1;width:22px;height:22px}
+  .card.framed{border-color:var(--rule)}
+
+  .chartwrap{position:relative}
+  svg text{font-family:var(--mono);fill:var(--muted)}
+  .axis-title{fill:var(--ink2);font-size:11px;letter-spacing:.05em}
+
+  .tooltip{position:absolute;pointer-events:none;opacity:0;transition:opacity .1s;background:var(--paper);border:1px solid var(--rule);box-shadow:4px 4px 0 rgba(33,29,24,.13);padding:10px 12px;font-family:var(--mono);font-size:12px;min-width:178px;z-index:10}
+  .tooltip h4{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--red);border-bottom:1px solid var(--hair);padding-bottom:5px;margin-bottom:6px;font-weight:600}
+  .tooltip .trow{display:flex;align-items:center;gap:7px;padding:2px 0}
+  .tooltip .trow i{width:9px;height:9px;flex:none}
+  .tooltip .trow .nm{flex:1}
+  .tooltip .trow .vv{font-weight:600}
+  .tooltip .trow.hi{background:var(--paper2);margin:0 -6px;padding:2px 6px}
+
+  .controls{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+  .switch{display:flex;border:1px solid var(--rule)}
+  .switch button{font-family:var(--mono);font-size:11.5px;padding:6px 12px;background:var(--paper);color:var(--ink2);border:none;border-right:1px solid var(--hair);cursor:pointer;transition:.1s}
+  .switch button:last-child{border-right:none}
+  .switch button:hover{background:var(--paper2)}
+  .switch button.on{background:var(--ink);color:var(--paper);font-weight:600}
+
+  /* player legend chips (top, toggle) + bottom colour key */
+  .chips{display:flex;flex-wrap:wrap;gap:7px}
+  .chip{font-family:var(--mono);font-size:11.5px;padding:5px 11px;border:1px solid var(--hair);color:var(--ink2);cursor:pointer;user-select:none;display:inline-flex;align-items:center;gap:7px;transition:.12s}
+  .chip i{width:10px;height:10px;border-radius:50%}
+  .chip:hover{border-color:var(--rule);background:var(--paper2)}
+  .chip.off{opacity:.4}
+  .legend-key{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:center;margin-top:18px;padding-top:14px;border-top:1px solid var(--hair);font-family:var(--mono);font-size:12px;color:var(--ink2)}
+  .legend-key span{display:inline-flex;align-items:center;gap:7px}
+  .legend-key i{width:13px;height:13px;border:2px solid;display:inline-block}
+
+  .slider{display:flex;align-items:center;gap:12px;margin-bottom:16px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .slider input{flex:1;accent-color:var(--red)}
+  .slider b{color:var(--red)}
+
+  table{width:100%;border-collapse:collapse;font-family:var(--serif);font-size:15px}
+  th,td{text-align:right;padding:8px 10px;border-bottom:1px solid var(--hair)}
+  th{font-family:var(--mono);font-weight:600;color:var(--muted);text-transform:uppercase;font-size:10.5px;letter-spacing:.08em}
+  th:first-child,td:first-child{text-align:left}
+  td.num{font-family:var(--mono)}
+  tr.champ td{background:var(--paper2);font-weight:600}
+  tbody tr{transition:background .1s}
+  tbody tr:hover td{background:var(--paper2)}
+  .barcell{position:relative}
+  .barcell .bar{position:absolute;left:0;top:0;bottom:0;background:var(--red);opacity:.16}
+  .barcell span{position:relative;font-family:var(--mono)}
+
+  .games{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+  .gcard{position:relative;border:1px solid var(--hair);padding:14px 15px;background:var(--paper);transition:border-color .12s,box-shadow .12s,transform .12s}
+  .gcard:hover{border-color:var(--rule);box-shadow:4px 4px 0 rgba(33,29,24,.10);transform:translateY(-2px)}
+  .gpair{font-family:var(--display);font-weight:700;font-size:16px;margin-bottom:4px}
+  .gres{font-family:var(--mono);font-size:11px;color:var(--red);margin-bottom:9px}
+  .wdl{display:flex;height:26px;overflow:hidden;font-family:var(--mono);font-size:10px;border:1px solid var(--rule)}
+  .wdl div{display:flex;align-items:center;justify-content:center;white-space:nowrap;color:#fff;transition:filter .12s;cursor:default;position:relative}
+  .wdl .w{background:var(--red)} .wdl .aw{background:var(--red-soft);color:#5A1018}
+  .wdl .ab{background:var(--navy-soft);color:#15233A} .wdl .l{background:var(--navy)}
+  .wdl:hover div{filter:saturate(.55) opacity(.6)}
+  .wdl div:hover{filter:none!important;font-weight:600}
+  .wdl div[data-v]:hover::after{content:attr(data-v);position:absolute;bottom:30px;left:50%;transform:translateX(-50%);background:var(--paper);border:1px solid var(--rule);padding:3px 7px;font-size:11px;color:var(--ink);white-space:nowrap;box-shadow:2px 2px 0 rgba(33,29,24,.12);z-index:5}
+  .gmeta{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:7px;display:flex;justify-content:space-between}
+  .glegend{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:16px}
+  .glegend i{display:inline-block;width:11px;height:11px;margin-right:5px;vertical-align:-1px}
+
+  .hm{display:grid;gap:3px;font-family:var(--mono);font-size:12px}
+  .hm .h{color:var(--muted);text-align:center;font-size:10px}
+  .hm .n{display:flex;align-items:center;font-weight:600;font-family:var(--serif);font-size:14px}
+  .hm .c{height:42px;display:flex;align-items:center;justify-content:center;transition:transform .1s;cursor:default}
+  .hm .c:hover{transform:scale(1.08);outline:1px solid var(--rule)}
+  .hm .c.act{outline:2px solid var(--ink);outline-offset:-2px;font-weight:700}
+
+  .race{display:flex;flex-direction:column;gap:7px}
+  .race .row{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:13px}
+  .race .nm{width:96px;font-family:var(--serif);font-size:15px}
+  .race .track{flex:1;height:18px;background:var(--paper2);position:relative;overflow:hidden;border:1px solid var(--hair)}
+  .race .cur{position:absolute;left:0;top:0;bottom:0;background:var(--red)}
+  .race .max{position:absolute;top:0;bottom:0;width:2px;background:var(--navy)}
+  .race .val{width:118px;color:var(--muted);font-size:11px}
+  .race .row.elim .nm{color:#A89E8C;text-decoration:line-through}
+  .race .row.elim .cur{background:#CBC3B2}
+
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .note{font-family:var(--serif);font-style:italic;font-size:13.5px;color:var(--muted);margin-top:10px}
+  .endmark{text-align:center;font-family:var(--display);color:var(--red);font-size:20px;margin:36px 0 60px}
+  @media(max-width:820px){.twocol{grid-template-columns:1fr}}
+  @media(prefers-reduced-motion:no-preference){section{animation:f .5s ease both}@keyframes f{from{opacity:0;transform:translateY(8px)}to{opacity:1}}}
+
+  /* ── front-page lead story ─────────────────────────────────────────── */
+  .lead{padding:30px 0 4px;border-bottom:3px double var(--rule);margin-bottom:8px}
+  .lead-kicker{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);text-align:center;margin-bottom:14px}
+  .lead-grid{display:grid;grid-template-columns:1.55fr 1fr;gap:34px;align-items:start}
+  .lead-head{font-family:var(--display);font-weight:900;font-size:clamp(28px,4.6vw,46px);line-height:1.02;letter-spacing:-.01em;margin-bottom:14px}
+  .lead-head .red{color:var(--red)}
+  .lead-body{font-family:var(--serif);font-size:clamp(15px,1.9vw,18px);line-height:1.62;color:var(--ink2);columns:1}
+  .lead-body b{color:var(--ink);font-weight:600}
+  .dropcap{float:left;font-family:var(--display);font-weight:900;font-size:74px;line-height:.7;padding:8px 12px 0 0;color:var(--red)}
+  .lead-stats{border-left:1px solid var(--rule);padding-left:0}
+  .lead-stats .stat{padding:13px 0 13px 20px;border-bottom:1px solid var(--hair)}
+  .lead-stats .stat:last-child{border-bottom:none}
+  .lead-stats .stat-num{font-family:var(--display);font-weight:900;font-size:38px;line-height:1;color:var(--navy)}
+  .lead-stats .stat.accent .stat-num{color:var(--red)}
+  .lead-stats .stat-lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:6px;line-height:1.4}
+  @media(max-width:760px){.lead-grid{grid-template-columns:1fr;gap:22px}.lead-stats{border-left:none;border-top:1px solid var(--rule);display:grid;grid-template-columns:1fr 1fr}.lead-stats .stat{padding:13px 16px;border-bottom:1px solid var(--hair)}}
+
+  /* section number gets a flag tick */
+  .head .no{display:inline-flex;align-items:center;gap:8px}
+  .head .no::before{content:"";width:3px;height:13px;background:var(--navy);display:inline-block}
+
+  /* ── round tabs (replaces range sliders) ───────────────────────────── */
+  .round-tabs{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-bottom:18px}
+  .round-tabs .rt-lbl{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-right:8px}
+  .round-tabs .rt{font-family:var(--mono);font-size:11.5px;padding:5px 11px;background:var(--paper);color:var(--ink2);border:1px solid var(--hair);cursor:pointer;transition:.1s;min-width:30px;text-align:center}
+  .round-tabs .rt:hover{border-color:var(--rule);background:var(--paper2)}
+  .round-tabs .rt.on{background:var(--ink);color:var(--paper);border-color:var(--ink);font-weight:600}
+
+  /* ── appendices ────────────────────────────────────────────────────── */
+  .appendix-divider{display:flex;align-items:center;gap:16px;margin:54px 0 8px}
+  .appendix-divider::before,.appendix-divider::after{content:"";flex:1;height:2px;background:var(--rule)}
+  .appendix-divider span{font-family:var(--mono);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink2)}
+  section.appendix .head .no{color:var(--navy)}
+  section.appendix .head .no::before{background:var(--red)}
+
+  /* model parameter table (appendix) */
+  .hp-formula{font-family:var(--mono);font-size:12.5px;color:var(--ink2);background:var(--blue-tint);border-left:3px solid var(--navy);padding:11px 14px;margin-bottom:18px;line-height:1.7;border-radius:1px}
+  .hp-formula b{color:var(--navy)}
+  table.hp td:nth-child(2){font-family:var(--mono);color:var(--muted);font-size:12px;text-align:left}
+  table.hp td:nth-child(3){font-family:var(--mono);color:var(--red);font-weight:500;text-align:right;white-space:nowrap}
+  table.hp td:nth-child(4){text-align:left;font-style:italic;color:var(--ink2);font-size:13.5px}
+  table.hp th:nth-child(3){text-align:right}
+  table.hp th:nth-child(2),table.hp th:nth-child(4){text-align:left}
+  .calib-strip{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--hair);margin-top:18px}
+  .calib-strip .ci{flex:1;min-width:150px;padding:13px 16px;border-right:1px solid var(--hair)}
+  .calib-strip .ci:last-child{border-right:none}
+  .calib-strip .ci-num{font-family:var(--display);font-weight:700;font-size:21px;color:var(--navy)}
+  .calib-strip .ci-lbl{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+
+  /* responsive tables — no scrollbars, scale down instead */
+  @media(max-width:560px){
+    th,td{padding:6px 5px;font-size:13px}
+    th{font-size:9px;letter-spacing:.04em}
+    td.num,.barcell span{font-size:12px}
+    table.hp td:nth-child(4){font-size:12px}
+    .hide-narrow{display:none}
+  }
+
+  .lead-stats .stat-sub{font-size:22px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="masthead">
+    <div class="topline">
+      <span class="flag">
+        <svg class="noflag" viewBox="0 0 22 16" aria-label="Flag of Norway" role="img">
+          <rect width="22" height="16" fill="#BA0C2F"/>
+          <rect x="6" width="4" height="16" fill="#F3EFE6"/>
+          <rect y="6" width="22" height="4" fill="#F3EFE6"/>
+          <rect x="7" width="2" height="16" fill="#002868"/>
+          <rect y="7" width="22" height="2" fill="#002868"/>
+        </svg>
+        <span id="mastVenue"></span>
+      </span>
+      <span id="mastEdition"></span>
+      <span id="mastDates"></span>
+    </div>
+    <div class="nameplate" id="mastName"></div>
+    <div class="yearline"><span class="yl-rule"></span><span class="year" id="mastYear"></span><span class="yl-rule"></span></div>
+    <div class="sub"><span class="mono" id="mastTagline"></span></div>
+    <div class="tricolour"><i></i><i></i><i></i></div>
+  </div>
+</div>
+
+<div class="wrap"><div class="lead" id="lead"></div></div>
+
+<nav><div class="wrap">
+  <span class="lbl">Sections</span>
+  <a href="#timeline">I. Title odds</a>
+  <a href="#standings">II. Standings</a>
+  <a href="#race">III. Title race</a>
+  <a href="#games">IV. Per-game</a>
+  <a href="#calib">V. Calibration</a>
+  <a href="#heatmap">VI. Final places</a>
+  <a href="#appendices">Appendices</a>
+</div></nav>
+
+<div class="wrap">
+
+<section id="timeline">
+  <div class="head"><div><div class="no">§ I</div><h2>Title probability by round</h2></div>
+    <span class="tag">switch armageddon model · hover a round · click a chip to toggle</span></div>
+  <div class="card framed">
+    <div class="controls"><div class="switch" id="tl-models"></div></div>
+    <div class="chips" id="tl-chips" style="margin-bottom:18px"></div>
+    <div class="chartwrap">
+      <svg id="timeline-svg" width="100%" viewBox="0 0 980 440" role="img" aria-label="Title probability by round"></svg>
+      <div class="tooltip" id="tl-tip"></div>
+    </div>
+    <div class="legend-key" id="tl-key"></div>
+  </div>
+</section>
+
+<section id="standings">
+  <div class="head"><div><div class="no">§ II</div><h2>Tournament standings</h2></div>
+    <span class="tag" id="st-label"></span></div>
+  <div class="card">
+    <div class="round-tabs" id="st-tabs"></div>
+    <table id="st-table"></table>
+  </div>
+</section>
+
+<section id="race">
+  <div class="head"><div><div class="no">§ III</div><h2>Race for the title</h2></div>
+    <span class="tag">bar — points scored · blue mark — maximum reachable · ✗ eliminated</span></div>
+  <div class="card">
+    <div class="round-tabs" id="race-tabs"></div>
+    <div class="race" id="race-body"></div>
+  </div>
+</section>
+
+<section id="games">
+  <div class="head"><div><div class="no">§ IV</div><h2>Per-game predictions</h2></div>
+    <span class="tag">draw split into armageddon · actual outlined · hover a bar for exact %</span></div>
+  <div class="card">
+    <div class="controls"><div class="switch" id="g-models"></div></div>
+    <div class="glegend">
+      <span><i style="background:var(--red)"></i>White win 3:0</span>
+      <span><i style="background:var(--red-soft)"></i>armageddon White 1.5:1</span>
+      <span><i style="background:var(--navy-soft)"></i>armageddon Black 1:1.5</span>
+      <span><i style="background:var(--navy)"></i>Black win 0:3</span>
+    </div>
+    <div class="round-tabs" id="g-tabs"></div>
+    <div class="games" id="games-body"></div>
+  </div>
+</section>
+
+<section id="calib">
+  <div class="head"><div><div class="no">§ V</div><h2>How much to trust the model</h2></div>
+    <span class="tag">calibration and sharpness, measured against the actual 2026</span></div>
+  <div class="twocol">
+    <div class="card">
+      <div style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px">Reliability curve</div>
+      <div class="chartwrap"><svg id="calib-svg" width="100%" viewBox="0 0 440 380" role="img"></svg><div class="tooltip" id="calib-tip"></div></div>
+      <p class="note">Points on the diagonal mean stated probabilities match observed frequency. Ours sit close to it — the model is not overconfident.</p>
+    </div>
+    <div class="card">
+      <div style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px">Brier score by round (lower is sharper)</div>
+      <div class="chartwrap"><svg id="brier-svg" width="100%" viewBox="0 0 440 380" role="img"></svg><div class="tooltip" id="brier-tip"></div></div>
+      <p class="note" id="brier-note"></p>
+    </div>
+  </div>
+</section>
+
+<section id="heatmap">
+  <div class="head"><div><div class="no">§ VI</div><h2>Final-place distribution</h2></div>
+    <span class="tag">pre-tournament · actual place outlined · hover a cell</span></div>
+  <div class="card"><div class="hm" id="hm-body"></div></div>
+</section>
+
+<div class="appendix-divider" id="appendices"><span>Appendices</span></div>
+
+<section class="appendix" id="players">
+  <div class="head"><div><div class="no">§ A</div><h2>The field</h2></div>
+    <span class="tag">FIDE ratings, May 2026 · final placing</span></div>
+  <div class="card"><table id="pl-table"></table></div>
+</section>
+
+<section class="appendix" id="model">
+  <div class="head"><div><div class="no">§ B</div><h2>Model &amp; parameters</h2></div>
+    <span class="tag">how the million tournaments were generated</span></div>
+  <div class="card">
+    <div class="hp-formula">
+      classical &nbsp;P(draw) = <b>DBASE</b> · exp(−|Δrating| · <b>DDEC</b>) · style<sub>i</sub> · style<sub>j</sub><br>
+      armageddon &nbsp;played on blitz Elo · White carries <b>ARM_H</b> · Black has draw odds<br>
+      form &nbsp;after each classical game, effective Elo += <b>K</b> · (score − expected)
+    </div>
+    <table class="hp" id="hp-table"></table>
+    <p class="note">Parameters were fit on 180 games from the 2022–2026 events using RPS with MAP regularisation and leave-one-tournament-out cross-validation, then held fixed for the 2026 forecast.</p>
+    <div class="calib-strip" id="calib-strip"></div>
+  </div>
+</section>
+
+<div class="endmark">— ♞ —</div>
+</div>
+
+<script>
+const D = {"tournament":"Norway Chess 2026","models":["rapidblitz","blitz","rapid","classical"],"iters_main":1000000,"players":[{"name":"Carlsen","classical":2840,"rapid":2832,"blitz":2869,"style":1.07,"rank_dist":[0.57655,0.22814,0.10768,0.05403,0.02506,0.00854]},{"name":"Keymer","classical":2765,"rapid":2627,"blitz":2621,"style":1.0,"rank_dist":[0.16946,0.25034,0.20168,0.16248,0.1292,0.08684]},{"name":"Firouzja","classical":2759,"rapid":2755,"blitz":2796,"style":0.99,"rank_dist":[0.07043,0.14741,0.18354,0.20255,0.20944,0.18664]},{"name":"So","classical":2754,"rapid":2705,"blitz":2798,"style":1.3,"rank_dist":[0.0629,0.1754,0.24997,0.24857,0.18082,0.08235]},{"name":"Gukesh","classical":2734,"rapid":2682,"blitz":2646,"style":0.66,"rank_dist":[0.09892,0.13053,0.13674,0.14966,0.18665,0.29751]},{"name":"Pragg","classical":2733,"rapid":2663,"blitz":2698,"style":1.09,"rank_dist":[0.02174,0.06818,0.1204,0.18271,0.26883,0.33813]}],"timelines":{"rapidblitz":{"p_win":[{"Carlsen":0.56323,"Keymer":0.16632,"Firouzja":0.07398,"So":0.0685,"Gukesh":0.10361,"Pragg":0.02436},{"Carlsen":0.32385,"Keymer":0.14707,"Firouzja":0.28314,"So":0.06848,"Gukesh":0.13666,"Pragg":0.0408},{"Carlsen":0.21718,"Keymer":0.12847,"Firouzja":0.50816,"So":0.03495,"Gukesh":0.10424,"Pragg":0.007},{"Carlsen":0.07018,"Keymer":0.11602,"Firouzja":0.61359,"So":0.06002,"Gukesh":0.08289,"Pragg":0.05731},{"Carlsen":0.17386,"Keymer":0.06774,"Firouzja":0.6007,"So":0.0544,"Gukesh":0.02964,"Pragg":0.07366},{"Carlsen":0.02788,"Keymer":0.03216,"Firouzja":0.57938,"So":0.27462,"Gukesh":0.07921,"Pragg":0.00676},{"Carlsen":0.05085,"Keymer":0.04978,"Firouzja":0.23972,"So":0.63981,"Gukesh":0.01952,"Pragg":0.00032},{"Carlsen":0.08787,"Keymer":0.04438,"Firouzja":0.08073,"So":0.76631,"Gukesh":0.0154,"Pragg":0.00533},{"Carlsen":0.00039,"Keymer":0.00629,"Firouzja":0.16393,"So":0.75172,"Gukesh":0.0,"Pragg":0.07768},{"Carlsen":0.0,"Keymer":0.0,"Firouzja":0.04917,"So":0.7751,"Gukesh":0.0,"Pragg":0.17573},{"Carlsen":0.0,"Keymer":0.0,"Firouzja":0.0,"So":0.0,"Gukesh":0.0,"Pragg":1.0}],"e_pts":[{"Carlsen":17.701,"Keymer":14.261,"Firouzja":12.365,"So":13.256,"Gukesh":11.976,"Pragg":10.987},{"Carlsen":15.396,"Keymer":13.543,"Firouzja":15.051,"So":12.698,"Gukesh":12.368,"Pragg":11.311},{"Carlsen":15.018,"Keymer":13.797,"Firouzja":17.043,"So":12.559,"Gukesh":12.21,"Pragg":9.73},{"Carlsen":12.564,"Keymer":13.131,"Firouzja":17.032,"So":13.095,"Gukesh":11.905,"Pragg":12.457},{"Carlsen":14.395,"Keymer":12.367,"Firouzja":16.842,"So":13.215,"Gukesh":10.295,"Pragg":13.095},{"Carlsen":12.232,"Keymer":12.14,"Firouzja":16.898,"So":15.684,"Gukesh":12.61,"Pragg":11.09},{"Carlsen":13.852,"Keymer":13.656,"Firouzja":15.603,"So":17.241,"Gukesh":11.327,"Pragg":9.975},{"Carlsen":13.96,"Keymer":13.373,"Firouzja":13.761,"So":16.601,"Gukesh":11.798,"Pragg":12.108},{"Carlsen":11.942,"Keymer":12.998,"Firouzja":15.355,"So":16.77,"Gukesh":10.392,"Pragg":14.57},{"Carlsen":11.834,"Keymer":12.375,"Firouzja":15.724,"So":16.859,"Gukesh":8.956,"Pragg":16.267},{"Carlsen":13.0,"Keymer":11.0,"Firouzja":15.5,"So":17.0,"Gukesh":8.0,"Pragg":18.0}]},"blitz":{"p_win":[{"Carlsen":0.56526,"Keymer":0.16031,"Firouzja":0.07473,"So":0.07658,"Gukesh":0.09864,"Pragg":0.02447},{"Carlsen":0.32442,"Keymer":0.14074,"Firouzja":0.28596,"So":0.07646,"Gukesh":0.13103,"Pragg":0.04139},{"Carlsen":0.21691,"Keymer":0.12379,"Firouzja":0.51268,"So":0.03933,"Gukesh":0.10029,"Pragg":0.00701},{"Carlsen":0.06957,"Keymer":0.11175,"Firouzja":0.61559,"So":0.06613,"Gukesh":0.07923,"Pragg":0.05773},{"Carlsen":0.17168,"Keymer":0.06475,"Firouzja":0.60274,"So":0.05915,"Gukesh":0.02828,"Pragg":0.07339},{"Carlsen":0.02684,"Keymer":0.03034,"Firouzja":0.57231,"So":0.28946,"Gukesh":0.0746,"Pragg":0.00646},{"Carlsen":0.04738,"Keymer":0.04572,"Firouzja":0.22989,"So":0.65877,"Gukesh":0.01794,"Pragg":0.00029},{"Carlsen":0.08266,"Keymer":0.04052,"Firouzja":0.07541,"So":0.78237,"Gukesh":0.01432,"Pragg":0.00473},{"Carlsen":0.00033,"Keymer":0.00497,"Firouzja":0.15541,"So":0.76627,"Gukesh":0.0,"Pragg":0.07303},{"Carlsen":0.0,"Keymer":0.0,"Firouzja":0.04908,"So":0.78399,"Gukesh":0.0,"Pragg":0.16692},{"Carlsen":0.0,"Keymer":0.0,"Firouzja":0.0,"So":0.0,"Gukesh":0.0,"Pragg":1.0}],"e_pts":[{"Carlsen":17.698,"Keymer":14.169,"Firouzja":12.379,"So":13.443,"Gukesh":11.86,"Pragg":10.994},{"Carlsen":15.394,"Keymer":13.445,"Firouzja":15.059,"So":12.871,"Gukesh":12.261,"Pragg":11.335},{"Carlsen":15.01,"Keymer":13.713,"Firouzja":17.055,"So":12.707,"Gukesh":12.12,"Pragg":9.753},{"Carlsen":12.555,"Keymer":13.067,"Firouzja":17.031,"So":13.221,"Gukesh":11.828,"Pragg":12.481},{"Carlsen":14.379,"Keymer":12.312,"Firouzja":16.858,"So":13.324,"Gukesh":10.224,"Pragg":13.113},{"Carlsen":12.231,"Keymer":12.094,"Firouzja":16.904,"So":15.778,"Gukesh":12.554,"Pragg":11.095},{"Carlsen":13.85,"Keymer":13.604,"Firouzja":15.608,"So":17.321,"Gukesh":11.274,"Pragg":9.995},{"Carlsen":13.953,"Keymer":13.331,"Firouzja":13.763,"So":16.658,"Gukesh":11.768,"Pragg":12.128},{"Carlsen":11.934,"Keymer":12.977,"Firouzja":15.349,"So":16.802,"Gukesh":10.371,"Pragg":14.594},{"Carlsen":11.843,"Keymer":12.364,"Firouzja":15.708,"So":16.875,"Gukesh":8.947,"Pragg":16.278},{"Carlsen":13.0,"Keymer":11.0,"Firouzja":15.5,"So":17.0,"Gukesh":8.0,"Pragg":18.0}]},"rapid":{"p_win":[{"Carlsen":0.56125,"Keymer":0.17239,"Firouzja":0.07318,"So":0.06058,"Gukesh":0.10847,"Pragg":0.02414},{"Carlsen":0.32245,"Keymer":0.15302,"Firouzja":0.28041,"So":0.06091,"Gukesh":0.14291,"Pragg":0.04031},{"Carlsen":0.21654,"Keymer":0.13366,"Firouzja":0.5033,"So":0.0309,"Gukesh":0.10863,"Pragg":0.00696},{"Carlsen":0.07073,"Keymer":0.11993,"Firouzja":0.61155,"So":0.05403,"Gukesh":0.08702,"Pragg":0.05674},{"Carlsen":0.17617,"Keymer":0.07064,"Firouzja":0.59784,"So":0.04968,"Gukesh":0.03154,"Pragg":0.07413},{"Carlsen":0.02875,"Keymer":0.0345,"Firouzja":0.58585,"So":0.25925,"Gukesh":0.08453,"Pragg":0.00713},{"Carlsen":0.05427,"Keymer":0.05503,"Firouzja":0.24968,"So":0.61932,"Gukesh":0.02134,"Pragg":0.00037},{"Carlsen":0.09286,"Keymer":0.04878,"Firouzja":0.086,"So":0.74951,"Gukesh":0.01692,"Pragg":0.00593},{"Carlsen":0.00045,"Keymer":0.00802,"Firouzja":0.17215,"So":0.73713,"Gukesh":0.0,"Pragg":0.08226},{"Carlsen":0.0,"Keymer":0.0,"Firouzja":0.04922,"So":0.76619,"Gukesh":0.0,"Pragg":0.18459},{"Carlsen":0.0,"Keymer":0.0,"Firouzja":0.0,"So":0.0,"Gukesh":0.0,"Pragg":1.0}],"e_pts":[{"Carlsen":17.7,"Keymer":14.357,"Firouzja":12.347,"So":13.061,"Gukesh":12.1,"Pragg":10.981},{"Carlsen":15.393,"Keymer":13.645,"Firouzja":15.039,"So":12.516,"Gukesh":12.486,"Pragg":11.29},{"Carlsen":15.021,"Keymer":13.896,"Firouzja":17.027,"So":12.405,"Gukesh":12.304,"Pragg":9.704},{"Carlsen":12.567,"Keymer":13.198,"Firouzja":17.031,"So":12.965,"Gukesh":11.992,"Pragg":12.431},{"Carlsen":14.407,"Keymer":12.427,"Firouzja":16.824,"So":13.102,"Gukesh":10.365,"Pragg":13.083},{"Carlsen":12.228,"Keymer":12.192,"Firouzja":16.891,"So":15.584,"Gukesh":12.673,"Pragg":11.085},{"Carlsen":13.849,"Keymer":13.71,"Firouzja":15.598,"So":17.158,"Gukesh":11.382,"Pragg":9.956},{"Carlsen":13.966,"Keymer":13.42,"Firouzja":13.755,"So":16.542,"Gukesh":11.83,"Pragg":12.086},{"Carlsen":11.948,"Keymer":13.017,"Firouzja":15.361,"So":16.74,"Gukesh":10.412,"Pragg":14.549},{"Carlsen":11.826,"Keymer":12.385,"Firouzja":15.739,"So":16.844,"Gukesh":8.964,"Pragg":16.257},{"Carlsen":13.0,"Keymer":11.0,"Firouzja":15.5,"So":17.0,"Gukesh":8.0,"Pragg":18.0}]},"classical":{"p_win":[{"Carlsen":0.52616,"Keymer":0.21167,"Firouzja":0.06533,"So":0.0606,"Gukesh":0.10973,"Pragg":0.02651},{"Carlsen":0.30089,"Keymer":0.19136,"Firouzja":0.25568,"So":0.06177,"Gukesh":0.14563,"Pragg":0.04467},{"Carlsen":0.20754,"Keymer":0.16734,"Firouzja":0.47248,"So":0.03221,"Gukesh":0.11254,"Pragg":0.00789},{"Carlsen":0.06759,"Keymer":0.14866,"Firouzja":0.57242,"So":0.05828,"Gukesh":0.09128,"Pragg":0.06177},{"Carlsen":0.1712,"Keymer":0.08965,"Firouzja":0.56687,"So":0.05458,"Gukesh":0.03413,"Pragg":0.08356},{"Carlsen":0.0278,"Keymer":0.04288,"Firouzja":0.56095,"So":0.27171,"Gukesh":0.08845,"Pragg":0.0082},{"Carlsen":0.0503,"Keymer":0.06637,"Firouzja":0.2289,"So":0.63231,"Gukesh":0.02169,"Pragg":0.00042},{"Carlsen":0.08711,"Keymer":0.0567,"Firouzja":0.07615,"So":0.75657,"Gukesh":0.01714,"Pragg":0.00634},{"Carlsen":0.00037,"Keymer":0.00885,"Firouzja":0.14459,"So":0.77234,"Gukesh":0.0,"Pragg":0.07385},{"Carlsen":0.0,"Keymer":0.0,"Firouzja":0.04913,"So":0.78464,"Gukesh":0.0,"Pragg":0.16623},{"Carlsen":0.0,"Keymer":0.0,"Firouzja":0.0,"So":0.0,"Gukesh":0.0,"Pragg":1.0}],"e_pts":[{"Carlsen":17.486,"Keymer":14.801,"Firouzja":12.084,"So":13.02,"Gukesh":12.095,"Pragg":11.059},{"Carlsen":15.166,"Keymer":14.069,"Firouzja":14.764,"So":12.495,"Gukesh":12.508,"Pragg":11.363},{"Carlsen":14.846,"Keymer":14.269,"Firouzja":16.796,"So":12.383,"Gukesh":12.323,"Pragg":9.741},{"Carlsen":12.417,"Keymer":13.526,"Firouzja":16.809,"So":12.996,"Gukesh":11.997,"Pragg":12.44},{"Carlsen":14.267,"Keymer":12.721,"Firouzja":16.629,"So":13.107,"Gukesh":10.357,"Pragg":13.129},{"Carlsen":12.111,"Keymer":12.428,"Firouzja":16.755,"So":15.566,"Gukesh":12.669,"Pragg":11.125},{"Carlsen":13.729,"Keymer":13.917,"Firouzja":15.466,"So":17.155,"Gukesh":11.402,"Pragg":9.984},{"Carlsen":13.906,"Keymer":13.563,"Firouzja":13.657,"So":16.541,"Gukesh":11.85,"Pragg":12.083},{"Carlsen":11.914,"Keymer":13.109,"Firouzja":15.277,"So":16.787,"Gukesh":10.419,"Pragg":14.52},{"Carlsen":11.814,"Keymer":12.42,"Firouzja":15.712,"So":16.87,"Gukesh":8.976,"Pragg":16.222},{"Carlsen":13.0,"Keymer":11.0,"Firouzja":15.5,"So":17.0,"Gukesh":8.0,"Pragg":18.0}]}},"checkpoints":[{"after_round":0,"max_reachable":{"Carlsen":30.0,"Keymer":30.0,"Firouzja":30.0,"So":30.0,"Gukesh":30.0,"Pragg":30.0},"eliminated":{"Carlsen":false,"Keymer":false,"Firouzja":false,"So":false,"Gukesh":false,"Pragg":false},"p_win":{"Carlsen":0.56323,"Keymer":0.16632,"Firouzja":0.07398,"So":0.0685,"Gukesh":0.10361,"Pragg":0.02436},"e_pts":{"Carlsen":17.701,"Keymer":14.261,"Firouzja":12.365,"So":13.256,"Gukesh":11.976,"Pragg":10.987},"actual_pts":{"Carlsen":0.0,"Keymer":0.0,"Firouzja":0.0,"So":0.0,"Gukesh":0.0,"Pragg":0.0}},{"after_round":1,"max_reachable":{"Carlsen":27.0,"Keymer":28.0,"Firouzja":30.0,"So":28.0,"Gukesh":28.5,"Pragg":28.5},"eliminated":{"Carlsen":false,"Keymer":false,"Firouzja":false,"So":false,"Gukesh":false,"Pragg":false},"p_win":{"Carlsen":0.32385,"Keymer":0.14707,"Firouzja":0.28314,"So":0.06848,"Gukesh":0.13666,"Pragg":0.0408},"e_pts":{"Carlsen":15.396,"Keymer":13.543,"Firouzja":15.051,"So":12.698,"Gukesh":12.368,"Pragg":11.311},"actual_pts":{"Carlsen":0.0,"Keymer":1.0,"Firouzja":3.0,"So":1.0,"Gukesh":1.5,"Pragg":1.5}},{"after_round":2,"max_reachable":{"Carlsen":25.5,"Keymer":26.0,"Firouzja":30.0,"So":26.5,"Gukesh":26.5,"Pragg":25.5},"eliminated":{"Carlsen":false,"Keymer":false,"Firouzja":false,"So":false,"Gukesh":false,"Pragg":false},"p_win":{"Carlsen":0.21718,"Keymer":0.12847,"Firouzja":0.50816,"So":0.03495,"Gukesh":0.10424,"Pragg":0.007},"e_pts":{"Carlsen":15.018,"Keymer":13.797,"Firouzja":17.043,"So":12.559,"Gukesh":12.21,"Pragg":9.73},"actual_pts":{"Carlsen":1.5,"Keymer":2.0,"Firouzja":6.0,"So":2.5,"Gukesh":2.5,"Pragg":1.5}},{"after_round":3,"max_reachable":{"Carlsen":22.5,"Keymer":24.0,"Firouzja":28.5,"So":25.0,"Gukesh":24.5,"Pragg":25.5},"eliminated":{"Carlsen":false,"Keymer":false,"Firouzja":false,"So":false,"Gukesh":false,"Pragg":false},"p_win":{"Carlsen":0.07018,"Keymer":0.11602,"Firouzja":0.61359,"So":0.06002,"Gukesh":0.08289,"Pragg":0.05731},"e_pts":{"Carlsen":12.564,"Keymer":13.131,"Firouzja":17.032,"So":13.095,"Gukesh":11.905,"Pragg":12.457},"actual_pts":{"Carlsen":1.5,"Keymer":3.0,"Firouzja":7.5,"So":4.0,"Gukesh":3.5,"Pragg":4.5}},{"after_round":4,"max_reachable":{"Carlsen":22.5,"Keymer":22.0,"Firouzja":26.5,"So":23.5,"Gukesh":21.5,"Pragg":24.0},"eliminated":{"Carlsen":false,"Keymer":false,"Firouzja":false,"So":false,"Gukesh":false,"Pragg":false},"p_win":{"Carlsen":0.17386,"Keymer":0.06774,"Firouzja":0.6007,"So":0.0544,"Gukesh":0.02964,"Pragg":0.07366},"e_pts":{"Carlsen":14.395,"Keymer":12.367,"Firouzja":16.842,"So":13.215,"Gukesh":10.295,"Pragg":13.095},"actual_pts":{"Carlsen":4.5,"Keymer":4.0,"Firouzja":8.5,"So":5.5,"Gukesh":3.5,"Pragg":6.0}},{"after_round":5,"max_reachable":{"Carlsen":19.5,"Keymer":20.0,"Firouzja":25.0,"So":23.5,"Gukesh":21.5,"Pragg":21.0},"eliminated":{"Carlsen":false,"Keymer":false,"Firouzja":false,"So":false,"Gukesh":false,"Pragg":false},"p_win":{"Carlsen":0.02788,"Keymer":0.03216,"Firouzja":0.57938,"So":0.27462,"Gukesh":0.07921,"Pragg":0.00676},"e_pts":{"Carlsen":12.232,"Keymer":12.14,"Firouzja":16.898,"So":15.684,"Gukesh":12.61,"Pragg":11.09},"actual_pts":{"Carlsen":4.5,"Keymer":5.0,"Firouzja":10.0,"So":8.5,"Gukesh":6.5,"Pragg":6.0}},{"after_round":6,"max_reachable":{"Carlsen":19.5,"Keymer":20.0,"Firouzja":22.0,"So":23.5,"Gukesh":18.5,"Pragg":18.0},"eliminated":{"Carlsen":false,"Keymer":false,"Firouzja":false,"So":false,"Gukesh":false,"Pragg":false},"p_win":{"Carlsen":0.05085,"Keymer":0.04978,"Firouzja":0.23972,"So":0.63981,"Gukesh":0.01952,"Pragg":0.00032},"e_pts":{"Carlsen":13.852,"Keymer":13.656,"Firouzja":15.603,"So":17.241,"Gukesh":11.327,"Pragg":9.975},"actual_pts":{"Carlsen":7.5,"Keymer":8.0,"Firouzja":10.0,"So":11.5,"Gukesh":6.5,"Pragg":6.0}},{"after_round":7,"max_reachable":{"Carlsen":18.0,"Keymer":18.0,"Firouzja":19.0,"So":21.5,"Gukesh":17.0,"Pragg":18.0},"eliminated":{"Carlsen":false,"Keymer":false,"Firouzja":false,"So":false,"Gukesh":false,"Pragg":false},"p_win":{"Carlsen":0.08787,"Keymer":0.04438,"Firouzja":0.08073,"So":0.76631,"Gukesh":0.0154,"Pragg":0.00533},"e_pts":{"Carlsen":13.96,"Keymer":13.373,"Firouzja":13.761,"So":16.601,"Gukesh":11.798,"Pragg":12.108},"actual_pts":{"Carlsen":9.0,"Keymer":9.0,"Firouzja":10.0,"So":12.5,"Gukesh":8.0,"Pragg":9.0}},{"after_round":8,"max_reachable":{"Carlsen":15.0,"Keymer":16.0,"Firouzja":19.0,"So":20.0,"Gukesh":14.0,"Pragg":18.0},"eliminated":{"Carlsen":false,"Keymer":false,"Firouzja":false,"So":false,"Gukesh":false,"Pragg":false},"p_win":{"Carlsen":0.00039,"Keymer":0.00629,"Firouzja":0.16393,"So":0.75172,"Gukesh":0.0,"Pragg":0.07768},"e_pts":{"Carlsen":11.942,"Keymer":12.998,"Firouzja":15.355,"So":16.77,"Gukesh":10.392,"Pragg":14.57},"actual_pts":{"Carlsen":9.0,"Keymer":10.0,"Firouzja":13.0,"So":14.0,"Gukesh":8.0,"Pragg":12.0}},{"after_round":9,"max_reachable":{"Carlsen":13.0,"Keymer":14.0,"Firouzja":17.5,"So":18.5,"Gukesh":11.0,"Pragg":18.0},"eliminated":{"Carlsen":true,"Keymer":true,"Firouzja":false,"So":false,"Gukesh":true,"Pragg":false},"p_win":{"Carlsen":0.0,"Keymer":0.0,"Firouzja":0.04917,"So":0.7751,"Gukesh":0.0,"Pragg":0.17573},"e_pts":{"Carlsen":11.834,"Keymer":12.375,"Firouzja":15.724,"So":16.859,"Gukesh":8.956,"Pragg":16.267},"actual_pts":{"Carlsen":10.0,"Keymer":11.0,"Firouzja":14.5,"So":15.5,"Gukesh":8.0,"Pragg":15.0}},{"after_round":10,"max_reachable":{"Carlsen":13.0,"Keymer":11.0,"Firouzja":15.5,"So":17.0,"Gukesh":8.0,"Pragg":18.0},"eliminated":{"Carlsen":true,"Keymer":true,"Firouzja":true,"So":true,"Gukesh":true,"Pragg":false},"p_win":{"Carlsen":0.0,"Keymer":0.0,"Firouzja":0.0,"So":0.0,"Gukesh":0.0,"Pragg":1.0},"e_pts":{"Carlsen":13.0,"Keymer":11.0,"Firouzja":15.5,"So":17.0,"Gukesh":8.0,"Pragg":18.0},"actual_pts":{"Carlsen":13.0,"Keymer":11.0,"Firouzja":15.5,"So":17.0,"Gukesh":8.0,"Pragg":18.0}}],"rounds_pred":{"rapidblitz":[{"round":1,"games":[{"p1":"Firouzja","p2":"Carlsen","color":"p1_white","probs":[0.082,0.2901,0.3759,0.2519],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"Keymer","p2":"Gukesh","color":"unknown","probs":[0.3617,0.1859,0.2361,0.2163],"actual":2,"result_type":"armageddon","p1_points":1.0},{"p1":"So","p2":"Pragg","color":"unknown","probs":[0.1176,0.5012,0.335,0.0461],"actual":2,"result_type":"armageddon","p1_points":1.0}]},{"round":2,"games":[{"p1":"Firouzja","p2":"Pragg","color":"unknown","probs":[0.1733,0.4479,0.2618,0.117],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"Carlsen","p2":"Keymer","color":"p1_white","probs":[0.3239,0.5109,0.1167,0.0485],"actual":1,"result_type":"armageddon","p1_points":1.5},{"p1":"Gukesh","p2":"So","color":"unknown","probs":[0.1747,0.2145,0.3503,0.2605],"actual":2,"result_type":"armageddon","p1_points":1.0}]},{"round":3,"games":[{"p1":"Gukesh","p2":"Firouzja","color":"p1_white","probs":[0.299,0.1713,0.2739,0.2558],"actual":2,"result_type":"armageddon","p1_points":1.0},{"p1":"Keymer","p2":"So","color":"p1_white","probs":[0.169,0.2982,0.5228,0.01],"actual":2,"result_type":"armageddon","p1_points":1.0},{"p1":"Pragg","p2":"Carlsen","color":"unknown","probs":[0.0219,0.1812,0.4722,0.3246],"actual":0,"result_type":"classical","p1_points":3.0}]},{"round":4,"games":[{"p1":"Gukesh","p2":"Carlsen","color":"p1_white","probs":[0.1732,0.1237,0.3046,0.3984],"actual":3,"result_type":"classical","p1_points":0.0},{"p1":"Keymer","p2":"Pragg","color":"p1_white","probs":[0.2949,0.3018,0.3515,0.0518],"actual":2,"result_type":"armageddon","p1_points":1.0},{"p1":"So","p2":"Firouzja","color":"p1_white","probs":[0.1494,0.4224,0.4081,0.0201],"actual":1,"result_type":"armageddon","p1_points":1.5}]},{"round":5,"games":[{"p1":"Carlsen","p2":"So","color":"p1_white","probs":[0.2727,0.486,0.2313,0.01],"actual":3,"result_type":"classical","p1_points":0.0},{"p1":"Pragg","p2":"Gukesh","color":"p1_white","probs":[0.3142,0.2678,0.2049,0.2132],"actual":3,"result_type":"classical","p1_points":0.0},{"p1":"Keymer","p2":"Firouzja","color":"unknown","probs":[0.2188,0.1916,0.4601,0.1295],"actual":2,"result_type":"armageddon","p1_points":1.0}]},{"round":6,"games":[{"p1":"So","p2":"Pragg","color":"p1_white","probs":[0.1675,0.5276,0.295,0.01],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"Carlsen","p2":"Firouzja","color":"p1_white","probs":[0.3847,0.3797,0.2075,0.0281],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"Keymer","p2":"Gukesh","color":"p1_white","probs":[0.4241,0.192,0.2034,0.1804],"actual":0,"result_type":"classical","p1_points":3.0}]},{"round":7,"games":[{"p1":"Pragg","p2":"Firouzja","color":"unknown","probs":[0.117,0.2618,0.4479,0.1733],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"So","p2":"Gukesh","color":"unknown","probs":[0.2605,0.3503,0.2145,0.1747],"actual":2,"result_type":"armageddon","p1_points":1.0},{"p1":"Keymer","p2":"Carlsen","color":"p1_white","probs":[0.1035,0.1737,0.5383,0.1845],"actual":2,"result_type":"armageddon","p1_points":1.0}]},{"round":8,"games":[{"p1":"Carlsen","p2":"Pragg","color":"p1_white","probs":[0.3907,0.4553,0.144,0.01],"actual":3,"result_type":"classical","p1_points":0.0},{"p1":"Firouzja","p2":"Gukesh","color":"unknown","probs":[0.3136,0.2805,0.1492,0.2567],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"So","p2":"Keymer","color":"unknown","probs":[0.0524,0.5641,0.2714,0.1121],"actual":1,"result_type":"armageddon","p1_points":1.5}]},{"round":9,"games":[{"p1":"So","p2":"Carlsen","color":"p1_white","probs":[0.01,0.3417,0.5083,0.14],"actual":1,"result_type":"armageddon","p1_points":1.5},{"p1":"Gukesh","p2":"Pragg","color":"p1_white","probs":[0.3134,0.2457,0.2273,0.2136],"actual":3,"result_type":"classical","p1_points":0.0},{"p1":"Keymer","p2":"Firouzja","color":"p1_white","probs":[0.2869,0.2041,0.4108,0.0981],"actual":2,"result_type":"armageddon","p1_points":1.0}]},{"round":10,"games":[{"p1":"Pragg","p2":"Keymer","color":"unknown","probs":[0.079,0.4062,0.291,0.2238],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"Carlsen","p2":"Gukesh","color":"unknown","probs":[0.4562,0.299,0.104,0.1408],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"Firouzja","p2":"So","color":"unknown","probs":[0.0653,0.4493,0.3909,0.0944],"actual":2,"result_type":"armageddon","p1_points":1.0}]}],"blitz":[{"round":1,"games":[{"p1":"Firouzja","p2":"Carlsen","color":"p1_white","probs":[0.082,0.292,0.374,0.2519],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"Keymer","p2":"Gukesh","color":"unknown","probs":[0.3617,0.1948,0.2272,0.2163],"actual":2,"result_type":"armageddon","p1_points":1.0},{"p1":"So","p2":"Pragg","color":"unknown","probs":[0.1176,0.5339,0.3023,0.0461],"actual":2,"result_type":"armageddon","p1_points":1.0}]},{"round":2,"games":[{"p1":"Firouzja","p2":"Pragg","color":"unknown","probs":[0.1733,0.4507,0.259,0.117],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"Carlsen","p2":"Keymer","color":"p1_white","probs":[0.3239,0.5222,0.1054,0.0485],"actual":1,"result_type":"armageddon","p1_points":1.5},{"p1":"Gukesh","p2":"So","color":"unknown","probs":[0.1747,0.168,0.3968,0.2605],"actual":2,"result_type":"armageddon","p1_points":1.0}]},{"round":3,"games":[{"p1":"Gukesh","p2":"Firouzja","color":"p1_white","probs":[0.299,0.1486,0.2966,0.2558],"actual":2,"result_type":"armageddon","p1_points":1.0},{"p1":"Keymer","p2":"So","color":"p1_white","probs":[0.169,0.2465,0.5745,0.01],"actual":2,"result_type":"armageddon","p1_points":1.0},{"p1":"Pragg","p2":"Carlsen","color":"unknown","probs":[0.0219,0.1805,0.473,0.3246],"actual":0,"result_type":"classical","p1_points":3.0}]},{"round":4,"games":[{"p1":"Gukesh","p2":"Carlsen","color":"p1_white","probs":[0.1732,0.1061,0.3223,0.3984],"actual":3,"result_type":"classical","p1_points":0.0},{"p1":"Keymer","p2":"Pragg","color":"p1_white","probs":[0.2949,0.2827,0.3706,0.0518],"actual":2,"result_type":"armageddon","p1_points":1.0},{"p1":"So","p2":"Firouzja","color":"p1_white","probs":[0.1494,0.4534,0.3771,0.0201],"actual":1,"result_type":"armageddon","p1_points":1.5}]},{"round":5,"games":[{"p1":"Carlsen","p2":"So","color":"p1_white","probs":[0.2727,0.4601,0.2572,0.01],"actual":3,"result_type":"classical","p1_points":0.0},{"p1":"Pragg","p2":"Gukesh","color":"p1_white","probs":[0.3142,0.2911,0.1816,0.2132],"actual":3,"result_type":"classical","p1_points":0.0},{"p1":"Keymer","p2":"Firouzja","color":"unknown","probs":[0.2188,0.174,0.4778,0.1295],"actual":2,"result_type":"armageddon","p1_points":1.0}]},{"round":6,"games":[{"p1":"So","p2":"Pragg","color":"p1_white","probs":[0.1675,0.5583,0.2642,0.01],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"Carlsen","p2":"Firouzja","color":"p1_white","probs":[0.3847,0.3782,0.209,0.0281],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"Keymer","p2":"Gukesh","color":"p1_white","probs":[0.4241,0.2006,0.1949,0.1804],"actual":0,"result_type":"classical","p1_points":3.0}]},{"round":7,"games":[{"p1":"Pragg","p2":"Firouzja","color":"unknown","probs":[0.117,0.259,0.4507,0.1733],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"So","p2":"Gukesh","color":"unknown","probs":[0.2605,0.3968,0.168,0.1747],"actual":2,"result_type":"armageddon","p1_points":1.0},{"p1":"Keymer","p2":"Carlsen","color":"p1_white","probs":[0.1035,0.1579,0.554,0.1845],"actual":2,"result_type":"armageddon","p1_points":1.0}]},{"round":8,"games":[{"p1":"Carlsen","p2":"Pragg","color":"p1_white","probs":[0.3907,0.4559,0.1434,0.01],"actual":3,"result_type":"classical","p1_points":0.0},{"p1":"Firouzja","p2":"Gukesh","color":"unknown","probs":[0.3136,0.3012,0.1286,0.2567],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"So","p2":"Keymer","color":"unknown","probs":[0.0524,0.6133,0.2223,0.1121],"actual":1,"result_type":"armageddon","p1_points":1.5}]},{"round":9,"games":[{"p1":"So","p2":"Carlsen","color":"p1_white","probs":[0.01,0.3751,0.4749,0.14],"actual":1,"result_type":"armageddon","p1_points":1.5},{"p1":"Gukesh","p2":"Pragg","color":"p1_white","probs":[0.3134,0.2215,0.2515,0.2136],"actual":3,"result_type":"classical","p1_points":0.0},{"p1":"Keymer","p2":"Firouzja","color":"p1_white","probs":[0.2869,0.1861,0.4288,0.0981],"actual":2,"result_type":"armageddon","p1_points":1.0}]},{"round":10,"games":[{"p1":"Pragg","p2":"Keymer","color":"unknown","probs":[0.079,0.4259,0.2713,0.2238],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"Carlsen","p2":"Gukesh","color":"unknown","probs":[0.4562,0.3143,0.0887,0.1408],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"Firouzja","p2":"So","color":"unknown","probs":[0.0653,0.4181,0.4221,0.0944],"actual":2,"result_type":"armageddon","p1_points":1.0}]}],"rapid":[{"round":1,"games":[{"p1":"Firouzja","p2":"Carlsen","color":"p1_white","probs":[0.082,0.2883,0.3778,0.2519],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"Keymer","p2":"Gukesh","color":"unknown","probs":[0.3617,0.177,0.245,0.2163],"actual":2,"result_type":"armageddon","p1_points":1.0},{"p1":"So","p2":"Pragg","color":"unknown","probs":[0.1176,0.4675,0.3688,0.0461],"actual":2,"result_type":"armageddon","p1_points":1.0}]},{"round":2,"games":[{"p1":"Firouzja","p2":"Pragg","color":"unknown","probs":[0.1733,0.445,0.2647,0.117],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"Carlsen","p2":"Keymer","color":"p1_white","probs":[0.3239,0.4987,0.1289,0.0485],"actual":1,"result_type":"armageddon","p1_points":1.5},{"p1":"Gukesh","p2":"So","color":"unknown","probs":[0.1747,0.2652,0.2996,0.2605],"actual":2,"result_type":"armageddon","p1_points":1.0}]},{"round":3,"games":[{"p1":"Gukesh","p2":"Firouzja","color":"p1_white","probs":[0.299,0.1952,0.25,0.2558],"actual":2,"result_type":"armageddon","p1_points":1.0},{"p1":"Keymer","p2":"So","color":"p1_white","probs":[0.169,0.3542,0.4669,0.01],"actual":2,"result_type":"armageddon","p1_points":1.0},{"p1":"Pragg","p2":"Carlsen","color":"unknown","probs":[0.0219,0.182,0.4715,0.3246],"actual":0,"result_type":"classical","p1_points":3.0}]},{"round":4,"games":[{"p1":"Gukesh","p2":"Carlsen","color":"p1_white","probs":[0.1732,0.143,0.2853,0.3984],"actual":3,"result_type":"classical","p1_points":0.0},{"p1":"Keymer","p2":"Pragg","color":"p1_white","probs":[0.2949,0.321,0.3323,0.0518],"actual":2,"result_type":"armageddon","p1_points":1.0},{"p1":"So","p2":"Firouzja","color":"p1_white","probs":[0.1494,0.3914,0.4391,0.0201],"actual":1,"result_type":"armageddon","p1_points":1.5}]},{"round":5,"games":[{"p1":"Carlsen","p2":"So","color":"p1_white","probs":[0.2727,0.5105,0.2068,0.01],"actual":3,"result_type":"classical","p1_points":0.0},{"p1":"Pragg","p2":"Gukesh","color":"p1_white","probs":[0.3142,0.2438,0.2289,0.2132],"actual":3,"result_type":"classical","p1_points":0.0},{"p1":"Keymer","p2":"Firouzja","color":"unknown","probs":[0.2188,0.2103,0.4414,0.1295],"actual":2,"result_type":"armageddon","p1_points":1.0}]},{"round":6,"games":[{"p1":"So","p2":"Pragg","color":"p1_white","probs":[0.1675,0.4953,0.3272,0.01],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"Carlsen","p2":"Firouzja","color":"p1_white","probs":[0.3847,0.3813,0.2059,0.0281],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"Keymer","p2":"Gukesh","color":"p1_white","probs":[0.4241,0.1835,0.2119,0.1804],"actual":0,"result_type":"classical","p1_points":3.0}]},{"round":7,"games":[{"p1":"Pragg","p2":"Firouzja","color":"unknown","probs":[0.117,0.2647,0.445,0.1733],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"So","p2":"Gukesh","color":"unknown","probs":[0.2605,0.2996,0.2652,0.1747],"actual":2,"result_type":"armageddon","p1_points":1.0},{"p1":"Keymer","p2":"Carlsen","color":"p1_white","probs":[0.1035,0.1904,0.5215,0.1845],"actual":2,"result_type":"armageddon","p1_points":1.0}]},{"round":8,"games":[{"p1":"Carlsen","p2":"Pragg","color":"p1_white","probs":[0.3907,0.4547,0.1446,0.01],"actual":3,"result_type":"classical","p1_points":0.0},{"p1":"Firouzja","p2":"Gukesh","color":"unknown","probs":[0.3136,0.2584,0.1713,0.2567],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"So","p2":"Keymer","color":"unknown","probs":[0.0524,0.5099,0.3256,0.1121],"actual":1,"result_type":"armageddon","p1_points":1.5}]},{"round":9,"games":[{"p1":"So","p2":"Carlsen","color":"p1_white","probs":[0.01,0.3093,0.5407,0.14],"actual":1,"result_type":"armageddon","p1_points":1.5},{"p1":"Gukesh","p2":"Pragg","color":"p1_white","probs":[0.3134,0.2696,0.2034,0.2136],"actual":3,"result_type":"classical","p1_points":0.0},{"p1":"Keymer","p2":"Firouzja","color":"p1_white","probs":[0.2869,0.223,0.392,0.0981],"actual":2,"result_type":"armageddon","p1_points":1.0}]},{"round":10,"games":[{"p1":"Pragg","p2":"Keymer","color":"unknown","probs":[0.079,0.3862,0.311,0.2238],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"Carlsen","p2":"Gukesh","color":"unknown","probs":[0.4562,0.282,0.121,0.1408],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"Firouzja","p2":"So","color":"unknown","probs":[0.0653,0.4801,0.3601,0.0944],"actual":2,"result_type":"armageddon","p1_points":1.0}]}],"classical":[{"round":1,"games":[{"p1":"Firouzja","p2":"Carlsen","color":"p1_white","probs":[0.082,0.2845,0.3816,0.2519],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"Keymer","p2":"Gukesh","color":"unknown","probs":[0.3617,0.2285,0.1935,0.2163],"actual":2,"result_type":"armageddon","p1_points":1.0},{"p1":"So","p2":"Pragg","color":"unknown","probs":[0.1176,0.4426,0.3937,0.0461],"actual":2,"result_type":"armageddon","p1_points":1.0}]},{"round":2,"games":[{"p1":"Firouzja","p2":"Pragg","color":"unknown","probs":[0.1733,0.3801,0.3296,0.117],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"Carlsen","p2":"Keymer","color":"p1_white","probs":[0.3239,0.4059,0.2218,0.0485],"actual":1,"result_type":"armageddon","p1_points":1.5},{"p1":"Gukesh","p2":"So","color":"unknown","probs":[0.1747,0.2676,0.2972,0.2605],"actual":2,"result_type":"armageddon","p1_points":1.0}]},{"round":3,"games":[{"p1":"Gukesh","p2":"Firouzja","color":"p1_white","probs":[0.299,0.2258,0.2194,0.2558],"actual":2,"result_type":"armageddon","p1_points":1.0},{"p1":"Keymer","p2":"So","color":"p1_white","probs":[0.169,0.4587,0.3623,0.01],"actual":2,"result_type":"armageddon","p1_points":1.0},{"p1":"Pragg","p2":"Carlsen","color":"unknown","probs":[0.0219,0.232,0.4215,0.3246],"actual":0,"result_type":"classical","p1_points":3.0}]},{"round":4,"games":[{"p1":"Gukesh","p2":"Carlsen","color":"p1_white","probs":[0.1732,0.1681,0.2603,0.3984],"actual":3,"result_type":"classical","p1_points":0.0},{"p1":"Keymer","p2":"Pragg","color":"p1_white","probs":[0.2949,0.3844,0.269,0.0518],"actual":2,"result_type":"armageddon","p1_points":1.0},{"p1":"So","p2":"Firouzja","color":"p1_white","probs":[0.1494,0.4451,0.3854,0.0201],"actual":1,"result_type":"armageddon","p1_points":1.5}]},{"round":5,"games":[{"p1":"Carlsen","p2":"So","color":"p1_white","probs":[0.2727,0.4742,0.2432,0.01],"actual":3,"result_type":"classical","p1_points":0.0},{"p1":"Pragg","p2":"Gukesh","color":"p1_white","probs":[0.3142,0.256,0.2167,0.2132],"actual":3,"result_type":"classical","p1_points":0.0},{"p1":"Keymer","p2":"Firouzja","color":"unknown","probs":[0.2188,0.3299,0.3219,0.1295],"actual":2,"result_type":"armageddon","p1_points":1.0}]},{"round":6,"games":[{"p1":"So","p2":"Pragg","color":"p1_white","probs":[0.1675,0.4712,0.3513,0.01],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"Carlsen","p2":"Firouzja","color":"p1_white","probs":[0.3847,0.3844,0.2029,0.0281],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"Keymer","p2":"Gukesh","color":"p1_white","probs":[0.4241,0.2321,0.1634,0.1804],"actual":0,"result_type":"classical","p1_points":3.0}]},{"round":7,"games":[{"p1":"Pragg","p2":"Firouzja","color":"unknown","probs":[0.117,0.3296,0.3801,0.1733],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"So","p2":"Gukesh","color":"unknown","probs":[0.2605,0.2972,0.2676,0.1747],"actual":2,"result_type":"armageddon","p1_points":1.0},{"p1":"Keymer","p2":"Carlsen","color":"p1_white","probs":[0.1035,0.3101,0.4018,0.1845],"actual":2,"result_type":"armageddon","p1_points":1.0}]},{"round":8,"games":[{"p1":"Carlsen","p2":"Pragg","color":"p1_white","probs":[0.3907,0.412,0.1873,0.01],"actual":3,"result_type":"classical","p1_points":0.0},{"p1":"Firouzja","p2":"Gukesh","color":"unknown","probs":[0.3136,0.2295,0.2002,0.2567],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"So","p2":"Keymer","color":"unknown","probs":[0.0524,0.4053,0.4303,0.1121],"actual":1,"result_type":"armageddon","p1_points":1.5}]},{"round":9,"games":[{"p1":"So","p2":"Carlsen","color":"p1_white","probs":[0.01,0.3571,0.4929,0.14],"actual":1,"result_type":"armageddon","p1_points":1.5},{"p1":"Gukesh","p2":"Pragg","color":"p1_white","probs":[0.3134,0.2575,0.2155,0.2136],"actual":3,"result_type":"classical","p1_points":0.0},{"p1":"Keymer","p2":"Firouzja","color":"p1_white","probs":[0.2869,0.3392,0.2757,0.0981],"actual":2,"result_type":"armageddon","p1_points":1.0}]},{"round":10,"games":[{"p1":"Pragg","p2":"Keymer","color":"unknown","probs":[0.079,0.3187,0.3785,0.2238],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"Carlsen","p2":"Gukesh","color":"unknown","probs":[0.4562,0.2597,0.1433,0.1408],"actual":0,"result_type":"classical","p1_points":3.0},{"p1":"Firouzja","p2":"So","color":"unknown","probs":[0.0653,0.4265,0.4137,0.0944],"actual":2,"result_type":"armageddon","p1_points":1.0}]}]},"final_standings":{"Carlsen":13.0,"Keymer":11.0,"Firouzja":15.5,"So":17.0,"Gukesh":8.0,"Pragg":18.0},"metrics":{"reliability":[{"pred":0.112,"obs":0.174,"n":46},{"pred":0.285,"obs":0.241,"n":54},{"pred":0.471,"obs":0.45,"n":20}],"per_round_brier":[0.8789,0.631,0.7915,0.5414,0.8562,0.6892,0.735,0.7592,0.6736,0.7166],"mean_brier":0.7273,"uniform_brier":0.75}};
+const META = {"mast":["Norway","Chess"],"year":"2026","venue":"Stavanger · Norway","dates":"25 May – 5 June 2026","edition":"Vol. XIV · Monte Carlo Edition","names":{"Carlsen":"Magnus Carlsen","Keymer":"Vincent Keymer","Firouzja":"Alireza Firouzja","So":"Wesley So","Gukesh":"Gukesh D","Pragg":"Praggnanandhaa"},"oos_rps":0.1902};
+const NAMES = D.players.map(p=>p.name);
+const ru = n => n;
+const MLAB = {rapidblitz:"rapid+blitz",blitz:"blitz",rapid:"rapid",classical:"classical"};
+const PAL = ["#B01020","#002A5C","#7A7264","#C77F2E","#4A7A6A","#7E4A6A"];
+const COLOR = {}; NAMES.forEach((n,i)=>COLOR[n]=PAL[i%PAL.length]);
+const ACT_RANK = {}; Object.entries(D.final_standings).sort((a,b)=>b[1]-a[1]).forEach(([n],i)=>ACT_RANK[n]=i+1);
+const fmtP = x=>(x*100).toFixed(1)+'%';
+const fmtPe = x=>(x*100).toFixed(3)+'%';   // exact, pre-rounding feel
+const fmt1 = x=>x.toFixed(1);
+const GRID="#CBC3B2";
+
+let tlModel="rapidblitz", gModel="rapidblitz";
+const hidden=new Set();
+let TLGEO=null;
+
+/* smooth path via Catmull-Rom -> cubic Bezier */
+function smoothPath(pts){
+  if(pts.length<2) return '';
+  let d=`M ${pts[0][0]},${pts[0][1]}`;
+  for(let i=0;i<pts.length-1;i++){
+    const p0=pts[i-1]||pts[i], p1=pts[i], p2=pts[i+1], p3=pts[i+2]||p2;
+    const c1x=p1[0]+(p2[0]-p0[0])/6, c1y=p1[1]+(p2[1]-p0[1])/6;
+    const c2x=p2[0]-(p3[0]-p1[0])/6, c2y=p2[1]-(p3[1]-p1[1])/6;
+    d+=` C ${c1x},${c1y} ${c2x},${c2y} ${p2[0]},${p2[1]}`;
+  }
+  return d;
+}
+
+function drawTimeline(){
+  const svg=document.getElementById('timeline-svg');
+  const W=980,H=440,L=64,R=22,T=20,B=52;
+  const X=r=>L+r/10*(W-L-R), Y=p=>T+(1-p)*(H-T-B);
+  const tl=D.timelines[tlModel].p_win;
+  let s='';
+  // gridlines + Y ticks
+  [0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1].forEach(v=>{
+    s+=`<line x1="${L}" y1="${Y(v)}" x2="${W-R}" y2="${Y(v)}" stroke="${GRID}" opacity="${v%0.5===0?0.9:0.4}"/>`;
+    if(v%0.1===0) s+=`<text x="${L-8}" y="${Y(v)+4}" font-size="10.5" text-anchor="end">${Math.round(v*100)}%</text>`;
+  });
+  // X labels
+  for(let r=0;r<=10;r++) s+=`<text x="${X(r)}" y="${H-B+20}" font-size="10.5" text-anchor="middle">${r===0?'Before R1':'After R'+r}</text>`;
+  // axis titles
+  s+=`<text class="axis-title" x="${(L+W-R)/2}" y="${H-6}" text-anchor="middle">round checkpoint</text>`;
+  s+=`<text class="axis-title" x="16" y="${(T+H-B)/2}" text-anchor="middle" transform="rotate(-90 16 ${(T+H-B)/2})">win probability (%)</text>`;
+  // curves (smoothed, dashed like the original)
+  NAMES.forEach(n=>{ if(hidden.has(n))return;
+    const pts=tl.map((c,r)=>[X(r),Y(c[n])]);
+    const big=ACT_RANK[n]===1;
+    s+=`<path d="${smoothPath(pts)}" fill="none" stroke="${COLOR[n]}" stroke-width="${big?3:1.8}" stroke-dasharray="${big?'':'6 4'}" stroke-linejoin="round" opacity="${big?1:.92}"/>`;
+    pts.forEach((p,r)=>s+=`<circle cx="${p[0]}" cy="${p[1]}" r="${big?3.4:2.4}" fill="${COLOR[n]}"/>`);
+  });
+  // hover guide + hit zones
+  s+=`<line id="tl-guide" x1="0" y1="${T}" x2="0" y2="${H-B}" stroke="var(--rule)" stroke-dasharray="3 3" opacity="0"/>`;
+  const hw=(W-L-R)/10/2;
+  for(let r=0;r<=10;r++) s+=`<rect class="hitzone" data-r="${r}" x="${X(r)-hw}" y="${T}" width="${hw*2}" height="${H-T-B}" fill="transparent" style="cursor:crosshair"/>`;
+  svg.innerHTML=s;
+  TLGEO={W,X}; wireTimelineHover();
+}
+function wireTimelineHover(){
+  const svg=document.getElementById('timeline-svg');
+  const tip=document.getElementById('tl-tip');
+  const guide=document.getElementById('tl-guide');
+  const wrap=svg.parentElement;
+  svg.querySelectorAll('.hitzone').forEach(z=>{
+    z.addEventListener('mousemove',()=>{
+      const r=+z.dataset.r, tl=D.timelines[tlModel].p_win[r];
+      const rows=[...NAMES].filter(n=>!hidden.has(n)).sort((a,b)=>tl[b]-tl[a]);
+      let html=`<h4>${r===0?'Before R1':'After R'+r}</h4>`;
+      rows.forEach((n,i)=>html+=`<div class="trow ${i===0?'hi':''}"><i style="background:${COLOR[n]}"></i><span class="nm">${n}</span><span class="vv">${fmtPe(tl[n])}</span></div>`);
+      tip.innerHTML=html;
+      guide.setAttribute('x1',TLGEO.X(r));guide.setAttribute('x2',TLGEO.X(r));guide.setAttribute('opacity','0.6');
+      const rect=wrap.getBoundingClientRect(), px=(TLGEO.X(r)/TLGEO.W)*rect.width, tw=tip.offsetWidth;
+      tip.style.opacity='1';
+      let left=px+14; if(left+tw>rect.width) left=px-tw-14;
+      tip.style.left=Math.max(4,left)+'px'; tip.style.top='10px';
+    });
+    z.addEventListener('mouseleave',()=>{tip.style.opacity='0';guide.setAttribute('opacity','0');});
+  });
+}
+function switchUI(id,get,set,after){
+  const box=document.getElementById(id);
+  box.innerHTML=D.models.map(m=>`<button data-m="${m}" class="${m===get()?'on':''}">${MLAB[m]}</button>`).join('');
+  box.querySelectorAll('button').forEach(b=>b.onclick=()=>{set(b.dataset.m);
+    box.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x.dataset.m===get()));after();});
+}
+function chips(){
+  const box=document.getElementById('tl-chips');
+  box.innerHTML=NAMES.map(n=>`<span class="chip" data-n="${n}"><i style="background:${COLOR[n]}"></i>${n}</span>`).join('');
+  box.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{const n=c.dataset.n;
+    if(hidden.has(n)){hidden.delete(n);c.classList.remove('off');}else{hidden.add(n);c.classList.add('off');}drawTimeline();});
+}
+function legendKey(){
+  document.getElementById('tl-key').innerHTML=NAMES.map(n=>`<span><i style="border-color:${COLOR[n]}"></i>${n}</span>`).join('');
+}
+switchUI('tl-models',()=>tlModel,m=>tlModel=m,drawTimeline); chips(); legendKey(); drawTimeline();
+
+function drawStandings(cp){
+  const c=D.checkpoints[cp];
+  document.getElementById('st-label').textContent=cp===0?'pre-tournament forecast':`rounds 1–${cp} actual, rest simulated`;
+  const rows=[...NAMES].sort((a,b)=>c.p_win[b]-c.p_win[a]);
+  const mx=Math.max(...NAMES.map(n=>c.p_win[n]));
+  let h=`<thead><tr><th>Player</th><th>Score</th><th>P(title)</th><th>E[pts]</th><th>Max</th></tr></thead><tbody>`;
+  rows.forEach(n=>{const w=c.p_win[n];
+    h+=`<tr class="${ACT_RANK[n]===1?'champ':''}" title="P(title) = ${fmtPe(w)}"><td>${n}</td><td class="num">${fmt1(c.actual_pts[n])}</td>
+      <td class="barcell"><div class="bar" style="width:${mx>0?w/mx*100:0}%"></div><span>${fmtP(w)}</span></td>
+      <td class="num">${fmt1(c.e_pts[n])}</td><td class="num" style="color:var(--muted)">${fmt1(c.max_reachable[n])}</td></tr>`;});
+  document.getElementById('st-table').innerHTML=h+`</tbody>`;
+}
+/* round-tab selector — replaces the range sliders */
+function roundTabs(id, vals, labelFn, initial, onPick){
+  const box=document.getElementById(id); if(!box) return;
+  let cur=initial;
+  function paint(){
+    box.querySelectorAll('.rt').forEach(b=>b.classList.toggle('on',+b.dataset.v===cur));
+  }
+  box.innerHTML=`<span class="rt-lbl">Round</span>`+vals.map(v=>`<button class="rt" data-v="${v}">${labelFn(v)}</button>`).join('');
+  box.querySelectorAll('.rt').forEach(b=>b.onclick=()=>{cur=+b.dataset.v;paint();onPick(cur);});
+  paint(); onPick(cur);
+}
+const R0_10=[0,1,2,3,4,5,6,7,8,9,10], R1_10=[1,2,3,4,5,6,7,8,9,10];
+roundTabs('st-tabs',R0_10,v=>v===0?'Start':v,0,drawStandings);
+
+function drawRace(cp){
+  const c=D.checkpoints[cp];
+  const scale=Math.max(...NAMES.map(n=>c.max_reachable[n]),1);
+  const rows=[...NAMES].sort((a,b)=>c.actual_pts[b]-c.actual_pts[a]);
+  let h='';
+  rows.forEach(n=>{const cur=c.actual_pts[n],m=c.max_reachable[n],el=c.eliminated[n];
+    h+=`<div class="row ${el?'elim':''}" title="${n}: ${fmt1(cur)} now, up to ${fmt1(m)}"><div class="nm">${n}</div>
+      <div class="track"><div class="cur" style="width:${cur/scale*100}%"></div><div class="max" style="left:${m/scale*100}%"></div></div>
+      <div class="val">${fmt1(cur)} / max ${fmt1(m)}${el?' ✗':''}</div></div>`;});
+  document.getElementById('race-body').innerHTML=h;
+}
+roundTabs('race-tabs',R0_10,v=>v===0?'Start':v,6,drawRace);
+
+let gRound=1;
+function drawGames(rnd){
+  gRound=rnd;
+  const rd=D.rounds_pred[gModel][rnd-1], CLS=["w","aw","ab","l"];
+  const LBL=["White win","armageddon White","armageddon Black","Black win"];
+  let h='';
+  rd.games.forEach(g=>{
+    const res=g.result_type==='classical'?(g.p1_points===3?`${g.p1} 1–0`:`${g.p2} 1–0`)
+      :(g.p1_points===1.5?`armageddon · ${g.p1}`:`armageddon · ${g.p2}`);
+    let bars=''; g.probs.forEach((p,i)=>bars+=`<div class="${CLS[i]} ${g.actual===i?'hit':''}" data-v="${LBL[i]}: ${fmtPe(p)}" style="width:${p*100}%">${p>0.13?fmtP(p):''}</div>`);
+    h+=`<div class="gcard"><div class="gpair">${g.p1} – ${g.p2}</div><div class="gres">${res}</div>
+      <div class="wdl">${bars}</div>
+      <div class="gmeta"><span>${g.color==='p1_white'?g.p1+' White':'colour 50/50'}</span><span>draw ${fmtP(g.probs[1]+g.probs[2])}</span></div></div>`;});
+  document.getElementById('games-body').innerHTML=h;
+}
+switchUI('g-models',()=>gModel,m=>gModel=m,()=>drawGames(gRound));
+roundTabs('g-tabs',R1_10,v=>v,1,drawGames);
+
+/* calibration reliability with point hover */
+(function(){
+  if(!D.metrics) return;
+  const svg=document.getElementById('calib-svg'), tip=document.getElementById('calib-tip'), wrap=svg.parentElement;
+  const W=440,H=380,P=46;
+  const X=v=>P+v*(W-P-18), Y=v=>H-P-v*(H-P-22);
+  let s=`<line x1="${X(0)}" y1="${Y(0)}" x2="${X(1)}" y2="${Y(1)}" stroke="${GRID}" stroke-dasharray="4 4"/>`;
+  [0,.25,.5,.75,1].forEach(v=>{s+=`<text x="${X(v)}" y="${H-P+18}" font-size="10" text-anchor="middle">${v}</text><text x="${P-10}" y="${Y(v)+3}" font-size="10" text-anchor="end">${v}</text>`;});
+  s+=`<text class="axis-title" x="${W/2}" y="${H-6}" text-anchor="middle">predicted</text>`;
+  s+=`<text class="axis-title" x="14" y="${(H-P)/2}" text-anchor="middle" transform="rotate(-90 14 ${(H-P)/2})">observed</text>`;
+  const pts=D.metrics.reliability;
+  s+=`<polyline points="${pts.map(r=>`${X(r.pred)},${Y(r.obs)}`).join(' ')}" fill="none" stroke="var(--red)" stroke-width="2"/>`;
+  pts.forEach((r,i)=>s+=`<circle class="calibpt" data-i="${i}" cx="${X(r.pred)}" cy="${Y(r.obs)}" r="${5+Math.sqrt(r.n)}" fill="var(--red)" opacity="0.7" style="cursor:pointer"/>`);
+  svg.innerHTML=s;
+  svg.querySelectorAll('.calibpt').forEach(c=>{
+    c.addEventListener('mousemove',()=>{const r=pts[+c.dataset.i];
+      tip.innerHTML=`<h4>Reliability bin</h4><div class="trow"><span class="nm">predicted</span><span class="vv">${(r.pred*100).toFixed(1)}%</span></div><div class="trow"><span class="nm">observed</span><span class="vv">${(r.obs*100).toFixed(1)}%</span></div><div class="trow"><span class="nm">outcomes</span><span class="vv">${r.n}</span></div>`;
+      const rect=wrap.getBoundingClientRect();
+      tip.style.opacity='1'; tip.style.left=Math.min((+c.getAttribute('cx')/W)*rect.width+12,rect.width-160)+'px'; tip.style.top='8px';});
+    c.addEventListener('mouseleave',()=>tip.style.opacity='0');
+  });
+})();
+
+/* per-round Brier with bar hover */
+(function(){
+  if(!D.metrics) return;
+  const svg=document.getElementById('brier-svg'), tip=document.getElementById('brier-tip'), wrap=svg.parentElement;
+  const br=D.metrics.per_round_brier, uni=D.metrics.uniform_brier, n=br.length, W=440,H=380,P=46;
+  const X=i=>P+(i+0.5)/n*(W-P-18), Y=v=>H-P-v/1.0*(H-P-22);
+  let s='';
+  [0,.25,.5,.75,1].forEach(v=>{s+=`<line x1="${P}" y1="${Y(v)}" x2="${W-18}" y2="${Y(v)}" stroke="${GRID}" opacity="0.5"/><text x="${P-8}" y="${Y(v)+3}" font-size="10" text-anchor="end">${v.toFixed(2)}</text>`;});
+  s+=`<line x1="${P}" y1="${Y(uni)}" x2="${W-18}" y2="${Y(uni)}" stroke="var(--navy)" stroke-dasharray="5 4"/><text x="${W-20}" y="${Y(uni)-5}" font-size="9" fill="var(--navy)" text-anchor="end">uniform ${uni}</text>`;
+  s+=`<text class="axis-title" x="${W/2}" y="${H-6}" text-anchor="middle">round</text>`;
+  s+=`<text class="axis-title" x="14" y="${(H-P)/2}" text-anchor="middle" transform="rotate(-90 14 ${(H-P)/2})">Brier (4 outcomes)</text>`;
+  const bw=(W-P-18)/n*0.62;
+  br.forEach((v,i)=>{s+=`<rect class="brierbar" data-i="${i}" x="${X(i)-bw/2}" y="${Y(v)}" width="${bw}" height="${Y(0)-Y(v)}" fill="${v<uni?'var(--red)':'var(--navy)'}" opacity="0.82" style="cursor:pointer"/><text x="${X(i)}" y="${H-P+16}" font-size="9" text-anchor="middle">R${i+1}</text>`;});
+  svg.innerHTML=s;
+  svg.querySelectorAll('.brierbar').forEach(bar=>{
+    bar.addEventListener('mousemove',()=>{const i=+bar.dataset.i, v=br[i];
+      tip.innerHTML=`<h4>Round ${i+1}</h4><div class="trow"><span class="nm">Brier</span><span class="vv">${v.toFixed(4)}</span></div><div class="trow"><span class="nm">vs uniform</span><span class="vv">${(v<uni?'−':'+')}${Math.abs(v-uni).toFixed(3)}</span></div>`;
+      const rect=wrap.getBoundingClientRect();
+      tip.style.opacity='1'; tip.style.left=Math.min((X(i)/W)*rect.width+10,rect.width-150)+'px'; tip.style.top='8px';});
+    bar.addEventListener('mouseleave',()=>tip.style.opacity='0');
+  });
+  document.getElementById('brier-note').textContent=`Model mean Brier ${D.metrics.mean_brier} vs ${uni} uniform — sharper in most rounds.`;
+})();
+
+/* heatmap with hover */
+(function(){
+  const sec=document.getElementById('heatmap');
+  if(!(D.players[0]&&D.players[0].rank_dist)){sec.style.display='none';return;}
+  const n=NAMES.length, rows=[...D.players].sort((a,b)=>ACT_RANK[a.name]-ACT_RANK[b.name]);
+  const box=document.getElementById('hm-body'); box.style.gridTemplateColumns=`104px repeat(${n},1fr)`;
+  let h=`<div></div>`+Array.from({length:n},(_,i)=>`<div class="h">${i+1}</div>`).join('');
+  rows.forEach(p=>{h+=`<div class="n">${p.name}</div>`;
+    p.rank_dist.forEach((v,i)=>{const act=ACT_RANK[p.name]===i+1,a=Math.min(v*2.4,1);
+      h+=`<div class="c ${act?'act':''}" title="${p.name} · place ${i+1}: ${(v*100).toFixed(2)}%" style="background:rgba(176,16,32,${a.toFixed(2)});color:${v>0.45?'#fff':'var(--ink)'}">${(v*100).toFixed(0)}%</div>`;});});
+  box.innerHTML=h;
+})();
+
+/* players */
+(function(){
+  let h=`<thead><tr><th>Player</th><th>Classical</th><th>Rapid</th><th>Blitz</th><th>Style</th><th>Place</th></tr></thead><tbody>`;
+  [...D.players].sort((a,b)=>ACT_RANK[a.name]-ACT_RANK[b.name]).forEach(p=>{
+    h+=`<tr class="${ACT_RANK[p.name]===1?'champ':''}"><td>${p.name}</td><td class="num">${p.classical}</td>
+      <td class="num">${p.rapid}</td><td class="num">${p.blitz}</td><td class="num">${fmt1(p.style)}</td><td class="num">${ACT_RANK[p.name]}</td></tr>`;});
+  document.getElementById('pl-table').innerHTML=h+`</tbody>`;
+})();
+/* model & parameters (appendix B) */
+(function(){
+  const params=[
+    ["White advantage","WA","35 Elo","Rating bonus for the white pieces in classical games."],
+    ["Draw base","DBASE","0.70","Draw rate for an even classical game, before adjustments."],
+    ["Draw decay","DDEC","0.0018","How fast draws fall off as the rating gap widens."],
+    ["Armageddon handicap","ARM_H","−30 Elo","White's penalty in armageddon — Black holds draw odds."],
+    ["Form coefficient","K","32","Per-game Elo update from results. Fixed, not tuned on 2026."],
+    ["Draw cap","—","0.85","Ceiling on any classical draw probability."],
+    ["Min outcome prob","—","0.01","Floor on any single game outcome."],
+    ["Simulations","runs","1,000,000","Monte Carlo tournaments run at every checkpoint."],
+  ];
+  let h=`<thead><tr><th>Parameter</th><th>Symbol</th><th>Value</th><th>What it controls</th></tr></thead><tbody>`;
+  params.forEach(p=>h+=`<tr><td>${p[0]}</td><td>${p[1]}</td><td>${p[2]}</td><td>${p[3]}</td></tr>`);
+  const t=document.getElementById('hp-table'); if(t) t.innerHTML=h+`</tbody>`;
+
+  const calib=[
+    ["RPS + MAP + LOTO-CV","calibration method"],
+    ["λ = 0.1","regularisation strength"],
+    ["180","training games, 2022–2026"],
+    ["0.1902","out-of-sample RPS (2026)"],
+    ["0.1944","uniform baseline RPS"],
+  ];
+  const cs=document.getElementById('calib-strip');
+  if(cs) cs.innerHTML=calib.map(c=>`<div class="ci"><div class="ci-num">${c[0]}</div><div class="ci-lbl">${c[1]}</div></div>`).join('');
+})();
+
+
+/* ── masthead + front-page lead (data-driven) ── */
+(function(){
+  const $=id=>document.getElementById(id);
+  const disp=n=>(META.names&&META.names[n])||n;
+  function ord(n){const s=["th","st","nd","rd"],v=n%100;return n+(s[(v-20)%10]||s[v]||s[0]);}
+  const g=x=>Number.isInteger(x)?(''+x):x.toFixed(1);
+  const num=(x,d)=>x.toFixed(d);
+  function words(n){const w=["zero","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen"];return w[n]||(''+n);}
+
+  /* masthead */
+  if(META.mast&&$('mastName')){
+    const m=META.mast;
+    $('mastName').innerHTML = m.length>1 ? `${m[0]} <span class="red">${m.slice(1).join(' ')}</span>` : m[0];
+  } else if($('mastName')) $('mastName').textContent=D.tournament;
+  if($('mastYear')) $('mastYear').textContent = META.year||'';
+  if($('mastVenue')) $('mastVenue').textContent = META.venue||'';
+  if($('mastEdition')) $('mastEdition').textContent = META.edition||'Monte Carlo Edition';
+  const datesEl=$('mastDates'); if(datesEl){ if(META.dates) datesEl.textContent=META.dates; else datesEl.style.display='none'; }
+  if($('mastTagline')) $('mastTagline').textContent =
+    `${D.iters_main.toLocaleString('en-US')} tournaments per checkpoint · recomputed each round`;
+
+  /* lead story — everything computed from D */
+  const lead=$('lead'); if(!lead) return;
+  const fs=D.final_standings;
+  const ranked=Object.entries(fs).sort((a,b)=>b[1]-a[1]).map(x=>x[0]);
+  const champ=ranked[0], runner=ranked[1];
+  const cp0=D.checkpoints[0].p_win;
+  const preRanked=Object.entries(cp0).sort((a,b)=>b[1]-a[1]).map(x=>x[0]);
+  const fav=preRanked[0], nP=preRanked.length;
+  const champPre=cp0[champ], favPre=cp0[fav];
+  const favRank=ranked.indexOf(fav)+1, preRankChamp=preRanked.indexOf(champ)+1;
+  const score=fs[champ], maxPts=D.checkpoints[0].max_reachable[champ];
+  const margin=score-fs[runner], rounds=D.checkpoints.length-1;
+  const cn=disp(champ);
+
+  let headline;
+  if(champ===fav)            headline=`The <span class="red">favourite</span> delivers`;
+  else if(preRankChamp===nP) headline=`The model's <span class="red">longest shot</span> takes the crown`;
+  else                       headline=`<span class="red">${cn}</span> defies the forecast`;
+
+  const entry = champ===fav?'entered as the favourite'
+              : preRankChamp===nP?'entered as the rank outsider'
+              : `entered ${ord(preRankChamp)} of ${nP} in the model's reckoning`;
+  const oddsDesc = preRankChamp===nP?'the lowest of the field'
+              : preRankChamp===1?'the highest of the field'
+              : `${ord(preRankChamp)}-likeliest of ${nP}`;
+  const favEnd = favRank===1?'held on to win':`slipped to ${ord(favRank)}`;
+
+  const body=`<span class="dropcap">${cn[0]}</span>${cn} ${entry}. Across `
+    +`${D.iters_main.toLocaleString('en-US')} simulated tournaments the engine gave ${cn} just `
+    +`<b>${fmtP(champPre)}</b> — ${oddsDesc} — while making ${disp(fav)} a <b>${fmtP(favPre)}</b> favourite. `
+    +`${words(rounds)} rounds later ${cn} finished on <b>${g(score)} / ${g(maxPts)}</b>`
+    +`${margin>0?`, ${g(margin)} clear of ${disp(runner)}`:''}, and ${disp(fav)} ${favEnd}. `
+    +`The pages below rebuild the forecast after every round, and measure how honest it stayed.`;
+
+  const acc = (META.oos_rps!=null)
+      ? [num(META.oos_rps,3), 'Out-of-sample RPS · sharper than uniform']
+      : (D.metrics? [num(D.metrics.mean_brier,3), `Mean Brier · under ${num(D.metrics.uniform_brier,2)} uniform`] : null);
+  const stats=[
+    ['accent', fmtP(champPre), "Champion's pre-event title odds"],
+    ['',       fmtP(favPre),   `${disp(fav)}'s opening-day odds — finished ${ord(favRank)}`],
+    ['',       `${g(score)}<span class="stat-sub">/${g(maxPts)}</span>`, `${cn}'s winning score`],
+  ];
+  if(acc) stats.push(['', acc[0], acc[1]]);
+
+  lead.innerHTML=`
+    <div class="lead-kicker">The result${META.venue?` · ${META.venue}`:''}</div>
+    <div class="lead-grid">
+      <div class="lead-main">
+        <h2 class="lead-head">${headline}</h2>
+        <p class="lead-body">${body}</p>
+      </div>
+      <div class="lead-stats">
+        ${stats.map(s=>`<div class="stat ${s[0]}"><div class="stat-num">${s[1]}</div><div class="stat-lbl">${s[2]}</div></div>`).join('')}
+      </div>
+    </div>`;
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+# Local build artifacts
+/sim
+/bin/test_model
+/bin/sim
+/bin/*.exe
+/bin/*.out
+
+# Python cache and local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# OS/editor noise
+.DS_Store
+.idea/
+.vscode/

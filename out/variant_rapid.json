@@ -1,0 +1,12 @@
+{
+  "after_round": 0,
+  "iterations": 300000,
+  "players": [
+    {"name": "Carlsen", "p_win": 0.56123, "expected_points": 17.704, "rank_dist": [0.57466, 0.23025, 0.10778, 0.05391, 0.02514, 0.00826]},
+    {"name": "Keymer", "p_win": 0.17226, "expected_points": 14.359, "rank_dist": [0.17493, 0.25749, 0.20328, 0.15820, 0.12406, 0.08204]},
+    {"name": "Firouzja", "p_win": 0.07300, "expected_points": 12.346, "rank_dist": [0.06963, 0.14610, 0.18551, 0.20238, 0.20867, 0.18771]},
+    {"name": "So", "p_win": 0.06099, "expected_points": 13.062, "rank_dist": [0.05651, 0.16184, 0.24182, 0.25228, 0.19348, 0.09407]},
+    {"name": "Gukesh", "p_win": 0.10834, "expected_points": 12.093, "rank_dist": [0.10268, 0.13542, 0.14079, 0.14973, 0.18404, 0.28734]},
+    {"name": "Pragg", "p_win": 0.02418, "expected_points": 10.981, "rank_dist": [0.02160, 0.06890, 0.12081, 0.18350, 0.26461, 0.34058]}
+  ]
+}

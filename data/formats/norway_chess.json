@@ -1,0 +1,7 @@
+{
+  "classical_win": 3.0,
+  "classical_loss": 0.0,
+  "draw_white_armageddon_win": 1.5,
+  "draw_black_armageddon_win": 1.0,
+  "armageddon_after_classical_draw": true
+}

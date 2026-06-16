@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light only">
+  <meta name="supported-color-schemes" content="light">
+  <title>__INJECT_TITLE__</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Spectral:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    /*__INJECT_CSS__*/
+  </style>
+</head>
+
+<body>
+
+  <div class="wrap">
+    <div class="masthead">
+      <div class="topline">
+        <span class="flag">
+          <svg class="noflag" viewBox="0 0 22 16" aria-label="Flag of Norway" role="img">
+            <rect width="22" height="16" fill="#BA0C2F" />
+            <rect x="6" width="4" height="16" fill="#F8FAFC" />
+            <rect y="6" width="22" height="4" fill="#F8FAFC" />
+            <rect x="7" width="2" height="16" fill="#002868" />
+            <rect y="7" width="22" height="2" fill="#002868" />
+          </svg>
+          <span id="mastVenue"></span>
+        </span>
+        <span id="mastEdition"></span>
+        <span id="mastDates"></span>
+      </div>
+      <div class="nameplate" id="mastName"></div>
+      <div class="yearline"><span class="yl-rule"></span><span class="year" id="mastYear"></span><span
+          class="yl-rule"></span></div>
+      <div class="sub"><span class="mono" id="mastTagline"></span></div>
+      <div class="tricolour"><i></i><i></i><i></i></div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="lead" id="lead"></div>
+  </div>
+
+  <nav>
+    <div class="wrap">
+      <span class="lbl">Sections</span>
+      <a href="#timeline">I. Title odds</a>
+      <a href="#standings">II. Standings</a>
+      <a href="#race">III. Title race</a>
+      <a href="#games">IV. Per-game</a>
+      <a href="#calib">V. Calibration</a>
+      <a href="#heatmap">VI. Final places</a>
+      <a href="#appendices">Appendices</a>
+    </div>
+  </nav>
+
+  <div class="wrap">
+
+    <section id="timeline">
+      <div class="head">
+        <div>
+          <div class="no">§ I</div>
+          <h2>Title probability by round</h2>
+        </div>
+        <span class="tag">switch armageddon model · hover a round · click a chip to toggle</span>
+      </div>
+      <div class="card framed">
+        <div class="controls">
+          <div class="switch" id="tl-models"></div>
+        </div>
+        <div class="chips" id="tl-chips" style="margin-bottom:18px"></div>
+        <div class="chartwrap">
+          <svg id="timeline-svg" width="100%" viewBox="0 0 980 440" role="img"
+            aria-label="Title probability by round"></svg>
+          <div class="tooltip" id="tl-tip"></div>
+        </div>
+        <div class="legend-key" id="tl-key"></div>
+      </div>
+    </section>
+
+    <section id="standings">
+      <div class="head">
+        <div>
+          <div class="no">§ II</div>
+          <h2>Tournament standings</h2>
+        </div>
+        <span class="tag" id="st-label"></span>
+      </div>
+      <div class="card">
+        <div class="round-tabs" id="st-tabs"></div>
+        <table id="st-table"></table>
+      </div>
+    </section>
+
+    <section id="race">
+      <div class="head">
+        <div>
+          <div class="no">§ III</div>
+          <h2>Race for the title</h2>
+        </div>
+        <span class="tag">bar — points scored · blue mark — maximum reachable · ✗ eliminated</span>
+      </div>
+      <div class="card">
+        <div class="round-tabs" id="race-tabs"></div>
+        <div class="race" id="race-body"></div>
+      </div>
+    </section>
+
+    <section id="games">
+      <div class="head">
+        <div>
+          <div class="no">§ IV</div>
+          <h2>Per-game predictions</h2>
+        </div>
+        <span class="tag">draw split into armageddon · actual outlined · hover a bar for exact %</span>
+      </div>
+      <div class="card">
+        <div class="controls">
+          <div class="switch" id="g-models"></div>
+        </div>
+        <div class="glegend">
+          <span><i style="background:var(--red)"></i>White win 3:0</span>
+          <span><i style="background:var(--red-soft)"></i>armageddon White 1.5:1</span>
+          <span><i style="background:var(--navy-soft)"></i>armageddon Black 1:1.5</span>
+          <span><i style="background:var(--navy)"></i>Black win 0:3</span>
+        </div>
+        <div class="round-tabs" id="g-tabs"></div>
+        <div class="games" id="games-body"></div>
+      </div>
+    </section>
+
+    <section id="calib">
+      <div class="head">
+        <div>
+          <div class="no">§ V</div>
+          <h2>How much to trust the model</h2>
+        </div>
+        <span class="tag">calibration and sharpness, measured against the actual 2026</span>
+      </div>
+      <div class="twocol">
+        <div class="card">
+          <div
+            style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px">
+            Reliability curve</div>
+          <div class="chartwrap"><svg id="calib-svg" width="100%" viewBox="0 0 440 380" role="img"></svg>
+            <div class="tooltip" id="calib-tip"></div>
+          </div>
+          <p class="note">Points on the diagonal mean stated probabilities match observed frequency. Ours sit close to
+            it — the model is not overconfident.</p>
+        </div>
+        <div class="card">
+          <div
+            style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px">
+            Brier score by round (lower is sharper)</div>
+          <div class="chartwrap"><svg id="brier-svg" width="100%" viewBox="0 0 440 380" role="img"></svg>
+            <div class="tooltip" id="brier-tip"></div>
+          </div>
+          <p class="note" id="brier-note"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="heatmap">
+      <div class="head">
+        <div>
+          <div class="no">§ VI</div>
+          <h2>Final-place distribution</h2>
+        </div>
+        <span class="tag">pre-tournament · actual place outlined · hover a cell</span>
+      </div>
+      <div class="card">
+        <div class="hm" id="hm-body"></div>
+      </div>
+    </section>
+
+    <div class="appendix-divider" id="appendices"><span>Appendices</span></div>
+
+    <section class="appendix" id="players">
+      <div class="head">
+        <div>
+          <div class="no">§ A</div>
+          <h2>The field</h2>
+        </div>
+        <span class="tag">FIDE ratings, May 2026 · final placing</span>
+      </div>
+      <div class="card">
+        <table id="pl-table"></table>
+      </div>
+    </section>
+
+    <section class="appendix" id="model">
+      <div class="head">
+        <div>
+          <div class="no">§ B</div>
+          <h2>Model &amp; parameters</h2>
+        </div>
+        <span class="tag">how the million tournaments were generated</span>
+      </div>
+      <div class="card">
+        <div class="hp-formula">
+          classical &nbsp;P(draw) = <b>DBASE</b> · exp(−|Δrating| · <b>DDEC</b>) · style<sub>i</sub> ·
+          style<sub>j</sub><br>
+          armageddon &nbsp;played on blitz Elo · White carries <b>ARM_H</b> · Black has draw odds<br>
+          form &nbsp;after each classical game, effective Elo += <b>K</b> · (score − expected)
+        </div>
+        <table class="hp" id="hp-table"></table>
+        <p class="note">Parameters were fit on 180 games from the 2022–2026 events using RPS with MAP regularisation and
+          leave-one-tournament-out cross-validation, then held fixed for the 2026 forecast.</p>
+        <div class="calib-strip" id="calib-strip"></div>
+      </div>
+    </section>
+
+    <div class="endmark">— ♞ —</div>
+  </div>
+
+  <script>/*__INJECT_JS__*/</script>
+</body>
+
+</html>

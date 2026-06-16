@@ -1,0 +1,329 @@
+{
+  "comment": "Norway Chess 2026 open, all 10 rounds. p1/p2 order as reported; col: 'p1w'=p1 confirmed White, 'unk'=colors unconfirmed (evaluate as 50/50 mixture). res: points to p1 (3, 1.5, 1, 0). Cross-checked: per-player totals reproduce the official final standings 18/17/15.5/13/11/8.",
+  "calibration": {
+    "armageddon_all_editions": {
+      "games": 194,
+      "white_wins": 101,
+      "white_share": 0.5206,
+      "source": "norwaychess.no 'Breaking Ties' (Oct 2025)",
+      "implied_white_handicap_elo": -14.3,
+      "ci95_handicap": [
+        -63,
+        35
+      ]
+    },
+    "classical_draw_share_2022_2025_estimate": 0.6
+  },
+  "players_pretournament": {
+    "Carlsen": {
+      "classical": 2840,
+      "live_adj": 0,
+      "trend_mo": 0.1,
+      "blitz": 2850,
+      "blitz_est": false,
+      "style": 1.07
+    },
+    "Keymer": {
+      "classical": 2765,
+      "live_adj": 5,
+      "trend_mo": 3.5,
+      "blitz": 2624,
+      "blitz_est": true,
+      "style": 1.0
+    },
+    "Firouzja": {
+      "classical": 2759,
+      "live_adj": -12,
+      "trend_mo": -0.7,
+      "blitz": 2776,
+      "blitz_est": true,
+      "style": 0.99
+    },
+    "So": {
+      "classical": 2754,
+      "live_adj": 0,
+      "trend_mo": 0.9,
+      "blitz": 2752,
+      "blitz_est": true,
+      "style": 1.3
+    },
+    "Gukesh": {
+      "classical": 2734,
+      "live_adj": 0,
+      "trend_mo": -4.2,
+      "blitz": 2664,
+      "blitz_est": true,
+      "style": 0.66
+    },
+    "Pragg": {
+      "classical": 2733,
+      "live_adj": 2,
+      "trend_mo": -4.6,
+      "blitz": 2680,
+      "blitz_est": true,
+      "style": 1.09
+    }
+  },
+  "rounds": [
+    {
+      "r": 1,
+      "games": [
+        {
+          "p1": "Firouzja",
+          "p2": "Carlsen",
+          "col": "p1w",
+          "res": 3.0,
+          "how": "classical"
+        },
+        {
+          "p1": "Keymer",
+          "p2": "Gukesh",
+          "col": "unk",
+          "res": 1.0,
+          "how": "arm"
+        },
+        {
+          "p1": "So",
+          "p2": "Pragg",
+          "col": "unk",
+          "res": 1.0,
+          "how": "arm"
+        }
+      ]
+    },
+    {
+      "r": 2,
+      "games": [
+        {
+          "p1": "Firouzja",
+          "p2": "Pragg",
+          "col": "unk",
+          "res": 3.0,
+          "how": "classical"
+        },
+        {
+          "p1": "Carlsen",
+          "p2": "Keymer",
+          "col": "p1w",
+          "res": 1.5,
+          "how": "arm"
+        },
+        {
+          "p1": "Gukesh",
+          "p2": "So",
+          "col": "unk",
+          "res": 1.0,
+          "how": "arm"
+        }
+      ]
+    },
+    {
+      "r": 3,
+      "games": [
+        {
+          "p1": "Gukesh",
+          "p2": "Firouzja",
+          "col": "p1w",
+          "res": 1.0,
+          "how": "arm"
+        },
+        {
+          "p1": "Keymer",
+          "p2": "So",
+          "col": "p1w",
+          "res": 1.0,
+          "how": "arm"
+        },
+        {
+          "p1": "Pragg",
+          "p2": "Carlsen",
+          "col": "unk",
+          "res": 3.0,
+          "how": "classical"
+        }
+      ]
+    },
+    {
+      "r": 4,
+      "games": [
+        {
+          "p1": "Gukesh",
+          "p2": "Carlsen",
+          "col": "p1w",
+          "res": 0.0,
+          "how": "classical"
+        },
+        {
+          "p1": "Keymer",
+          "p2": "Pragg",
+          "col": "p1w",
+          "res": 1.0,
+          "how": "arm"
+        },
+        {
+          "p1": "So",
+          "p2": "Firouzja",
+          "col": "p1w",
+          "res": 1.5,
+          "how": "arm"
+        }
+      ]
+    },
+    {
+      "r": 5,
+      "games": [
+        {
+          "p1": "Carlsen",
+          "p2": "So",
+          "col": "p1w",
+          "res": 0.0,
+          "how": "classical"
+        },
+        {
+          "p1": "Pragg",
+          "p2": "Gukesh",
+          "col": "p1w",
+          "res": 0.0,
+          "how": "classical"
+        },
+        {
+          "p1": "Keymer",
+          "p2": "Firouzja",
+          "col": "unk",
+          "res": 1.0,
+          "how": "arm"
+        }
+      ]
+    },
+    {
+      "r": 6,
+      "games": [
+        {
+          "p1": "So",
+          "p2": "Pragg",
+          "col": "p1w",
+          "res": 3.0,
+          "how": "classical"
+        },
+        {
+          "p1": "Carlsen",
+          "p2": "Firouzja",
+          "col": "p1w",
+          "res": 3.0,
+          "how": "classical"
+        },
+        {
+          "p1": "Keymer",
+          "p2": "Gukesh",
+          "col": "p1w",
+          "res": 3.0,
+          "how": "classical"
+        }
+      ]
+    },
+    {
+      "r": 7,
+      "games": [
+        {
+          "p1": "Pragg",
+          "p2": "Firouzja",
+          "col": "unk",
+          "res": 3.0,
+          "how": "classical"
+        },
+        {
+          "p1": "So",
+          "p2": "Gukesh",
+          "col": "unk",
+          "res": 1.0,
+          "how": "arm"
+        },
+        {
+          "p1": "Keymer",
+          "p2": "Carlsen",
+          "col": "p1w",
+          "res": 1.0,
+          "how": "arm"
+        }
+      ]
+    },
+    {
+      "r": 8,
+      "games": [
+        {
+          "p1": "Carlsen",
+          "p2": "Pragg",
+          "col": "p1w",
+          "res": 0.0,
+          "how": "classical"
+        },
+        {
+          "p1": "Firouzja",
+          "p2": "Gukesh",
+          "col": "unk",
+          "res": 3.0,
+          "how": "classical"
+        },
+        {
+          "p1": "So",
+          "p2": "Keymer",
+          "col": "unk",
+          "res": 1.5,
+          "how": "arm"
+        }
+      ]
+    },
+    {
+      "r": 9,
+      "games": [
+        {
+          "p1": "So",
+          "p2": "Carlsen",
+          "col": "p1w",
+          "res": 1.5,
+          "how": "arm"
+        },
+        {
+          "p1": "Gukesh",
+          "p2": "Pragg",
+          "col": "p1w",
+          "res": 0.0,
+          "how": "classical"
+        },
+        {
+          "p1": "Keymer",
+          "p2": "Firouzja",
+          "col": "p1w",
+          "res": 1.0,
+          "how": "arm"
+        }
+      ]
+    },
+    {
+      "r": 10,
+      "games": [
+        {
+          "p1": "Pragg",
+          "p2": "Keymer",
+          "col": "unk",
+          "res": 3.0,
+          "how": "classical"
+        },
+        {
+          "p1": "Carlsen",
+          "p2": "Gukesh",
+          "col": "unk",
+          "res": 3.0,
+          "how": "classical"
+        },
+        {
+          "p1": "Firouzja",
+          "p2": "So",
+          "col": "unk",
+          "res": 1.0,
+          "how": "arm"
+        }
+      ]
+    }
+  ]
+}
