@@ -1,6 +1,7 @@
 # Norway Chess 2026 — Monte Carlo Simulation
-
-[TODO: Add a dashboard preview image here, for example `imgs/dashboard/title.png`]
+<p align="center">
+  <img src="imgs/dashboard/title.png" alt="Dashboard">
+</p>
 
 A reproducible C++/Python Monte Carlo forecasting system for **Norway Chess 2026**.
 The model handles Norway Chess’s classical-plus-Armageddon scoring format, runs **1,000,000 simulated tournaments per checkpoint**, re-forecasts after every round, and evaluates its own predictions using proper scoring rules.
