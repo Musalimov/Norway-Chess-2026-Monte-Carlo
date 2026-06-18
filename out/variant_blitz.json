@@ -1,12 +1,12 @@
 {
   "after_round": 0,
-  "iterations": 300000,
+  "iterations": 1000000,
   "players": [
-    {"name": "Carlsen", "p_win": 0.56460, "expected_points": 17.701, "rank_dist": [0.57769, 0.22598, 0.10755, 0.05528, 0.02516, 0.00834]},
-    {"name": "Keymer", "p_win": 0.16020, "expected_points": 14.166, "rank_dist": [0.16399, 0.24325, 0.20139, 0.16584, 0.13499, 0.09054]},
-    {"name": "Firouzja", "p_win": 0.07508, "expected_points": 12.377, "rank_dist": [0.07164, 0.14717, 0.18086, 0.20338, 0.21179, 0.18515]},
-    {"name": "So", "p_win": 0.07679, "expected_points": 13.445, "rank_dist": [0.06976, 0.18928, 0.25795, 0.24214, 0.16799, 0.07287]},
-    {"name": "Gukesh", "p_win": 0.09873, "expected_points": 11.863, "rank_dist": [0.09488, 0.12638, 0.13387, 0.14957, 0.18819, 0.30712]},
-    {"name": "Pragg", "p_win": 0.02459, "expected_points": 10.992, "rank_dist": [0.02205, 0.06794, 0.11838, 0.18378, 0.27188, 0.33597]}
+    {"name": "Carlsen", "p_win": 0.47372, "expected_points": 17.288, "rank_dist": [0.48582, 0.23925, 0.13516, 0.07901, 0.04305, 0.01771]},
+    {"name": "Keymer", "p_win": 0.15699, "expected_points": 13.830, "rank_dist": [0.16214, 0.20221, 0.18837, 0.17321, 0.15529, 0.11879]},
+    {"name": "Firouzja", "p_win": 0.10175, "expected_points": 12.597, "rank_dist": [0.09878, 0.15371, 0.17639, 0.19034, 0.19941, 0.18136]},
+    {"name": "So", "p_win": 0.10462, "expected_points": 13.581, "rank_dist": [0.09778, 0.19005, 0.23504, 0.22445, 0.16779, 0.08489]},
+    {"name": "Gukesh", "p_win": 0.11720, "expected_points": 11.893, "rank_dist": [0.11347, 0.12471, 0.13002, 0.14464, 0.18112, 0.30605]},
+    {"name": "Pragg", "p_win": 0.04572, "expected_points": 11.336, "rank_dist": [0.04201, 0.09007, 0.13503, 0.18835, 0.25334, 0.29120]}
   ]
 }

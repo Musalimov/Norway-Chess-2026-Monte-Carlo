@@ -1,9 +1,6 @@
 {
   "name": "v4_rapidblitz",
-  "white_advantage": 35.0,
-  "draw_base": 0.70,
-  "draw_decay": 0.0018,
-  "armageddon_handicap": -30.0,
+  "_comment": "Fitted params (white_advantage, draw_base, draw_decay, armageddon_handicap) live only in out/calibrated_params.json and are read via src/nc_common.py. This config holds structural choices only.",
   "form_k": 32.0,
   "armageddon_strength": "rapidblitz",
   "draw_probability_cap": 0.85,

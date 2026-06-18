@@ -18,7 +18,7 @@ Full example:
         --names   tools/viz/names_norway2026.json \
         --venue   "Stavanger · Norway" \
         --dates   "25 May – 5 June 2026" \
-        --edition "Vol. XIV · Monte Carlo Edition" \
+        # --edition is optional; defaults to "VOL. <roman year> · Monte Carlo Edition" \
         --output  dashboards/norway2026_dashboard.html
 
 Minimal example:
@@ -34,6 +34,21 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+
+
+def roman(n: int) -> str:
+    """Integer -> Roman numerals (e.g. 2026 -> MMXXVI)."""
+    table = [
+        (1000, "M"), (900, "CM"), (500, "D"), (400, "CD"),
+        (100, "C"), (90, "XC"), (50, "L"), (40, "XL"),
+        (10, "X"), (9, "IX"), (5, "V"), (4, "IV"), (1, "I"),
+    ]
+    out = []
+    for value, sym in table:
+        while n >= value:
+            out.append(sym)
+            n -= value
+    return "".join(out)
 
 
 def load_json(path: Path) -> dict:
@@ -56,12 +71,18 @@ def derive_meta(data: dict, args: argparse.Namespace) -> dict:
         w = base.split()
         mast = [" ".join(w[:-1]), w[-1]] if len(w) > 1 else [base]
 
+    # Volume in Roman numerals, derived from the tournament year so it can never
+    # drift from the data (2026 -> "VOL. MMXXVI"). --edition overrides if given.
+    vol = f"VOL. {roman(int(year))}" if year.isdigit() else "VOL."
+    edition = args.edition or f"{vol} · Monte Carlo Edition"
+
     meta: dict = {
         "mast": mast,
         "year": year,
+        "vol": vol,
         "venue": args.venue or "",
         "dates": args.dates or "",
-        "edition": args.edition or "Monte Carlo Edition",
+        "edition": edition,
     }
 
     if args.names:

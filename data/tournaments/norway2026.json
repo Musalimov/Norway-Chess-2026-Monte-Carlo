@@ -16,7 +16,7 @@
     {
       "id": "keymer",
       "name": "Keymer",
-      "classical": 2765,
+      "classical": 2759,
       "live_adj": 5,
       "trend_mo": 3.5,
       "rapid": 2627,
@@ -46,7 +46,7 @@
     {
       "id": "gukesh",
       "name": "Gukesh",
-      "classical": 2734,
+      "classical": 2732,
       "live_adj": 0,
       "trend_mo": -4.2,
       "rapid": 2682,

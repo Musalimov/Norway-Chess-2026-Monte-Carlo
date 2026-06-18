@@ -1,0 +1,120 @@
+{
+ "method": "leave-one-year-out; fit on the other 4 editions (RPS+MAP, lambda=0.1)",
+ "per_game": [
+  {
+   "year": "2022",
+   "n": 45,
+   "sigma": 0,
+   "rps_sigma0": 0.1267,
+   "rps_fit": 0.1267,
+   "rps_uniform": 0.163,
+   "brier_fit": 0.4847,
+   "brier_uniform": 0.6667,
+   "logloss_fit": 1.1598
+  },
+  {
+   "year": "2023",
+   "n": 45,
+   "sigma": 40,
+   "rps_sigma0": 0.1435,
+   "rps_fit": 0.1426,
+   "rps_uniform": 0.1704,
+   "brier_fit": 0.5106,
+   "brier_uniform": 0.6667,
+   "logloss_fit": 1.272
+  },
+  {
+   "year": "2024",
+   "n": 30,
+   "sigma": 80,
+   "rps_sigma0": 0.1232,
+   "rps_fit": 0.1218,
+   "rps_uniform": 0.1611,
+   "brier_fit": 0.4593,
+   "brier_uniform": 0.6667,
+   "logloss_fit": 1.139
+  },
+  {
+   "year": "2025",
+   "n": 30,
+   "sigma": 80,
+   "rps_sigma0": 0.1711,
+   "rps_fit": 0.1716,
+   "rps_uniform": 0.1944,
+   "brier_fit": 0.6082,
+   "brier_uniform": 0.6667,
+   "logloss_fit": 1.3997
+  },
+  {
+   "year": "2026",
+   "n": 30,
+   "sigma": 60,
+   "rps_sigma0": 0.1902,
+   "rps_fit": 0.191,
+   "rps_uniform": 0.1944,
+   "brier_fit": 0.6421,
+   "brier_uniform": 0.6667,
+   "logloss_fit": 1.6086
+  }
+ ],
+ "per_game_all": {
+  "n": 180,
+  "rps_sigma0": 0.1483,
+  "rps_fit": 0.148,
+  "rps_uniform": 0.175,
+  "brier_fit": 0.5338,
+  "brier_uniform": 0.6667
+ },
+ "tournament": [
+  {
+   "year": "2022",
+   "champion": "Carlsen",
+   "players": 10,
+   "p_champion_sigma0": 0.5173,
+   "p_champion_fit": 0.5173,
+   "bits_sigma0": 0.95,
+   "bits_fit": 0.95,
+   "bits_uniform": 3.32
+  },
+  {
+   "year": "2023",
+   "champion": "Nakamura",
+   "players": 10,
+   "p_champion_sigma0": 0.09,
+   "p_champion_fit": 0.094,
+   "bits_sigma0": 3.47,
+   "bits_fit": 3.41,
+   "bits_uniform": 3.32
+  },
+  {
+   "year": "2024",
+   "champion": "Carlsen",
+   "players": 6,
+   "p_champion_sigma0": 0.3727,
+   "p_champion_fit": 0.3126,
+   "bits_sigma0": 1.42,
+   "bits_fit": 1.68,
+   "bits_uniform": 2.58
+  },
+  {
+   "year": "2025",
+   "champion": "Carlsen",
+   "players": 6,
+   "p_champion_sigma0": 0.3923,
+   "p_champion_fit": 0.3116,
+   "bits_sigma0": 1.35,
+   "bits_fit": 1.68,
+   "bits_uniform": 2.58
+  },
+  {
+   "year": "2026",
+   "champion": "Praggnanandhaa_R",
+   "players": 6,
+   "p_champion_sigma0": 0.0592,
+   "p_champion_fit": 0.0772,
+   "bits_sigma0": 4.08,
+   "bits_fit": 3.7,
+   "bits_uniform": 2.58
+  }
+ ]
+}

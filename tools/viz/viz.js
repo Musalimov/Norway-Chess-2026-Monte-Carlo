@@ -266,7 +266,7 @@ roundTabs('g-tabs',R1_10,v=>v,1,drawGames);
   } else if($('mastName')) $('mastName').textContent=D.tournament;
   if($('mastYear')) $('mastYear').textContent = META.year||'';
   if($('mastVenue')) $('mastVenue').textContent = META.venue||'';
-  if($('mastEdition')) $('mastEdition').textContent = META.edition||'Monte Carlo Edition';
+  if($('mastEdition')) $('mastEdition').textContent = META.edition || (META.vol? META.vol+' · Monte Carlo Edition' : 'Monte Carlo Edition');
   const datesEl=$('mastDates'); if(datesEl){ if(META.dates) datesEl.textContent=META.dates; else datesEl.style.display='none'; }
   if($('mastTagline')) $('mastTagline').textContent =
     `${D.iters_main.toLocaleString('en-US')} tournaments per checkpoint · recomputed each round`;

@@ -1,8 +1,8 @@
 {
  "summary": {
-  "modal_hits": 12,
+  "modal_hits": 13,
   "games": 30,
-  "modal_hit_rate": 0.4,
+  "modal_hit_rate": 0.43333333333333335,
   "decisive_games": 15,
   "win_side_correct": 8,
   "note": "modal = most probable of the 4 outcomes; win_side = among decisive classical games, whether the eventual winner had the higher predicted win probability"
@@ -16,16 +16,16 @@
      "p2": "Carlsen",
      "col": "p1w",
      "probs": [
-      0.082,
-      0.2911,
-      0.375,
-      0.2519
+      0.0857,
+      0.2972,
+      0.3851,
+      0.232
      ],
      "modal": 2,
      "actual": 0,
      "modal_hit": false,
-     "p_actual": 0.082,
-     "bits": 3.61,
+     "p_actual": 0.0857,
+     "bits": 3.54,
      "win_side_correct": false
     },
     {
@@ -33,16 +33,16 @@
      "p2": "Gukesh",
      "col": "unk",
      "probs": [
-      0.3617,
-      0.1859,
-      0.2361,
-      0.2163
+      0.3485,
+      0.1901,
+      0.2401,
+      0.2212
      ],
      "modal": 0,
      "actual": 2,
      "modal_hit": false,
-     "p_actual": 0.2361,
-     "bits": 2.08,
+     "p_actual": 0.2401,
+     "bits": 2.06,
      "win_side_correct": null
     },
     {
@@ -50,25 +50,25 @@
      "p2": "Pragg",
      "col": "unk",
      "probs": [
-      0.1176,
-      0.5024,
-      0.3339,
-      0.0461
+      0.1257,
+      0.4797,
+      0.321,
+      0.0736
      ],
      "modal": 1,
      "actual": 2,
      "modal_hit": false,
-     "p_actual": 0.3339,
-     "bits": 1.58,
+     "p_actual": 0.321,
+     "bits": 1.64,
      "win_side_correct": null
     }
    ],
    "eff_before": {
     "Carlsen": 2840.2,
-    "Keymer": 2777.0,
+    "Keymer": 2771.0,
     "Firouzja": 2745.6,
     "So": 2755.8,
-    "Gukesh": 2725.6,
+    "Gukesh": 2723.6,
     "Pragg": 2725.8
    }
   },
@@ -80,16 +80,16 @@
      "p2": "Pragg",
      "col": "unk",
      "probs": [
-      0.1988,
-      0.4469,
-      0.261,
-      0.0933
+      0.1955,
+      0.4436,
+      0.2593,
+      0.1016
      ],
      "modal": 1,
      "actual": 0,
      "modal_hit": false,
-     "p_actual": 0.1988,
-     "bits": 2.33,
+     "p_actual": 0.1955,
+     "bits": 2.35,
      "win_side_correct": true
     },
     {
@@ -97,16 +97,16 @@
      "p2": "Keymer",
      "col": "p1w",
      "probs": [
-      0.2924,
-      0.526,
-      0.1205,
-      0.0612
+      0.2794,
+      0.5397,
+      0.1233,
+      0.0576
      ],
      "modal": 1,
      "actual": 1,
      "modal_hit": true,
-     "p_actual": 0.526,
-     "bits": 0.93,
+     "p_actual": 0.5397,
+     "bits": 0.89,
      "win_side_correct": null
     },
     {
@@ -114,25 +114,25 @@
      "p2": "So",
      "col": "unk",
      "probs": [
-      0.18,
-      0.2139,
-      0.3507,
-      0.2554
+      0.1795,
+      0.2135,
+      0.3506,
+      0.2564
      ],
      "modal": 2,
      "actual": 2,
      "modal_hit": true,
-     "p_actual": 0.3507,
+     "p_actual": 0.3506,
      "bits": 1.51,
      "win_side_correct": null
     }
    ],
    "eff_before": {
     "Carlsen": 2821.5,
-    "Keymer": 2774.7,
+    "Keymer": 2768.9,
     "Firouzja": 2764.3,
     "So": 2754.4,
-    "Gukesh": 2727.9,
+    "Gukesh": 2725.7,
     "Pragg": 2727.2
    }
   },
@@ -144,16 +144,16 @@
      "p2": "Firouzja",
      "col": "p1w",
      "probs": [
-      0.2563,
-      0.1712,
-      0.2744,
-      0.2981
+      0.2594,
+      0.1678,
+      0.2683,
+      0.3045
      ],
      "modal": 3,
      "actual": 2,
      "modal_hit": false,
-     "p_actual": 0.2744,
-     "bits": 1.87,
+     "p_actual": 0.2683,
+     "bits": 1.9,
      "win_side_correct": null
     },
     {
@@ -161,16 +161,16 @@
      "p2": "So",
      "col": "p1w",
      "probs": [
-      0.1774,
-      0.2946,
-      0.518,
-      0.01
+      0.17,
+      0.2841,
+      0.4981,
+      0.0478
      ],
      "modal": 2,
      "actual": 2,
      "modal_hit": true,
-     "p_actual": 0.518,
-     "bits": 0.95,
+     "p_actual": 0.4981,
+     "bits": 1.01,
      "win_side_correct": null
     },
     {
@@ -178,25 +178,25 @@
      "p2": "Carlsen",
      "col": "unk",
      "probs": [
-      0.0254,
-      0.1851,
-      0.4829,
-      0.3066
+      0.036,
+      0.1915,
+      0.4995,
+      0.2729
      ],
      "modal": 2,
      "actual": 0,
      "modal_hit": false,
-     "p_actual": 0.0254,
-     "bits": 5.3,
+     "p_actual": 0.036,
+     "bits": 4.79,
      "win_side_correct": false
     }
    ],
    "eff_before": {
-    "Carlsen": 2817.8,
-    "Keymer": 2778.4,
+    "Carlsen": 2817.5,
+    "Keymer": 2772.8,
     "Firouzja": 2778.6,
-    "So": 2753.2,
-    "Gukesh": 2729.1,
+    "So": 2753.1,
+    "Gukesh": 2727.1,
     "Pragg": 2712.9
    }
   },
@@ -208,15 +208,15 @@
      "p2": "Carlsen",
      "col": "p1w",
      "probs": [
-      0.2204,
-      0.135,
-      0.3314,
-      0.3132
+      0.2215,
+      0.1342,
+      0.3303,
+      0.3141
      ],
      "modal": 2,
      "actual": 3,
      "modal_hit": false,
-     "p_actual": 0.3132,
+     "p_actual": 0.3141,
      "bits": 1.67,
      "win_side_correct": true
     },
@@ -225,16 +225,16 @@
      "p2": "Pragg",
      "col": "p1w",
      "probs": [
-      0.2772,
-      0.3072,
-      0.3568,
-      0.0587
+      0.249,
+      0.3161,
+      0.3682,
+      0.0667
      ],
      "modal": 2,
      "actual": 2,
      "modal_hit": true,
-     "p_actual": 0.3568,
-     "bits": 1.49,
+     "p_actual": 0.3682,
+     "bits": 1.44,
      "win_side_correct": null
     },
     {
@@ -242,25 +242,25 @@
      "p2": "Firouzja",
      "col": "p1w",
      "probs": [
-      0.0937,
-      0.4323,
-      0.4177,
-      0.0563
+      0.1215,
+      0.4076,
+      0.3938,
+      0.077
      ],
      "modal": 1,
      "actual": 1,
      "modal_hit": true,
-     "p_actual": 0.4323,
-     "bits": 1.21,
+     "p_actual": 0.4076,
+     "bits": 1.29,
      "win_side_correct": null
     }
    ],
    "eff_before": {
-    "Carlsen": 2797.1,
-    "Keymer": 2775.6,
-    "Firouzja": 2778.0,
-    "So": 2756.0,
-    "Gukesh": 2729.8,
+    "Carlsen": 2796.9,
+    "Keymer": 2770.3,
+    "Firouzja": 2777.9,
+    "So": 2755.6,
+    "Gukesh": 2727.8,
     "Pragg": 2733.5
    }
   },
@@ -272,16 +272,16 @@
      "p2": "So",
      "col": "p1w",
      "probs": [
-      0.2153,
-      0.5239,
-      0.2508,
-      0.01
+      0.2164,
+      0.5092,
+      0.2423,
+      0.0321
      ],
      "modal": 1,
      "actual": 3,
      "modal_hit": false,
-     "p_actual": 0.01,
-     "bits": 6.64,
+     "p_actual": 0.0321,
+     "bits": 4.96,
      "win_side_correct": false
     },
     {
@@ -289,16 +289,16 @@
      "p2": "Gukesh",
      "col": "p1w",
      "probs": [
-      0.3535,
-      0.2573,
-      0.1974,
-      0.1917
+      0.3468,
+      0.2629,
+      0.2012,
+      0.1891
      ],
      "modal": 0,
      "actual": 3,
      "modal_hit": false,
-     "p_actual": 0.1917,
-     "bits": 2.38,
+     "p_actual": 0.1891,
+     "bits": 2.4,
      "win_side_correct": false
     },
     {
@@ -306,26 +306,26 @@
      "p2": "Firouzja",
      "col": "unk",
      "probs": [
-      0.1655,
-      0.1926,
-      0.4582,
-      0.1838
+      0.1603,
+      0.1924,
+      0.4568,
+      0.1905
      ],
      "modal": 2,
      "actual": 2,
      "modal_hit": true,
-     "p_actual": 0.4582,
+     "p_actual": 0.4568,
      "bits": 1.13,
      "win_side_correct": null
     }
    ],
    "eff_before": {
-    "Carlsen": 2811.7,
-    "Keymer": 2772.1,
-    "Firouzja": 2778.6,
-    "So": 2755.4,
-    "Gukesh": 2715.3,
-    "Pragg": 2737.0
+    "Carlsen": 2811.3,
+    "Keymer": 2767.0,
+    "Firouzja": 2778.5,
+    "So": 2755.0,
+    "Gukesh": 2713.4,
+    "Pragg": 2736.7
    }
   },
   {
@@ -336,16 +336,16 @@
      "p2": "Pragg",
      "col": "p1w",
      "probs": [
-      0.2093,
-      0.5018,
-      0.2789,
-      0.01
+      0.2157,
+      0.4827,
+      0.2699,
+      0.0318
      ],
      "modal": 1,
      "actual": 0,
      "modal_hit": false,
-     "p_actual": 0.2093,
-     "bits": 2.26,
+     "p_actual": 0.2157,
+     "bits": 2.21,
      "win_side_correct": true
     },
     {
@@ -353,16 +353,16 @@
      "p2": "Firouzja",
      "col": "p1w",
      "probs": [
-      0.2291,
-      0.4387,
-      0.2411,
-      0.0911
+      0.2217,
+      0.4417,
+      0.2413,
+      0.0953
      ],
      "modal": 1,
      "actual": 0,
      "modal_hit": false,
-     "p_actual": 0.2291,
-     "bits": 2.13,
+     "p_actual": 0.2217,
+     "bits": 2.17,
      "win_side_correct": true
     },
     {
@@ -370,26 +370,26 @@
      "p2": "Gukesh",
      "col": "p1w",
      "probs": [
-      0.4019,
-      0.1965,
-      0.2082,
-      0.1933
+      0.384,
+      0.2049,
+      0.217,
+      0.1941
      ],
      "modal": 0,
      "actual": 0,
      "modal_hit": true,
-     "p_actual": 0.4019,
-     "bits": 1.31,
+     "p_actual": 0.384,
+     "bits": 1.38,
      "win_side_correct": true
     }
    ],
    "eff_before": {
-    "Carlsen": 2791.5,
-    "Keymer": 2772.4,
-    "Firouzja": 2778.3,
-    "So": 2775.5,
-    "Gukesh": 2733.9,
-    "Pragg": 2718.4
+    "Carlsen": 2791.2,
+    "Keymer": 2767.6,
+    "Firouzja": 2777.9,
+    "So": 2775.2,
+    "Gukesh": 2732.0,
+    "Pragg": 2718.1
    }
   },
   {
@@ -400,16 +400,16 @@
      "p2": "Firouzja",
      "col": "unk",
      "probs": [
-      0.0772,
-      0.2514,
-      0.4305,
-      0.2408
+      0.082,
+      0.2546,
+      0.4354,
+      0.228
      ],
      "modal": 2,
      "actual": 0,
      "modal_hit": false,
-     "p_actual": 0.0772,
-     "bits": 3.69,
+     "p_actual": 0.082,
+     "bits": 3.61,
      "win_side_correct": false
     },
     {
@@ -417,16 +417,16 @@
      "p2": "Gukesh",
      "col": "unk",
      "probs": [
-      0.326,
-      0.3316,
-      0.2027,
-      0.1398
+      0.3156,
+      0.3408,
+      0.2078,
+      0.1358
      ],
      "modal": 1,
      "actual": 2,
      "modal_hit": false,
-     "p_actual": 0.2027,
-     "bits": 2.3,
+     "p_actual": 0.2078,
+     "bits": 2.27,
      "win_side_correct": null
     },
     {
@@ -434,26 +434,26 @@
      "p2": "Carlsen",
      "col": "p1w",
      "probs": [
-      0.1565,
-      0.1783,
-      0.551,
-      0.1141
+      0.1564,
+      0.1748,
+      0.5416,
+      0.1272
      ],
      "modal": 2,
      "actual": 2,
      "modal_hit": true,
-     "p_actual": 0.551,
-     "bits": 0.86,
+     "p_actual": 0.5416,
+     "bits": 0.88,
      "win_side_correct": null
     }
    ],
    "eff_before": {
-    "Carlsen": 2805.3,
-    "Keymer": 2785.1,
-    "Firouzja": 2764.5,
-    "So": 2787.3,
-    "Gukesh": 2721.2,
-    "Pragg": 2706.5
+    "Carlsen": 2805.0,
+    "Keymer": 2780.4,
+    "Firouzja": 2764.1,
+    "So": 2787.0,
+    "Gukesh": 2719.2,
+    "Pragg": 2706.2
    }
   },
   {
@@ -464,16 +464,16 @@
      "p2": "Pragg",
      "col": "p1w",
      "probs": [
-      0.3294,
-      0.5019,
-      0.1587,
-      0.01
+      0.2979,
+      0.5128,
+      0.1622,
+      0.0271
      ],
      "modal": 1,
      "actual": 3,
      "modal_hit": false,
-     "p_actual": 0.01,
-     "bits": 6.64,
+     "p_actual": 0.0271,
+     "bits": 5.21,
      "win_side_correct": false
     },
     {
@@ -481,15 +481,15 @@
      "p2": "Gukesh",
      "col": "unk",
      "probs": [
-      0.3159,
+      0.3165,
       0.2808,
       0.149,
-      0.2543
+      0.2538
      ],
      "modal": 0,
      "actual": 0,
      "modal_hit": true,
-     "p_actual": 0.3159,
+     "p_actual": 0.3165,
      "bits": 1.66,
      "win_side_correct": true
     },
@@ -498,26 +498,26 @@
      "p2": "Keymer",
      "col": "unk",
      "probs": [
-      0.0749,
-      0.5739,
-      0.2761,
-      0.0751
+      0.1052,
+      0.5377,
+      0.2595,
+      0.0976
      ],
      "modal": 1,
      "actual": 1,
      "modal_hit": true,
-     "p_actual": 0.5739,
-     "bits": 0.8,
+     "p_actual": 0.5377,
+     "bits": 0.9,
      "win_side_correct": null
     }
    ],
    "eff_before": {
-    "Carlsen": 2806.0,
-    "Keymer": 2784.4,
-    "Firouzja": 2745.9,
-    "So": 2784.4,
-    "Gukesh": 2724.2,
-    "Pragg": 2725.2
+    "Carlsen": 2805.5,
+    "Keymer": 2779.9,
+    "Firouzja": 2745.5,
+    "So": 2784.0,
+    "Gukesh": 2722.3,
+    "Pragg": 2724.8
    }
   },
   {
@@ -528,16 +528,16 @@
      "p2": "Carlsen",
      "col": "p1w",
      "probs": [
-      0.1245,
-      0.3429,
-      0.5071,
-      0.0255
+      0.1389,
+      0.3241,
+      0.4821,
+      0.0549
      ],
      "modal": 2,
      "actual": 1,
      "modal_hit": false,
-     "p_actual": 0.3429,
-     "bits": 1.54,
+     "p_actual": 0.3241,
+     "bits": 1.63,
      "win_side_correct": null
     },
     {
@@ -545,16 +545,16 @@
      "p2": "Pragg",
      "col": "p1w",
      "probs": [
-      0.2461,
-      0.2609,
-      0.2407,
-      0.2522
+      0.2522,
+      0.2523,
+      0.2334,
+      0.2621
      ],
-     "modal": 1,
+     "modal": 3,
      "actual": 3,
-     "modal_hit": false,
-     "p_actual": 0.2522,
-     "bits": 1.99,
+     "modal_hit": true,
+     "p_actual": 0.2621,
+     "bits": 1.93,
      "win_side_correct": true
     },
     {
@@ -562,26 +562,26 @@
      "p2": "Firouzja",
      "col": "p1w",
      "probs": [
-      0.2716,
-      0.2066,
-      0.4171,
-      0.1047
+      0.2536,
+      0.212,
+      0.4267,
+      0.1077
      ],
      "modal": 2,
      "actual": 2,
      "modal_hit": true,
-     "p_actual": 0.4171,
-     "bits": 1.26,
+     "p_actual": 0.4267,
+     "bits": 1.23,
      "win_side_correct": null
     }
    ],
    "eff_before": {
-    "Carlsen": 2784.9,
-    "Keymer": 2784.4,
-    "Firouzja": 2760.9,
-    "So": 2784.4,
-    "Gukesh": 2709.2,
-    "Pragg": 2746.3
+    "Carlsen": 2784.3,
+    "Keymer": 2780.1,
+    "Firouzja": 2760.5,
+    "So": 2783.8,
+    "Gukesh": 2707.4,
+    "Pragg": 2746.0
    }
   },
   {
@@ -592,16 +592,16 @@
      "p2": "Keymer",
      "col": "unk",
      "probs": [
-      0.1138,
-      0.4163,
-      0.3005,
-      0.1694
+      0.1249,
+      0.4129,
+      0.2981,
+      0.1641
      ],
      "modal": 1,
      "actual": 0,
      "modal_hit": false,
-     "p_actual": 0.1138,
-     "bits": 3.14,
+     "p_actual": 0.1249,
+     "bits": 3.0,
      "win_side_correct": false
     },
     {
@@ -609,16 +609,16 @@
      "p2": "Gukesh",
      "col": "unk",
      "probs": [
-      0.4203,
-      0.3105,
-      0.1084,
-      0.1608
+      0.4061,
+      0.3247,
+      0.1126,
+      0.1567
      ],
      "modal": 0,
      "actual": 0,
      "modal_hit": true,
-     "p_actual": 0.4203,
-     "bits": 1.25,
+     "p_actual": 0.4061,
+     "bits": 1.3,
      "win_side_correct": true
     },
     {
@@ -626,26 +626,26 @@
      "p2": "So",
      "col": "unk",
      "probs": [
-      0.0558,
-      0.446,
-      0.3875,
-      0.1106
+      0.0867,
+      0.4231,
+      0.3681,
+      0.1221
      ],
      "modal": 1,
      "actual": 2,
      "modal_hit": false,
-     "p_actual": 0.3875,
-     "bits": 1.37,
+     "p_actual": 0.3681,
+     "bits": 1.44,
      "win_side_correct": null
     }
    ],
    "eff_before": {
-    "Carlsen": 2786.4,
-    "Keymer": 2781.7,
-    "Firouzja": 2763.5,
-    "So": 2782.8,
-    "Gukesh": 2693.3,
-    "Pragg": 2762.2
+    "Carlsen": 2785.9,
+    "Keymer": 2777.6,
+    "Firouzja": 2763.0,
+    "So": 2782.2,
+    "Gukesh": 2691.5,
+    "Pragg": 2761.8
    }
   }
  ]

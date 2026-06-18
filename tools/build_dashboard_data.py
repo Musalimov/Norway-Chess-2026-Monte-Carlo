@@ -5,68 +5,46 @@ The heavy 1,000,000-iteration simulation outputs are expected to already exist
 in out/timeline_*.json and out/tournament_sim_v4.json. This script combines
 those outputs with tournament metadata, analytic per-game probabilities, final
 place distributions, reliability bins, and per-round Brier scores.
+
+All per-game probabilities come from src/nc_common.py (one Model per Armageddon
+strength). There is no second copy of the probability formula here, so the
+dashboard cannot disagree with src/eval_*.py or with what the C++ engine
+simulated.
 """
-import json, math
+import json
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-tour = json.loads((ROOT / "data/tournaments/norway2026.json").read_text())
-NAMES = [p["name"] for p in tour["players"]]
-name_by_id = {p["id"]: p["name"] for p in tour["players"]}
-pdict = {p["id"]: p for p in tour["players"]}
-MODELS = ["rapidblitz", "blitz", "rapid", "classical"]
+sys.path.insert(0, str(ROOT / "src"))
+from nc_common import Model  # noqa: E402
 
+MODELS = ["rapidblitz", "blitz", "rapid", "classical"]
 ITERS_MAIN = 1000000
 
-# Load generated 1M timelines for each Armageddon-strength model.
+# One Model per Armageddon strength; they share fitted params + ratings and
+# differ only in the strength used for the Armageddon tiebreak.
+M = {m: Model(config=ROOT / f"configs/model_v4_{m}.json") for m in MODELS}
+base = M["rapidblitz"]
+tour = base.tournament
+NAMES = [p["name"] for p in tour["players"]]
+name_by_id = base.name_by_id
+
 tl_by_model = {m: json.loads((ROOT / f"out/timeline_{m}.json").read_text()) for m in MODELS}
 main_tl = tl_by_model["rapidblitz"]
 
-# Per-game 4-way probabilities, using the same formulas as the C++ model.
-cfg = json.loads((ROOT / "configs/model_v4.json").read_text())
-WA, DB, DD, ARMH = cfg["white_advantage"], cfg["draw_base"], cfg["draw_decay"], cfg["armageddon_handicap"]
-DCAP, MINP = cfg["draw_probability_cap"], cfg["min_outcome_probability"]
-
-def expect(d): return 1 / (1 + 10 ** (-d / 400))
-def eff0(p): return p["classical"] + p["live_adj"] + 2 * p["trend_mo"]
-def arm_r(p, s): return {"blitz": p["blitz"], "rapid": p["rapid"], "classical": p["classical"]}.get(s, (p["rapid"] + p["blitz"]) / 2)
-def game4(wid, bid, s):
-    w, b = pdict[wid], pdict[bid]
-    diff = eff0(w) - eff0(b) + WA
-    e = expect(diff)
-    pd = min(DB * math.exp(-abs(diff) * DD) * w["style"] * b["style"], DCAP)
-    pw = max(e - pd / 2, MINP)
-    pb = max(1 - pw - pd, MINP)
-    pd = 1 - pw - pb
-    parm = expect(arm_r(w, s) - arm_r(b, s) - ARMH)
-    return pw, pd * parm, pd * (1 - parm), pb
-
-COLOR_KNOWN = {"p1_white": True, "unknown": False}
-def actual4(g):
-    r = g["result"]
-    pts = r["p1_points"]
-    if r["type"] == "classical":
-        return 0 if pts == 3.0 else 3
-    return 1 if pts == 1.5 else 2
-
+# Per-game 4-way probabilities, straight from the shared model.
 rounds_pred = {}
 for m in MODELS:
     rp = []
     for rd in tour["rounds"]:
         games = []
         for g in rd["games"]:
-            p1, p2 = g["p1"], g["p2"]
-            if COLOR_KNOWN[g["color"]]:
-                f = game4(p1, p2, m)
-            else:
-                a = game4(p1, p2, m)
-                bb = game4(p2, p1, m)
-                f = [(a[0] + bb[3]) / 2, (a[1] + bb[2]) / 2, (a[2] + bb[1]) / 2, (a[3] + bb[0]) / 2]
-            s = sum(f)
-            f = [x / s for x in f]
+            ng = {"p1": g["p1"], "p2": g["p2"], "color_known": g["color"] == "p1_white"}
+            f = M[m].p1_dist(ng)
             games.append({
-                "p1": name_by_id[p1], "p2": name_by_id[p2], "color": g["color"],
-                "probs": [round(x, 4) for x in f], "actual": actual4(g),
+                "p1": name_by_id[g["p1"]], "p2": name_by_id[g["p2"]], "color": g["color"],
+                "probs": [round(x, 4) for x in f], "actual": base.outcome_index(g["result"]),
                 "result_type": g["result"]["type"], "p1_points": g["result"]["p1_points"],
             })
         rp.append({"round": rd["round"], "games": games})
@@ -127,6 +105,23 @@ for rd in rounds_pred["rapidblitz"]:
     br = sum(sum((g["probs"][i] - (1 if i == g["actual"] else 0)) ** 2 for i in range(4)) for g in rd["games"])
     per_round.append(round(br / len(rd["games"]), 4))
 
+# Outcome-call metrics on the displayed (static, rapidblitz) probabilities, so the
+# numbers quoted in the README are reproducible from this file and match the cards.
+g3_hits = draw_modal = dir_hits = dir_calls = 0
+total_games = 0
+for rd in rounds_pred["rapidblitz"]:
+    for g in rd["games"]:
+        total_games += 1
+        p = g["probs"]
+        three = [p[0], p[1] + p[2], p[3]]            # win / draw / loss
+        modal = max(range(3), key=lambda i: three[i])
+        actual_cls = 0 if g["actual"] == 0 else (2 if g["actual"] == 3 else 1)
+        g3_hits += (modal == actual_cls)
+        draw_modal += (modal == 1)
+        if actual_cls in (0, 2):                       # decisive game
+            dir_calls += 1
+            dir_hits += (p[0] > p[3]) if actual_cls == 0 else (p[3] > p[0])
+
 out = {
     "tournament": tour["name"], "models": MODELS,
     "iters_main": ITERS_MAIN,
@@ -140,6 +135,9 @@ out = {
     "metrics": {
         "reliability": rel, "per_round_brier": per_round,
         "mean_brier": round(sum(per_round) / len(per_round), 4), "uniform_brier": 0.75,
+        "outcome_call_hits": g3_hits, "outcome_call_games": total_games,
+        "draw_was_modal": draw_modal,
+        "directional_hits": dir_hits, "directional_games": dir_calls,
     },
 }
 (ROOT / "out/dashboard_data.json").write_text(json.dumps(out, ensure_ascii=False))

@@ -18,7 +18,7 @@
 #include <algorithm>
 #include "model.hpp"
 
-struct Params { double wa, dbase, ddec, armh, k, dcap, minp; };
+struct Params { double wa, dbase, ddec, armh, k, dcap, minp, sigma; };
 struct Player { double eff0, arm, style; std::string name; };
 struct Game   { int p1, p2, color_known, actual; };
 
@@ -31,7 +31,7 @@ static inline nc::ModelParams mp(){ return {PARS.wa,PARS.dbase,PARS.ddec,PARS.ar
 
 static void read_input() {
     std::string tag;
-    std::cin >> tag >> PARS.wa >> PARS.dbase >> PARS.ddec >> PARS.armh >> PARS.k >> PARS.dcap >> PARS.minp;
+    std::cin >> tag >> PARS.wa >> PARS.dbase >> PARS.ddec >> PARS.armh >> PARS.k >> PARS.dcap >> PARS.minp >> PARS.sigma;
     int n; std::cin >> tag >> n;
     PL.resize(n);
     for (auto& p : PL) std::cin >> p.eff0 >> p.arm >> p.style >> p.name;
@@ -87,7 +87,13 @@ static int run_once(int after_round, std::mt19937_64& rng,
                     std::uniform_real_distribution<double>& U, std::vector<double>& pts_out) {
     int n = PL.size();
     std::vector<double> eff(n), pts(n, 0.0);
-    for (int i = 0; i < n; ++i) eff[i] = PL[i].eff0;
+    // Per-iteration strength sampling: each player's effective rating for this
+    // simulated tournament is drawn once from N(eff0, sigma), modelling whole-event
+    // form variance (a player can run hot or cold for the entire event). sigma=0
+    // reproduces the point-rating behaviour exactly.
+    std::normal_distribution<double> N01(0.0, 1.0);
+    for (int i = 0; i < n; ++i)
+        eff[i] = PL[i].eff0 + (PARS.sigma > 0.0 ? PARS.sigma * N01(rng) : 0.0);
     for (size_t r = 0; r < RND.size(); ++r)
         for (auto& g : RND[r]) {
             if ((int)r < after_round) apply_actual(g, eff, pts);

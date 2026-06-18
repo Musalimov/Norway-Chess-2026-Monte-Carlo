@@ -6,7 +6,7 @@
 A reproducible C++/Python Monte Carlo forecasting system for **Norway Chess 2026**.
 The model handles Norway Chess’s classical-plus-Armageddon scoring format, runs **1,000,000 simulated tournaments per checkpoint**, re-forecasts after every round, and evaluates its own predictions using proper scoring rules.
 
-The 2026 edition became a stress test for the model: its lowest-rated title candidate by pre-tournament probability, **Praggnanandhaa at 2.4%**, won the event, while its **56.3% favorite, Magnus Carlsen**, finished 4th. The result produced a near-total inversion of the model’s expected ranking and makes the project useful not only as a forecasting engine, but also as a post-mortem on calibration, draw modelling, and in-event form updates.
+The 2026 edition became a stress test for the model: its lowest-rated title candidate by pre-tournament probability, **Praggnanandhaa at 4.6%**, won the event, while its **47.3% favorite, Magnus Carlsen**, finished 4th. The result produced a near-total inversion of the model’s expected ranking and makes the project useful not only as a forecasting engine, but also as a post-mortem on calibration, draw modelling, and in-event form updates.
 
 A classical win scores `3 / 0`. A classical **draw** is resolved by an **Armageddon** tiebreak, where White must win and Black only needs a draw. A drawn classical game followed by Armageddon scores `1.5 / 1`. Every game therefore has four modelled outcomes:
 
@@ -88,7 +88,7 @@ The model was calibrated, sharper than a uniform baseline, and useful at trackin
 ### The one-line story
 
 > **The model’s least likely champion won the tournament.**
-> Praggnanandhaa started with a **2.4%** title probability, ranked last of six by the model, and finished first. Carlsen started as the **56.3%** favorite and finished fourth.
+> Praggnanandhaa started with a **4.6%** title probability, ranked last of six by the model, and finished first. Carlsen started as the **47.3%** favorite and finished fourth.
 
 ### Forecast vs reality
 
@@ -97,12 +97,12 @@ Pre-tournament probabilities come from one million simulations at `after_round =
 
 | Player             |  Elo | Model win prob. | Exp. pts | Actual pts |        Δ | Finish |
 | ------------------ | ---: | --------------: | -------: | ---------: | -------: | -----: |
-| **Praggnanandhaa** | 2733 |  **2.4%** (6th) |     11.0 |   **18.0** | **+7.0** | 🥇 1st |
-| So                 | 2754 |      6.9% (5th) |     13.3 |       17.0 | **+3.7** | 🥈 2nd |
-| Firouzja           | 2759 |      7.4% (4th) |     12.4 |       15.5 | **+3.1** | 🥉 3rd |
-| **Carlsen**        | 2840 | **56.3%** (1st) |     17.7 |       13.0 | **−4.7** |    4th |
-| Keymer             | 2765 |     16.6% (2nd) |     14.3 |       11.0 |     −3.3 |    5th |
-| Gukesh             | 2734 |     10.4% (3rd) |     12.0 |        8.0 |     −4.0 |    6th |
+| **Praggnanandhaa** | 2733 |  **4.6%** (6th) |     11.3 |   **18.0** | **+6.7** | 🥇 1st |
+| So                 | 2754 |      9.6% (5th) |     13.4 |       17.0 | **+3.6** | 🥈 2nd |
+| Firouzja           | 2759 |     10.1% (4th) |     12.6 |       15.5 | **+2.9** | 🥉 3rd |
+| **Carlsen**        | 2840 | **47.3%** (1st) |     17.3 |       13.0 | **−4.3** |    4th |
+| Keymer             | 2759 |     16.3% (2nd) |     13.9 |       11.0 |     −2.9 |    5th |
+| Gukesh             | 2732 |     12.2% (3rd) |     12.0 |        8.0 |     −4.0 |    6th |
 
 The model’s projected top half — **Carlsen, Keymer, Gukesh** — finished in the bottom half.
 Its projected bottom half — **Firouzja, So, Praggnanandhaa** — finished in the top half.
@@ -115,16 +115,16 @@ Win probability after each round:
 
 | After | Carlsen | Keymer | Firouzja |       So | Gukesh |    Pragg |
 | ----- | ------: | -----: | -------: | -------: | -----: | -------: |
-| Start |    56.3 |   16.6 |      7.4 |      6.9 |   10.4 |      2.4 |
-| R1    |    32.4 |   14.7 |     28.3 |      6.8 |   13.7 |      4.1 |
-| R2    |    21.7 |   12.8 |     50.8 |      3.5 |   10.4 |      0.7 |
-| R3    |     7.0 |   11.6 |     61.4 |      6.0 |    8.3 |      5.7 |
-| R4    |    17.4 |    6.8 |     60.1 |      5.4 |    3.0 |      7.4 |
-| R5    |     2.8 |    3.2 |     57.9 |     27.5 |    7.9 |      0.7 |
-| R6    |     5.1 |    5.0 |     24.0 |     64.0 |    2.0 |       ~0 |
-| R7    |     8.8 |    4.4 |      8.1 | **76.6** |    1.5 |      0.5 |
-| R8    |      ~0 |    0.6 |     16.4 |     75.2 |     ~0 |      7.8 |
-| R9    |      ~0 |     ~0 |      4.9 |     77.5 |     ~0 | **17.6** |
+| Start |    47.3 |   16.3 |     10.1 |      9.6 |   12.2 |      4.6 |
+| R1    |    27.8 |   13.8 |     28.4 |      9.3 |   14.4 |      6.2 |
+| R2    |    19.8 |   12.3 |     49.0 |      6.0 |   11.4 |      1.4 |
+| R3    |     7.2 |   11.2 |     57.6 |      8.2 |    8.8 |      7.1 |
+| R4    |    16.3 |    7.0 |     57.6 |      7.0 |    3.3 |      8.8 |
+| R5    |     3.0 |    3.3 |     56.6 |     27.9 |    8.2 |      1.0 |
+| R6    |     5.3 |    5.2 |     24.4 |     63.0 |    2.0 |       ~0 |
+| R7    |     8.9 |    4.7 |      8.9 | **75.4** |    1.5 |      0.7 |
+| R8    |     0.1 |    0.7 |     17.5 |     73.6 |     ~0 |      8.2 |
+| R9    |      ~0 |     ~0 |      6.2 | **76.8** |     ~0 | **16.9** |
 | Final |       — |      — |        — |        — |      — |  **100** |
 
 Three different players became the model’s title favorite at different stages:
@@ -133,7 +133,7 @@ Three different players became the model’s title favorite at different stages:
 Carlsen → Firouzja → So → Praggnanandhaa
 ```
 
-Carlsen led only before the tournament. Firouzja became the early favorite after his fast start. So took control in the middle rounds and reached **77.5%** with one round left. Praggnanandhaa still had only **17.6%** after Round 9, then won the tournament outright in the final round.
+Carlsen led only before the tournament. Firouzja became the early favorite after his fast start. So took control in the middle rounds and reached **76.8%** with one round left. Praggnanandhaa still had only **16.9%** after Round 9, then won the tournament outright in the final round.
 
 ### Model performance
 
@@ -141,11 +141,11 @@ Across **30** games, the model beat the uniform baseline on four-way game predic
 
 | Metric                                 |           Value | Baseline / note                  |
 | -------------------------------------- | --------------: | -------------------------------- |
-| Mean Brier, per game, four-way         |      **0.7273** | 0.75 uniform baseline            |
-| Out-of-sample RPS, 2026                |      **0.1902** | from `calibrate.py`              |
-| Best-calibrated round                  |   **R4: 0.541** | lowest Brier                     |
-| Worst round                            |   **R1: 0.879** | opening-round surprises          |
-| Modal-outcome hit rate                 | **18/30 = 60%** | most likely of four outcomes     |
+| Mean Brier, per game, four-way         |      **0.7257** | 0.75 uniform baseline            |
+| Out-of-sample RPS, 2026                |      **0.1910** | from `calibrate.py`              |
+| Best-calibrated round                  |   **R4: 0.544** | lowest Brier                     |
+| Worst round                            |   **R1: 0.874** | opening-round surprises          |
+| Result-class hit rate                  | **16/30 = 53%** | win/draw/loss called correctly   |
 | Directional accuracy on decisive games |  **7/15 = 47%** | winner favored in decisive games |
 
 The model was not useless: it was sharper than a flat 25% four-way guess and produced reasonable probability movement once leaders emerged. But the champion’s path came from a sequence of low-probability decisive wins that the model consistently underweighted.
@@ -154,8 +154,8 @@ The model was not useless: it was sharper than a flat 25% four-way guess and pro
 
 **Good calls**
 
-* **Better than uniform.** Mean Brier was **0.7273**, compared with **0.75** for a uniform four-way guess.
-* **Reasonable calibration.** Observed frequencies broadly tracked predicted bins: `11.2% → 17.4%`, `28.5% → 24.1%`, `47.1% → 45.0%`.
+* **Better than uniform.** Mean Brier was **0.7257**, compared with **0.75** for a uniform four-way guess.
+* **Reasonable calibration.** Observed frequencies broadly tracked predicted bins: `11.9% → 17.8%`, `28.2% → 23.2%`, `46.7% → 47.4%`.
 * **Title-race tracking.** Firouzja’s early surge, So’s mid-event dominance, and Praggnanandhaa’s late climb all appeared in the title-probability trajectory.
 * **Armageddon robustness.** The broad headline barely changed across Armageddon rating assumptions.
 
@@ -163,35 +163,172 @@ The model was not useless: it was sharper than a flat 25% four-way guess and pro
 
 * **Champion under-rated throughout.** Praggnanandhaa’s decisive wins repeatedly came from extremely low model probabilities:
 
-  * **2%** vs Carlsen in Round 3
-  * **1%** vs Carlsen in Round 8
-  * **8%** vs Keymer in Round 10
-* **Draw model over-fired.** A draw was the single most likely call in **21/30 games**, while only **15/30** games were drawn.
+  * **3%** vs Carlsen in Round 3
+  * **2%** vs Carlsen in Round 8
+  * **9%** vs Keymer in Round 10
+* **Draw model over-fired.** A draw was the single most likely call in **29/30 games**, while only **15/30** games were drawn.
 * **Form update reacted too slowly.** `form_k` helped, but not enough to adjust quickly to Carlsen’s underperformance or Praggnanandhaa’s late surge.
 * **Directional accuracy was weak in decisive games.** On games that produced a classical win, the model favored the eventual winner only **7/15** times.
 
-**Takeaway:** the model was calibrated on average, but too conservative in decisive games and too slow to react to extreme in-event form. A **2.4%** outcome is not impossible — and Norway Chess 2026 landed in that tail.
+**Takeaway:** the model was calibrated on average, but too conservative in decisive games and too slow to react to extreme in-event form. A **4.6%** outcome is not impossible — and Norway Chess 2026 landed in that tail.
+
+## Strength sampling: the overconfidence fix (v5)
+
+The first version used **point ratings** — every simulated tournament started each player at exactly their rating. That made the favorite too sharp and the tail too thin: an earlier build put Carlsen at **57%** and the eventual champion at **2.5%**. But elite players run hot or cold for a whole event, so v5 draws each player's strength for a given simulated tournament once from `N(rating, σ)`, modelling whole-event form variance.
+
+`σ` is chosen by the **same leave-one-tournament-out cross-validation** as the other parameters — on 2022–2025 only, never on 2026. CV shows a clear minimum at **σ = 60 Elo** (CV-RPS `0.1382` at σ=60 vs `0.1395` at σ=0, rising again by σ=100), close to the well-known empirical figure of ~50 Elo for the standard error of a single-event performance. The C++ engine samples it per iteration; the analytic per-game model marginalizes over it with Gauss–Hermite quadrature, and a unit test checks the two agree to Monte-Carlo tolerance.
+
+Measured out-of-sample on 2026:
+
+| Metric (2026, out-of-sample)  | v4 (σ=0) | v5 (σ=60) |
+| ----------------------------- | -------: | --------: |
+| Favorite (Carlsen) win prob.  |    57.4% |     47.3% |
+| Champion (Pragg) win prob.    |     2.5% |      4.6% |
+| Champion surprise (bits)      |     5.30 |      4.40 |
+| Per-game RPS (classical 3-way)|   0.1936 |    0.1910 |
+| Rank RPS of actual finish     |   0.2753 |    0.2528 |
+
+Strength sampling does not turn a near-random problem into a solved one — the champion is still a long shot — but the distribution is honestly wider and better calibrated at both the game and the tournament level. Reproduce with `tools/experiment_sigma.py`.
+
+## Multi-year backtest (leave-one-year-out)
+
+Norway Chess 2022-2026 are five independent editions, so the model can be
+tested the way it would be deployed: for each year it is fitted on the **other
+four** editions (RPS + MAP, lambda=0.1) and scored out-of-sample on the held-out
+year. This separates a real edge from a lucky fit to 2026. Reproduce with
+`tools/backtest.py`; results are written to `out/backtest.json`. The backtest is
+intentionally **ratings-only** (style 1, no live adjustments, Armageddon on
+classical Elo) so the comparison is identical across years and isolates the
+strength-sampling effect — the deployed model adds the extra signals on top.
+
+**Per-game (classical win/draw/loss).** The model beats a uniform guess in
+*every* edition, not just 2026:
+
+| Year |  n | RPS (σ=0) | RPS (σ fit) | RPS uniform | Brier (fit) | Brier uniform |
+| ---- | -: | --------: | ----------: | ----------: | ----------: | ------------: |
+| 2022 | 45 |    0.1267 |      0.1267 |      0.1630 |       0.485 |         0.667 |
+| 2023 | 45 |    0.1435 |      0.1426 |      0.1704 |       0.511 |         0.667 |
+| 2024 | 30 |    0.1232 |      0.1218 |      0.1611 |       0.459 |         0.667 |
+| 2025 | 30 |    0.1711 |      0.1716 |      0.1944 |       0.608 |         0.667 |
+| 2026 | 30 |    0.1902 |      0.1910 |      0.1944 |       0.642 |         0.667 |
+| **All** | **180** | **0.1483** | **0.1480** | **0.1750** | **0.534** | **0.667** |
+
+At the per-game level strength sampling is essentially **neutral** (0.1480 vs
+0.1483 aggregate): it barely changes how single games are scored.
+
+**Tournament (probability assigned to the actual champion).** This is where
+strength sampling shows its real character — it is a tail-risk hedge, not a free
+lunch:
+
+| Year | Champion | Players | P(champ), σ=0 | P(champ), σ fit | Surprise σ=0 → fit (bits) |
+| ---- | -------- | ------: | ------------: | --------------: | ------------------------: |
+| 2022 | Carlsen        | 10 | 51.7% | 51.7% | 0.95 → 0.95 |
+| 2023 | Nakamura       | 10 |  9.0% |  9.4% | 3.47 → 3.41 |
+| 2024 | Carlsen        |  6 | 37.3% | 31.3% | 1.42 → 1.68 |
+| 2025 | Carlsen        |  6 | 39.2% | 31.2% | 1.35 → 1.68 |
+| 2026 | Praggnanandhaa |  6 |  5.9% |  7.7% | 4.08 → 3.70 |
+
+Strength sampling **helps in upset years** (2023, 2026 — an underdog wins, the
+wider distribution is less surprised) and **costs a little in chalk years**
+(2024, 2025 — the favourite wins, so widening lowers the favourite's
+probability). Across the five editions it is roughly a wash on average champion
+surprise, but it shrinks the **worst case** (2026: 4.08 → 3.70 bits). Whether
+that trade is worth it depends on whether you value robustness to upsets over
+sharpness on favourites; for a forecaster reporting calibrated probabilities, it
+is — which is why σ stays in the deployed model, chosen by cross-validation
+rather than by fitting any single year.
+
+## Tested and rejected: standings-aware draw dynamics
+
+A natural next idea was **motivational draw dynamics**: Norway Chess rewards
+decisive play, and players push harder late and when chasing the lead, so a
+draw should be less likely in late, high-stakes games. This was prototyped as a
+single parameter `AGG` that shrinks the draw probability by
+`exp(-AGG · lateness · pressure)`, where `pressure` rises for players still
+within reach of the leader (`pressure` is computed from the standings *before*
+the game, so the model stays analytic and backtestable). Prototype in
+`tools/experiment_aggression.py`.
+
+Leave-one-year-out cross-validation **set `AGG` to zero in every fold** — the
+data does not support it. Forcing it on shows why:
+
+| AGG | RPS (pooled) | Brier | Draw is modal | Directional on decisive |
+| --: | -----------: | ----: | ------------: | ----------------------: |
+| 0   |       0.1470 | 0.529 |       180/180 |                   46/69 |
+| 0.6 |       0.1510 | 0.553 |       166/180 |                   46/69 |
+| 1.5 |       0.1638 | 0.630 |        94/180 |                   46/69 |
+| 3.0 |       0.1830 | 0.745 |        49/180 |                   46/69 |
+
+Two lessons came out of this, both more useful than the feature would have been:
+
+1. **The draw band is not the lever for directional accuracy.** Shrinking the
+   draw probability and returning the mass to win/loss *around the Elo
+   expectation* preserves the favourite-vs-underdog ordering, so directional
+   accuracy is **completely unchanged** (46/69 at every `AGG`). Decisive-game
+   accuracy is governed by the *strength/form* signal, not the draw model.
+2. **"Draw over-firing" was a misdiagnosis.** A draw being the single most
+   likely outcome in almost every elite game is *correct* calibration — elite
+   draw rates exceed 50% per game — even though only half of games end drawn.
+   Pushing the model away from draws monotonically worsens RPS and Brier.
+
+So the feature was **not deployed**. The real lever for decisive-game prediction
+is better strength/form modelling (recent-form velocity, speed-rating
+cross-control), which is the next direction.
+
+## Speed cross-control: implemented, parked pending data (improvement #3)
+
+The multi-year backtest showed that decisive-game accuracy is governed by the
+**strength/form signal**, not the draw band. The natural strength-signal upgrade
+is *cross-control*: blend each player's rapid/blitz strength into their classical
+rating, on the hypothesis that a player who is strong at speed *relative to the
+field* is in sharper current form. It is implemented as a single parameter `CC`
+folded into `Model.eff0` (so the engine and dashboard pick it up unchanged), and
+is **off by default (`CC = 0`)**.
+
+It is off for a principled reason: **it cannot be validated out-of-sample with
+the current data.** `history.json` (2022-2025) stores only classical Elo per
+game — no historical rapid/blitz ratings — so the leave-one-year-out method that
+justified strength sampling and rejected draw dynamics is unavailable here. The
+only check possible is in-sample on 2026 (`tools/experiment_crosscontrol.py`):
+
+| CC   | RPS (2026, in-sample) | Directional | Note |
+| ---- | --------------------: | ----------: | ---- |
+| 0.0  |                0.2144 |        7/15 | deployed |
+| 0.5  |                0.2087 |        7/15 | |
+| 0.75 |                0.2078 |        8/15 | |
+
+The effect is small and **not trustworthy**: tuning on 2026's 30 (unusually
+decisive) games overfits, and tellingly cross-control *down-weights the actual
+champion* (Praggnanandhaa's speed gap is −14 vs the field), so its apparent gain
+comes from sharpening favourites who happened to start fast. Deploying it on this
+evidence would repeat exactly the mistake the project is a post-mortem of.
+
+**So `CC` stays 0, and the real next step is a data task:** archive each player's
+FIDE **rapid and blitz rating as of each edition** (2022-2025) — extend
+`tools/download.sh` to save the per-period FIDE lists into `data/fide/` and join
+them in `build_dataset.py` — after which cross-control can be cross-validated and
+deployed (or rejected) on the same honest footing as strength sampling. The
+capability is built and tested; only the evidence is missing.
 
 ## Round-by-round commentary
 
 Full game log with predictions and outcomes.
-`✓` means the model’s most likely result class matched the outcome.
-`✗` means it did not. Probabilities are shown as `P[win] / P[draw] / P[win]` under the `rapidblitz` Armageddon variant.
+`✓` means the model’s most likely **result class** — classical win, draw, or classical loss — matched the outcome. For a drawn game a draw call counts as correct regardless of who won the Armageddon; the tiebreak winner is noted in the text. `✗` means the modal class missed. Probabilities are shown as `P[win] / P[draw] / P[loss]` under the `rapidblitz` Armageddon variant.
 
 <details>
 <summary><b>Round 1</b> — opening surprises, worst round by Brier score</summary>
 
-* ✗ **Firouzja 1–0 Carlsen** · `0.08 / 0.67 / 0.25` — the top seed lost with White to a heavy model underdog.
-* ✗ **Keymer–Gukesh → Armageddon, Gukesh won** · `0.36 / 0.42 / 0.22` — draw occurred, but the model leaned Keymer in the tiebreak.
-* ✓ **So–Pragg → Armageddon, Pragg won** · `0.12 / 0.84 / 0.05` — draw correctly predicted; Pragg took the Armageddon.
+* ✗ **Firouzja 1–0 Carlsen** · `0.09 / 0.68 / 0.23` — the top seed lost with White to a model underdog; a draw was the top call.
+* ✓ **Keymer–Gukesh → Armageddon, Gukesh won** · `0.35 / 0.43 / 0.22` — draw correctly predicted; Gukesh took the tiebreak.
+* ✓ **So–Pragg → Armageddon, Pragg won** · `0.13 / 0.80 / 0.07` — draw correctly predicted; Pragg took the Armageddon.
 
 </details>
 
 <details>
 <summary><b>Round 2</b> — Firouzja announces himself</summary>
 
-* ✗ **Firouzja 1–0 Pragg** · `0.17 / 0.71 / 0.12` — second straight win lifted Firouzja to **50.8%** by Round 2.
-* ✓ **Carlsen–Keymer → Armageddon, Carlsen won** · `0.32 / 0.63 / 0.05` — draw correctly predicted.
+* ✗ **Firouzja 1–0 Pragg** · `0.17 / 0.70 / 0.12` — second straight win lifted Firouzja to **49.0%** by Round 2.
+* ✓ **Carlsen–Keymer → Armageddon, Carlsen won** · `0.31 / 0.65 / 0.04` — draw correctly predicted.
 * ✓ **Gukesh–So → Armageddon, So won** · `0.17 / 0.56 / 0.26` — draw correctly predicted; So won the tiebreak.
 
 </details>
@@ -199,72 +336,72 @@ Full game log with predictions and outcomes.
 <details>
 <summary><b>Round 3</b> — Praggnanandhaa shocks Carlsen</summary>
 
-* ✗ **Pragg 1–0 Carlsen** · `0.02 / 0.65 / 0.32` — the model gave Pragg only **2%** to win outright.
-* ✓ **Keymer–So → Armageddon, So won** · `0.17 / 0.82 / 0.01` — draw correctly predicted.
-* ✗ **Gukesh–Firouzja → Armageddon, Firouzja won** · `0.30 / 0.45 / 0.26` — Firouzja became the clear model favorite at **61.4%**.
+* ✓ **Gukesh–Firouzja → Armageddon, Firouzja won** · `0.30 / 0.44 / 0.26` — draw correctly predicted; Firouzja won the tiebreak and became the clear model favorite at **57.6%**.
+* ✓ **Keymer–So → Armageddon, So won** · `0.16 / 0.79 / 0.05` — draw correctly predicted.
+* ✗ **Pragg 1–0 Carlsen** · `0.03 / 0.68 / 0.29` — the model gave Pragg only **3%** to win outright.
 
 </details>
 
 <details>
-<summary><b>Round 4</b> — cleanest round</summary>
+<summary><b>Round 4</b> — the draw model’s blind spot</summary>
 
-* ✓ **Gukesh 0–1 Carlsen** · `0.17 / 0.43 / 0.40` — decisive game leaned correctly.
-* ✓ **Keymer–Pragg → Armageddon, Pragg won** · `0.29 / 0.65 / 0.05` — draw correctly predicted.
-* ✓ **So–Firouzja → Armageddon, So won** · `0.15 / 0.83 / 0.02` — draw correctly predicted.
+* ✗ **Gukesh 0–1 Carlsen** · `0.17 / 0.45 / 0.39` — a draw was the top call, though it leaned Carlsen correctly in the decisive direction.
+* ✓ **Keymer–Pragg → Armageddon, Pragg won** · `0.26 / 0.68 / 0.06` — draw correctly predicted.
+* ✓ **So–Firouzja → Armageddon, So won** · `0.16 / 0.79 / 0.05` — draw correctly predicted.
 
 </details>
 
 <details>
 <summary><b>Round 5</b> — So wakes up</summary>
 
-* ✗ **Carlsen 0–1 So** · `0.27 / 0.72 / 0.01` — So beat Carlsen from a position the model rated only **1%** for him.
+* ✗ **Carlsen 0–1 So** · `0.26 / 0.72 / 0.02` — So beat Carlsen from a position the model rated only **2%** for him.
 * ✗ **Pragg 0–1 Gukesh** · `0.31 / 0.47 / 0.21` — Gukesh scored his only classical win of the event.
-* ✓ **Keymer–Firouzja → Armageddon, Firouzja won** · `0.22 / 0.65 / 0.13` — draw correctly predicted.
+* ✓ **Keymer–Firouzja → Armageddon, Firouzja won** · `0.21 / 0.65 / 0.14` — draw correctly predicted.
 
 </details>
 
 <details>
 <summary><b>Round 6</b> — three decisive games reshape the race</summary>
 
-* ✗ **So 1–0 Pragg** · `0.17 / 0.82 / 0.01` — So overtook the field; title odds jumped to **64.0%**.
-* ✓ **Carlsen 1–0 Firouzja** · `0.38 / 0.59 / 0.03` — Carlsen stopped Firouzja’s run.
-* ✓ **Keymer 1–0 Gukesh** · `0.42 / 0.40 / 0.18` — favored side won.
+* ✗ **So 1–0 Pragg** · `0.18 / 0.78 / 0.04` — So overtook the field; title odds jumped to **63.0%**.
+* ✗ **Carlsen 1–0 Firouzja** · `0.35 / 0.61 / 0.03` — a draw was the top call, but Carlsen won and stopped Firouzja’s run.
+* ✗ **Keymer 1–0 Gukesh** · `0.40 / 0.42 / 0.18` — a draw was the narrow top call (0.42 vs 0.40), but Keymer won.
 
 </details>
 
 <details>
 <summary><b>Round 7</b> — So takes command</summary>
 
-* ✗ **Pragg 1–0 Firouzja** · `0.12 / 0.71 / 0.17` — Pragg stayed alive at **0.5%**.
-* ✓ **So–Gukesh → Armageddon, Gukesh won** · `0.26 / 0.56 / 0.17` — draw correctly predicted.
-* ✓ **Keymer–Carlsen → Armageddon, Carlsen won** · `0.10 / 0.71 / 0.18` — draw correctly predicted.
+* ✗ **Pragg 1–0 Firouzja** · `0.12 / 0.70 / 0.17` — Pragg stayed alive at **0.7%**.
+* ✓ **So–Gukesh → Armageddon, Gukesh won** · `0.26 / 0.56 / 0.17` — draw correctly predicted; Gukesh won the tiebreak.
+* ✓ **Keymer–Carlsen → Armageddon, Carlsen won** · `0.11 / 0.70 / 0.19` — draw correctly predicted.
 
 </details>
 
 <details>
 <summary><b>Round 8</b> — Praggnanandhaa topples Carlsen again</summary>
 
-* ✗ **Carlsen 0–1 Pragg** · `0.39 / 0.60 / 0.01` — the model gave Pragg only **1%** to win.
-* ✓ **Firouzja 1–0 Gukesh** · `0.31 / 0.43 / 0.26` — Firouzja stayed in the hunt.
-* ✓ **So–Keymer → Armageddon, So won** · `0.05 / 0.84 / 0.11` — draw correctly predicted.
+* ✗ **Carlsen 0–1 Pragg** · `0.36 / 0.62 / 0.02` — the model gave Pragg only **2%** to win.
+* ✗ **Firouzja 1–0 Gukesh** · `0.31 / 0.43 / 0.26` — a draw was the top call, but Firouzja won and stayed in the hunt.
+* ✓ **So–Keymer → Armageddon, So won** · `0.09 / 0.80 / 0.12` — draw correctly predicted.
 
 </details>
 
 <details>
 <summary><b>Round 9</b> — Pragg surges, So remains favorite</summary>
 
-* ✓ **So–Carlsen → Armageddon, So won** · `0.01 / 0.85 / 0.14` — draw correctly predicted; So held top odds at **77.5%**.
-* ✗ **Gukesh 0–1 Pragg** · `0.21 / 0.47 / 0.31` — Pragg climbed to **17.6%**.
-* ✓ **Keymer–Firouzja → Armageddon, Firouzja won** · `0.29 / 0.61 / 0.10` — draw correctly predicted.
+* ✓ **So–Carlsen → Armageddon, So won** · `0.05 / 0.83 / 0.12` — draw correctly predicted; So held top odds at **76.8%**.
+* ✗ **Gukesh 0–1 Pragg** · `0.31 / 0.47 / 0.22` — Pragg climbed to **16.9%**.
+* ✓ **Keymer–Firouzja → Armageddon, Firouzja won** · `0.26 / 0.64 / 0.10` — draw correctly predicted.
 
 </details>
 
 <details>
 <summary><b>Round 10</b> — Praggnanandhaa wins the title</summary>
 
-* ✗ **Pragg 1–0 Keymer** · `0.08 / 0.70 / 0.22` — the final-round win that sealed the tournament; the model rated it only **8%**.
-* ✓ **Carlsen 1–0 Gukesh** · `0.46 / 0.40 / 0.14` — consolation win for the pre-tournament favorite.
-* ✓ **Firouzja–So → Armageddon, So won** · `0.07 / 0.84 / 0.09` — draw correctly predicted; So finished clear second.
+* ✗ **Pragg 1–0 Keymer** · `0.09 / 0.70 / 0.20` — the final-round win that sealed the tournament; the model rated it only **9%**.
+* ✓ **Carlsen 1–0 Gukesh** · `0.44 / 0.43 / 0.13` — consolation win for the pre-tournament favorite; the only decisive result the model called as a win.
+* ✓ **Firouzja–So → Armageddon, So won** · `0.09 / 0.80 / 0.11` — draw correctly predicted; So finished clear second.
 
 **Final standings:** Praggnanandhaa 18.0, So 17.0, Firouzja 15.5, Carlsen 13.0, Keymer 11.0, Gukesh 8.0.
 
@@ -274,7 +411,7 @@ Full game log with predictions and outcomes.
 
 ### The short version
 
-Each player starts with an effective rating built from classical strength, live adjustment, and recent rating trend. Before every simulated game, the model converts the rating gap into win/draw/loss probabilities, adjusts for White advantage, player style, and Norway Chess’s Armageddon structure, then samples a result.
+Each player starts with an effective rating built from classical strength, live adjustment, and recent rating trend; for each simulated tournament that rating is perturbed once by `N(0, SIGMA)` to model whole-event form variance (see “Strength sampling” above). Before every simulated game, the model converts the rating gap into win/draw/loss probabilities, adjusts for White advantage, player style, and Norway Chess’s Armageddon structure, then samples a result.
 
 After each simulated or actual game, a form update nudges players upward or downward based on performance versus expectation. A full tournament is 30 games. Run the tournament **1,000,000** times from a given checkpoint, and the share of simulated tournament wins becomes each player’s title probability.
 
@@ -347,9 +484,10 @@ python3 tools/viz/generate_html.py \
   --names   tools/viz/names_norway2026.json \
   --venue   "Stavanger · Norway" \
   --dates   "25 May – 5 June 2026" \
-  --edition "Vol. XIV · Monte Carlo Edition" \
   --output  dashboards/norway2026_dashboard.html
 ```
+
+The edition line is derived automatically from the tournament year as `VOL. <year in Roman numerals>` (for 2026 → **VOL. MMXXVI**). Pass `--edition` only to override it.
 
 ### 5. Re-derive calibrated parameters
 
@@ -417,14 +555,22 @@ Unknown colors are simulated as a 50/50 mixture. Ties for first are resolved usi
 
 ### Calibrated parameters
 
+The fitted values below live in exactly one place, `out/calibrated_params.json`.
+The configs in `configs/` carry only structural choices (Armageddon strength,
+draw cap, form `K`). Both the C++ engine feed (`tools/make_sim_input.py`) and the
+Python evaluation (`src/eval_*.py`) read the fitted values from the calibration
+file through `src/nc_common.py`, so the simulated model and the evaluated model
+cannot use different numbers.
+
 From `out/calibrated_params.json`:
 
 | Parameter               |   Symbol |       Value | Meaning                                                  |
 | ----------------------- | -------: | ----------: | -------------------------------------------------------- |
 | White advantage         |     `WA` |  **35 Elo** | Edge for having White                                    |
-| Draw base               |  `DBASE` |    **0.70** | Baseline draw rate between equal players                 |
+| Draw base               |  `DBASE` |    **0.75** | Baseline draw rate between equal players                 |
 | Draw decay              |   `DDEC` |  **0.0018** | How quickly draws fall as rating gap grows               |
 | Armageddon handicap     |  `ARM_H` | **−30 Elo** | White’s Armageddon penalty because Black holds draw odds |
+| Strength sigma          |  `SIGMA` |  **60 Elo** | Whole-event form variance, sampled per simulation (CV-chosen) |
 | Form K                  | `form_k` |      **32** | Strength of per-game form update                         |
 | Draw cap                |        — |    **0.85** | Maximum classical draw probability                       |
 | Min outcome probability |        — |    **0.01** | Floor for any single-game outcome                        |
@@ -439,7 +585,7 @@ The objective is **Ranked Probability Score**, which respects the ordered nature
 win / draw-with-Armageddon / loss
 ```
 
-A **MAP regularization** term keeps parameters near plausible priors. Its strength is selected by **leave-one-tournament-out cross-validation**. The fit scored an out-of-sample **RPS of 0.1902** on the 2026 edition.
+A **MAP regularization** term keeps parameters near plausible priors. Its strength is selected by **leave-one-tournament-out cross-validation**. The fit scored an out-of-sample **RPS of 0.1910** on the 2026 edition.
 
 ### Armageddon-variant sensitivity
 
@@ -447,10 +593,10 @@ The headline result is not an artifact of one tiebreak assumption.
 
 | Variant    | Carlsen win prob. | Pragg win prob. |
 | ---------- | ----------------: | --------------: |
-| classical  |             52.5% |            2.6% |
-| rapid      |             56.1% |            2.4% |
-| blitz      |             56.5% |            2.5% |
-| rapidblitz |             56.2% |            2.5% |
+| classical  |             44.4% |            4.9% |
+| rapid      |             47.1% |            4.6% |
+| blitz      |             47.4% |            4.6% |
+| rapidblitz |             47.3% |            4.6% |
 
 Across all four variants, Carlsen remains the clear favorite and Praggnanandhaa remains a long shot.
 
@@ -466,13 +612,14 @@ data/
     *.pgn                    Norway Chess broadcasts, 2022–2026
 
 configs/
-  model_v4.json              Main calibrated model configuration
-  model_v4*.json             Armageddon-rating variants
+  model_v4.json              Structural model config (Armageddon strength, caps, form K)
+  model_v4*.json             Armageddon-rating variants (structural only)
 
 src/
-  model.hpp                  Elo, draw band, Armageddon probability model
+  model.hpp                  Elo, draw band, Armageddon probability model (C++)
   sim.cpp                    Data-driven tournament simulator
   test_model.cpp             Unit tests for probability and scoring invariants
+  nc_common.py               Shared model: single source for parameters + probabilities (Python)
   eval_oos.py                Out-of-sample scoring report
   eval_v4.py                 Prequential form-update evaluation
   eval_rounds.py             Round-by-round prediction report
@@ -491,7 +638,8 @@ tools/
     names_norway2026.json    Display names and labels
 
 out/
-  *.json                     Generated simulation, variant, calibration, and dashboard data
+  calibrated_params.json     Fitted parameters — the single source for WA / DBASE / DDEC / ARM_H / SIGMA
+  *.json                     Generated simulation, variant, and dashboard data
 
 dashboards/
   norway2026_dashboard.html  Generated self-contained dashboard (not included)
@@ -535,6 +683,8 @@ python3 tools/run_tests.py
 The test suite checks:
 
 * model invariants
+* a real C++ ↔ Python probability cross-check (the engine’s simulated win rate matches the analytic Python model)
+* a single-source guard (the configs must not re-introduce fitted parameters)
 * scoring rules
 * tournament-data consistency
 * no-look-ahead leakage

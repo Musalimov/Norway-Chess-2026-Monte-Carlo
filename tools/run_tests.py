@@ -30,33 +30,80 @@ r = subprocess.run(["./bin/test_model"],capture_output=True,text=True)
 print("   "+r.stdout.strip().splitlines()[-1])
 check("C++ model binary: all pass", r.returncode==0)
 
-# ---- 2. Python mirror matches C++ (probability model) ----
+# ---- 2. Python model <-> C++ engine cross-check (real, not assumed) ----
 print("== C++ <-> Python probability mirror ==")
-cfg=json.load(open("configs/model_v4.json"))
-WA,DB,DD,ARMH,DCAP,MINP=cfg["white_advantage"],cfg["draw_base"],cfg["draw_decay"],cfg["armageddon_handicap"],cfg["draw_probability_cap"],cfg["min_outcome_probability"]
-def expect(d): return 1/(1+10**(-d/400))
-def py_classical(ew,eb,sw,sb):
-    diff=ew-eb+WA; e=expect(diff)
-    pd=min(DB*math.exp(-abs(diff)*DD)*sw*sb,DCAP)
-    pw=max(e-pd/2,MINP); pb=max(1-pw-pd,MINP); pd=1-pw-pb
-    return pw,pd,pb
-# C++ reference via a tiny probe: build a 1-round tournament and read modal from many sims is noisy;
-# instead we trust model.hpp is the same formula and check the Python mirror's own invariants here,
-# plus that the dashboard builder's analytic probs (same mirror) sum to 1 (checked below).
-pw,pd,pb=py_classical(2800,2700,1.0,1.0)
-check("python classical sums to 1", approx(pw+pd+pb,1.0))
-# symmetry with no white edge
-WA_save=WA
-def py_classical_noedge(ew,eb,sw,sb):
-    diff=ew-eb; e=expect(diff)
-    pd=min(DB*math.exp(-abs(diff)*DD)*sw*sb,DCAP)
-    pw=max(e-pd/2,MINP); pb=max(1-pw-pd,MINP); pd=1-pw-pb
-    return pw,pd,pb
-sw_,sd_,sb_=py_classical_noedge(2750,2750,1,1)
-check("python: equal+no-edge symmetric (pw==pb)", approx(sw_,sb_))
-# armageddon mirror
-def py_arm(aw,ab): return expect(aw-ab-ARMH)
-check("python armageddon equal>0.5 (armh<0)", py_arm(2750,2750)>0.5)
+sys.path.insert(0, str(ROOT / "src"))
+from nc_common import Model  # noqa: E402
+
+M = Model()  # single source: calibrated params + model_v4 config + norway2026
+
+# invariants of the shared Python model
+pa = M.game4("carlsen", "gukesh")
+check("python game4 sums to 1", approx(sum(pa), 1.0))
+check("white edge favours white (pw>pb at equalish)", pa[0] > pa[3])
+check("armageddon: equal strength, ARM_H<0 -> white >0.5",
+      M.expect(0 - 0 - M.ARM_H) > 0.5)
+
+# Real cross-check: build a 2-player, 1-game tournament, simulate it in C++,
+# and compare the empirical finish distribution to the analytic Python model.
+# With one game there are no ties, so P(p1 first) = game4[0] + game4[1].
+import collections as _c
+two = _c.OrderedDict(name="XCheck 2026", players=[
+    dict(M.players["carlsen"]), dict(M.players["gukesh"])])
+two["rounds"] = [{"round": 1, "games": [{
+    "p1": "carlsen", "p2": "gukesh", "color": "p1_white",
+    "result": {"type": "classical", "p1_points": 3.0}}]}]  # result ignored at after_round=0
+with tempfile.TemporaryDirectory() as td:
+    tf = Path(td) / "two.json"
+    tf.write_text(json.dumps(two))
+    inp = subprocess.run([sys.executable, "tools/make_sim_input.py", str(tf),
+                          "configs/model_v4.json"], capture_output=True, text=True).stdout
+    sim = json.loads(subprocess.run(["./sim", "full", "400000", "7", "0"],
+                                    input=inp, capture_output=True, text=True).stdout)
+emp = {p["name"]: p["p_win"] for p in sim["players"]}
+g = M.game4("carlsen", "gukesh")
+analytic_first = g[0] + g[1]
+check(f"C++ p_win matches Python game4 (sim {emp['Carlsen']:.3f} vs analytic {analytic_first:.3f})",
+      approx(emp["Carlsen"], analytic_first, 6e-3))
+check("C++ + Python agree the rest goes to the other player",
+      approx(emp["Gukesh"], 1 - analytic_first, 6e-3))
+
+# Fitted params now have a single home; the config must not silently re-introduce them.
+cfg_raw = json.load(open("configs/model_v4.json"))
+check("config carries no fitted params (single source = calibrated_params.json)",
+      not any(k in cfg_raw for k in
+              ("white_advantage", "draw_base", "draw_decay", "armageddon_handicap", "strength_sigma")))
+
+# Strength-sampling path: the analytic Gauss-Hermite marginalisation must match
+# the engine's per-iteration N(0, sigma) sampling.
+Ms = Model(tournament=ROOT / "data/tournaments/norway2026.json")
+Ms.STRENGTH_SIGMA = 60.0
+two_s = _c.OrderedDict(name="XCheck sigma", players=[
+    dict(Ms.players["carlsen"]), dict(Ms.players["gukesh"])])
+two_s["rounds"] = [{"round": 1, "games": [{
+    "p1": "carlsen", "p2": "gukesh", "color": "p1_white",
+    "result": {"type": "classical", "p1_points": 3.0}}]}]
+with tempfile.TemporaryDirectory() as td:
+    tf2 = Path(td) / "two_sigma.json"
+    tf2.write_text(json.dumps(two_s))
+    Ms2 = Model(tournament=tf2); Ms2.STRENGTH_SIGMA = 60.0
+    sim_s = json.loads(subprocess.run(["./sim", "full", "400000", "11", "0"],
+                                      input=Ms2.sim_input(), capture_output=True, text=True).stdout)
+emp_s = {p["name"]: p["p_win"] for p in sim_s["players"]}
+gs = Ms2.game4("carlsen", "gukesh")
+check(f"sigma=60: engine matches marginalised model (sim {emp_s['Carlsen']:.3f} vs {gs[0]+gs[1]:.3f})",
+      approx(emp_s["Carlsen"], gs[0] + gs[1], 6e-3))
+
+# Shared 3-way classical core (used by the multi-year backtest) must match the
+# deployed model's per-game core at style 1.
+from nc_common import classical_wdl  # noqa: E402
+_m = Model()
+for d in (-200.0, 0.0, 150.0):
+    pw, pd, pb = classical_wdl(d + _m.WA, _m.DBASE, _m.DDEC, _m.DCAP, _m.MINP, 0.0)
+    g = _m._core(d + _m.WA, 1.0, 1.0, 0.5)  # parm=0.5 splits draw evenly
+    check(f"classical_wdl matches Model core at d={d:.0f}",
+          approx(pw, g[0]) and approx(pb, g[3]) and approx(pd, g[1] + g[2]))
+check("classical_wdl sums to 1", approx(sum(classical_wdl(40.0, 0.7, 0.0018)), 1.0))
 
 # ---- 3. parsing (synthetic odd/even PGN) ----
 print("== PGN parsing ==")
