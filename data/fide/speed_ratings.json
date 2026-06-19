@@ -1,974 +1,1078 @@
 {
- "_note": "Auto-built by tools/fetch_fide_ratings.py from FIDE combined monthly lists. Keys match history.json player names. Verify any NAME MISMATCH above.",
+ "_note": "Auto-built by tools/fetch_fide_ratings.py. Classical comes from the PGNs; this file supplies rapid/blitz. Keys match history.json names.",
  "fide_ids": {
-  "Carlsen, Magnus": 1503014,
-  "Nakamura, Hikaru": 2016192,
+  "Anand, Viswanathan": 5000017,
+  "Radjabov, Teimour": 13400924,
+  "Topalov, Veselin": 2900084,
+  "Vachier-Lagrave, Maxime": 623539,
+  "Wang, Hao": 8602883,
   "Caruana, Fabiano": 2020009,
+  "Carlsen, Magnus": 1503014,
   "Firouzja, Alireza": 12573981,
   "Gukesh D": 46616543,
-  "Praggnanandhaa R": 25059530,
-  "So, Wesley": 5202213,
-  "Giri, Anish": 24116068,
   "Mamedyarov, Shakhriyar": 13401319,
-  "Vachier-Lagrave, Maxime": 623539,
-  "Anand, Viswanathan": 5000017,
-  "Topalov, Veselin": 2900084,
-  "Radjabov, Teimour": 13400924,
+  "Tari, Aryan": 1510045,
+  "Abdusattorov, Nodirbek": 14204118,
+  "Giri, Anish": 24116068,
+  "So, Wesley": 5202213,
+  "Nakamura, Hikaru": 2016192,
   "Ding, Liren": 8603677,
+  "Praggnanandhaa R": 25059530,
   "Wei, Yi": 8603405,
   "Erigaisi Arjun": 35009192,
-  "Abdusattorov, Nodirbek": 14204118,
-  "Keymer, Vincent": 12940690,
-  "Tari, Aryan": 1525357,
-  "Wang, Hao": 8602350
+  "Keymer, Vincent": 12940690
  },
  "by_edition": {
   "2022": {
+   "So, Wesley": {
+    "std": 2766,
+    "rapid": 2770,
+    "blitz": 2814
+   },
+   "Erigaisi Arjun": {
+    "std": 2675,
+    "rapid": 2450,
+    "blitz": 2745
+   },
+   "Radjabov, Teimour": {
+    "std": 2753,
+    "rapid": 2747,
+    "blitz": 2705
+   },
+   "Vachier-Lagrave, Maxime": {
+    "std": 2750,
+    "rapid": 2743,
+    "blitz": 2813
+   },
+   "Keymer, Vincent": {
+    "std": 2667,
+    "rapid": 2552,
+    "blitz": 2548
+   },
    "Abdusattorov, Nodirbek": {
     "std": 2661,
-    "rapid": null,
-    "blitz": null
+    "rapid": 2670,
+    "blitz": 2663
    },
-   "Anand, Viswanathan": {
-    "std": 2751,
-    "rapid": null,
-    "blitz": null
+   "Nakamura, Hikaru": {
+    "std": 2760,
+    "rapid": 2851,
+    "blitz": 2850
+   },
+   "Giri, Anish": {
+    "std": 2761,
+    "rapid": 2730,
+    "blitz": 2766
+   },
+   "Wei, Yi": {
+    "std": 2727,
+    "rapid": 2752,
+    "blitz": 2686
+   },
+   "Wang, Hao": {
+    "std": 2744,
+    "rapid": 2750,
+    "blitz": 2712
+   },
+   "Caruana, Fabiano": {
+    "std": 2786,
+    "rapid": 2790,
+    "blitz": 2744
+   },
+   "Gukesh D": {
+    "std": 2659,
+    "rapid": 2223,
+    "blitz": 2598
    },
    "Carlsen, Magnus": {
     "std": 2864,
-    "rapid": null,
-    "blitz": null
-   },
-   "Caruana, Fabiano": {
-    "std": 2783,
-    "rapid": null,
-    "blitz": null
-   },
-   "Ding, Liren": {
-    "std": 2806,
-    "rapid": null,
-    "blitz": null
-   },
-   "Erigaisi Arjun": {
-    "std": 2681,
-    "rapid": null,
-    "blitz": null
+    "rapid": 2847,
+    "blitz": 2832
    },
    "Firouzja, Alireza": {
-    "std": 2793,
-    "rapid": null,
-    "blitz": null
-   },
-   "Giri, Anish": {
-    "std": 2761,
-    "rapid": null,
-    "blitz": null
-   },
-   "Gukesh D": {
-    "std": 2675,
-    "rapid": null,
-    "blitz": null
-   },
-   "Keymer, Vincent": {
-    "std": 2675,
-    "rapid": null,
-    "blitz": null
-   },
-   "Mamedyarov, Shakhriyar": {
-    "std": 2751,
-    "rapid": null,
-    "blitz": null
-   },
-   "Nakamura, Hikaru": {
-    "std": 2760,
-    "rapid": null,
-    "blitz": null
+    "std": 2804,
+    "rapid": 2670,
+    "blitz": 2791
    },
    "Praggnanandhaa R": {
     "std": 2642,
-    "rapid": null,
-    "blitz": null
-   },
-   "Radjabov, Teimour": {
-    "std": 2753,
-    "rapid": null,
-    "blitz": null
-   },
-   "So, Wesley": {
-    "std": 2775,
-    "rapid": null,
-    "blitz": null
-   },
-   "Topalov, Veselin": {
-    "std": 2730,
-    "rapid": null,
-    "blitz": null
-   },
-   "Vachier-Lagrave, Maxime": {
-    "std": 2760,
-    "rapid": null,
-    "blitz": null
-   },
-   "Wei, Yi": {
-    "std": 2727,
-    "rapid": null,
-    "blitz": null
-   }
-  },
-  "2023": {
-   "Abdusattorov, Nodirbek": {
-    "std": 2732,
-    "rapid": null,
-    "blitz": null
-   },
-   "Anand, Viswanathan": {
-    "std": 2754,
-    "rapid": null,
-    "blitz": null
-   },
-   "Carlsen, Magnus": {
-    "std": 2853,
-    "rapid": null,
-    "blitz": null
-   },
-   "Caruana, Fabiano": {
-    "std": 2773,
-    "rapid": null,
-    "blitz": null
-   },
-   "Ding, Liren": {
-    "std": 2780,
-    "rapid": null,
-    "blitz": null
-   },
-   "Erigaisi Arjun": {
-    "std": 2702,
-    "rapid": null,
-    "blitz": null
-   },
-   "Firouzja, Alireza": {
-    "std": 2786,
-    "rapid": null,
-    "blitz": null
-   },
-   "Giri, Anish": {
-    "std": 2772,
-    "rapid": null,
-    "blitz": null
-   },
-   "Gukesh D": {
-    "std": 2736,
-    "rapid": null,
-    "blitz": null
-   },
-   "Keymer, Vincent": {
-    "std": 2690,
-    "rapid": null,
-    "blitz": null
-   },
-   "Mamedyarov, Shakhriyar": {
-    "std": 2740,
-    "rapid": null,
-    "blitz": null
-   },
-   "Nakamura, Hikaru": {
-    "std": 2775,
-    "rapid": null,
-    "blitz": null
-   },
-   "Praggnanandhaa R": {
-    "std": 2690,
-    "rapid": null,
-    "blitz": null
-   },
-   "Radjabov, Teimour": {
-    "std": 2747,
-    "rapid": null,
-    "blitz": null
-   },
-   "So, Wesley": {
-    "std": 2765,
-    "rapid": null,
-    "blitz": null
-   },
-   "Topalov, Veselin": {
-    "std": 2728,
-    "rapid": null,
-    "blitz": null
-   },
-   "Vachier-Lagrave, Maxime": {
-    "std": 2747,
-    "rapid": null,
-    "blitz": null
-   },
-   "Wei, Yi": {
-    "std": 2722,
-    "rapid": null,
-    "blitz": null
-   }
-  },
-  "2024": {
-   "Abdusattorov, Nodirbek": {
-    "std": 2766,
-    "rapid": null,
-    "blitz": null
+    "rapid": 1927,
+    "blitz": 2599
    },
    "Anand, Viswanathan": {
     "std": 2751,
-    "rapid": null,
-    "blitz": null
+    "rapid": 2675,
+    "blitz": 2758
    },
-   "Carlsen, Magnus": {
-    "std": 2830,
-    "rapid": null,
-    "blitz": null
+   "Tari, Aryan": {
+    "std": 2654,
+    "rapid": 2531,
+    "blitz": 2567
    },
-   "Caruana, Fabiano": {
-    "std": 2805,
-    "rapid": null,
-    "blitz": null
+   "Topalov, Veselin": {
+    "std": 2730,
+    "rapid": 2627,
+    "blitz": 2667
    },
    "Ding, Liren": {
-    "std": 2762,
-    "rapid": null,
-    "blitz": null
+    "std": 2806,
+    "rapid": 2836,
+    "blitz": 2788
+   },
+   "Mamedyarov, Shakhriyar": {
+    "std": 2770,
+    "rapid": 2699,
+    "blitz": 2778
+   }
+  },
+  "2023": {
+   "So, Wesley": {
+    "std": 2760,
+    "rapid": 2788,
+    "blitz": 2749
+   },
+   "Erigaisi Arjun": {
+    "std": 2701,
+    "rapid": 2714,
+    "blitz": 2719
+   },
+   "Radjabov, Teimour": {
+    "std": 2747,
+    "rapid": 2694,
+    "blitz": 2707
+   },
+   "Vachier-Lagrave, Maxime": {
+    "std": 2742,
+    "rapid": 2762,
+    "blitz": 2723
+   },
+   "Keymer, Vincent": {
+    "std": 2700,
+    "rapid": 2617,
+    "blitz": 2669
+   },
+   "Abdusattorov, Nodirbek": {
+    "std": 2731,
+    "rapid": 2703,
+    "blitz": 2683
+   },
+   "Nakamura, Hikaru": {
+    "std": 2775,
+    "rapid": 2748,
+    "blitz": 2885
+   },
+   "Giri, Anish": {
+    "std": 2768,
+    "rapid": 2714,
+    "blitz": 2807
+   },
+   "Wei, Yi": {
+    "std": 2722,
+    "rapid": 2716,
+    "blitz": 2686
+   },
+   "Wang, Hao": {
+    "std": 2722,
+    "rapid": 2716,
+    "blitz": 2624
+   },
+   "Caruana, Fabiano": {
+    "std": 2764,
+    "rapid": 2752,
+    "blitz": 2837
+   },
+   "Gukesh D": {
+    "std": 2732,
+    "rapid": 2629,
+    "blitz": 2629
+   },
+   "Carlsen, Magnus": {
+    "std": 2853,
+    "rapid": 2839,
+    "blitz": 2852
+   },
+   "Firouzja, Alireza": {
+    "std": 2785,
+    "rapid": 2745,
+    "blitz": 2904
+   },
+   "Praggnanandhaa R": {
+    "std": 2688,
+    "rapid": 2587,
+    "blitz": 2623
+   },
+   "Anand, Viswanathan": {
+    "std": 2754,
+    "rapid": 2731,
+    "blitz": 2733
+   },
+   "Tari, Aryan": {
+    "std": 2642,
+    "rapid": 2539,
+    "blitz": 2571
+   },
+   "Topalov, Veselin": {
+    "std": 2728,
+    "rapid": 2630,
+    "blitz": 2657
+   },
+   "Ding, Liren": {
+    "std": 2789,
+    "rapid": 2830,
+    "blitz": 2787
+   },
+   "Mamedyarov, Shakhriyar": {
+    "std": 2738,
+    "rapid": 2694,
+    "blitz": 2704
+   }
+  },
+  "2024": {
+   "So, Wesley": {
+    "std": 2757,
+    "rapid": 2722,
+    "blitz": 2773
    },
    "Erigaisi Arjun": {
     "std": 2761,
-    "rapid": null,
-    "blitz": null
+    "rapid": 2671,
+    "blitz": 2744
    },
-   "Firouzja, Alireza": {
-    "std": 2737,
-    "rapid": null,
-    "blitz": null
+   "Radjabov, Teimour": {
+    "std": 2723,
+    "rapid": 2668,
+    "blitz": 2674
    },
-   "Giri, Anish": {
-    "std": 2745,
-    "rapid": null,
-    "blitz": null
-   },
-   "Gukesh D": {
-    "std": 2763,
-    "rapid": null,
-    "blitz": null
+   "Vachier-Lagrave, Maxime": {
+    "std": 2732,
+    "rapid": 2747,
+    "blitz": 2764
    },
    "Keymer, Vincent": {
-    "std": 2721,
-    "rapid": null,
-    "blitz": null
+    "std": 2726,
+    "rapid": 2647,
+    "blitz": 2610
    },
-   "Mamedyarov, Shakhriyar": {
-    "std": 2734,
-    "rapid": null,
-    "blitz": null
+   "Abdusattorov, Nodirbek": {
+    "std": 2765,
+    "rapid": 2733,
+    "blitz": 2661
    },
    "Nakamura, Hikaru": {
     "std": 2794,
-    "rapid": null,
-    "blitz": null
+    "rapid": 2746,
+    "blitz": 2874
    },
-   "Praggnanandhaa R": {
-    "std": 2747,
-    "rapid": null,
-    "blitz": null
-   },
-   "Radjabov, Teimour": {
-    "std": 2704,
-    "rapid": null,
-    "blitz": null
-   },
-   "So, Wesley": {
-    "std": 2757,
-    "rapid": null,
-    "blitz": null
-   },
-   "Topalov, Veselin": {
-    "std": 2727,
-    "rapid": null,
-    "blitz": null
-   },
-   "Vachier-Lagrave, Maxime": {
-    "std": 2732,
-    "rapid": null,
-    "blitz": null
+   "Giri, Anish": {
+    "std": 2745,
+    "rapid": 2687,
+    "blitz": 2715
    },
    "Wei, Yi": {
     "std": 2755,
-    "rapid": null,
-    "blitz": null
+    "rapid": 2758,
+    "blitz": 2684
+   },
+   "Wang, Hao": {
+    "std": 2702,
+    "rapid": 2700,
+    "blitz": 2628
+   },
+   "Caruana, Fabiano": {
+    "std": 2805,
+    "rapid": 2738,
+    "blitz": 2777
+   },
+   "Gukesh D": {
+    "std": 2763,
+    "rapid": 2649,
+    "blitz": 2651
+   },
+   "Carlsen, Magnus": {
+    "std": 2830,
+    "rapid": 2828,
+    "blitz": 2886
+   },
+   "Firouzja, Alireza": {
+    "std": 2737,
+    "rapid": 2724,
+    "blitz": 2863
+   },
+   "Praggnanandhaa R": {
+    "std": 2747,
+    "rapid": 2704,
+    "blitz": 2675
+   },
+   "Anand, Viswanathan": {
+    "std": 2751,
+    "rapid": 2749,
+    "blitz": 2709
+   },
+   "Tari, Aryan": {
+    "std": 2634,
+    "rapid": 2556,
+    "blitz": 2575
+   },
+   "Topalov, Veselin": {
+    "std": 2727,
+    "rapid": 2632,
+    "blitz": 2657
+   },
+   "Ding, Liren": {
+    "std": 2762,
+    "rapid": 2775,
+    "blitz": 2787
+   },
+   "Mamedyarov, Shakhriyar": {
+    "std": 2734,
+    "rapid": 2676,
+    "blitz": 2708
    }
   },
   "2025": {
-   "Abdusattorov, Nodirbek": {
-    "std": 2767,
-    "rapid": null,
-    "blitz": null
-   },
-   "Anand, Viswanathan": {
-    "std": 2743,
-    "rapid": null,
-    "blitz": null
-   },
-   "Carlsen, Magnus": {
-    "std": 2837,
-    "rapid": null,
-    "blitz": null
-   },
-   "Caruana, Fabiano": {
-    "std": 2777,
-    "rapid": null,
-    "blitz": null
-   },
-   "Ding, Liren": {
-    "std": 2734,
-    "rapid": null,
-    "blitz": null
+   "So, Wesley": {
+    "std": 2751,
+    "rapid": 2714,
+    "blitz": 2783
    },
    "Erigaisi Arjun": {
     "std": 2782,
-    "rapid": null,
-    "blitz": null
-   },
-   "Firouzja, Alireza": {
-    "std": 2766,
-    "rapid": null,
-    "blitz": null
-   },
-   "Giri, Anish": {
-    "std": 2748,
-    "rapid": null,
-    "blitz": null
-   },
-   "Gukesh D": {
-    "std": 2776,
-    "rapid": null,
-    "blitz": null
-   },
-   "Keymer, Vincent": {
-    "std": 2730,
-    "rapid": null,
-    "blitz": null
-   },
-   "Mamedyarov, Shakhriyar": {
-    "std": 2746,
-    "rapid": null,
-    "blitz": null
-   },
-   "Nakamura, Hikaru": {
-    "std": 2804,
-    "rapid": null,
-    "blitz": null
-   },
-   "Praggnanandhaa R": {
-    "std": 2767,
-    "rapid": null,
-    "blitz": null
+    "rapid": 2708,
+    "blitz": 2738
    },
    "Radjabov, Teimour": {
     "std": 2692,
-    "rapid": null,
-    "blitz": null
-   },
-   "So, Wesley": {
-    "std": 2745,
-    "rapid": null,
-    "blitz": null
-   },
-   "Topalov, Veselin": {
-    "std": 2717,
-    "rapid": null,
-    "blitz": null
+    "rapid": 2668,
+    "blitz": 2663
    },
    "Vachier-Lagrave, Maxime": {
-    "std": 2736,
-    "rapid": null,
-    "blitz": null
+    "std": 2723,
+    "rapid": 2735,
+    "blitz": 2748
+   },
+   "Keymer, Vincent": {
+    "std": 2720,
+    "rapid": 2649,
+    "blitz": 2585
+   },
+   "Abdusattorov, Nodirbek": {
+    "std": 2771,
+    "rapid": 2732,
+    "blitz": 2694
+   },
+   "Nakamura, Hikaru": {
+    "std": 2804,
+    "rapid": 2734,
+    "blitz": 2837
+   },
+   "Giri, Anish": {
+    "std": 2738,
+    "rapid": 2688,
+    "blitz": 2663
    },
    "Wei, Yi": {
     "std": 2758,
-    "rapid": null,
-    "blitz": null
+    "rapid": 2746,
+    "blitz": 2711
+   },
+   "Wang, Hao": {
+    "std": 2701,
+    "rapid": 2692,
+    "blitz": 2628
+   },
+   "Caruana, Fabiano": {
+    "std": 2776,
+    "rapid": 2756,
+    "blitz": 2782
+   },
+   "Gukesh D": {
+    "std": 2787,
+    "rapid": 2654,
+    "blitz": 2615
+   },
+   "Carlsen, Magnus": {
+    "std": 2837,
+    "rapid": 2819,
+    "blitz": 2883
+   },
+   "Firouzja, Alireza": {
+    "std": 2757,
+    "rapid": 2753,
+    "blitz": 2857
+   },
+   "Praggnanandhaa R": {
+    "std": 2758,
+    "rapid": 2688,
+    "blitz": 2717
+   },
+   "Anand, Viswanathan": {
+    "std": 2743,
+    "rapid": 2719,
+    "blitz": 2739
+   },
+   "Tari, Aryan": {
+    "std": 2636,
+    "rapid": 2564,
+    "blitz": 2593
+   },
+   "Topalov, Veselin": {
+    "std": 2717,
+    "rapid": 2618,
+    "blitz": 2657
+   },
+   "Ding, Liren": {
+    "std": 2734,
+    "rapid": 2776,
+    "blitz": 2785
+   },
+   "Mamedyarov, Shakhriyar": {
+    "std": 2746,
+    "rapid": 2701,
+    "blitz": 2680
    }
   },
   "2026": {
-   "Abdusattorov, Nodirbek": {
-    "std": 2777,
-    "rapid": null,
-    "blitz": null
-   },
-   "Anand, Viswanathan": {
-    "std": 2739,
-    "rapid": null,
-    "blitz": null
-   },
-   "Carlsen, Magnus": {
-    "std": 2841,
-    "rapid": null,
-    "blitz": null
-   },
-   "Caruana, Fabiano": {
-    "std": 2792,
-    "rapid": null,
-    "blitz": null
-   },
-   "Ding, Liren": {
-    "std": 2738,
-    "rapid": null,
-    "blitz": null
+   "So, Wesley": {
+    "std": 2754,
+    "rapid": 2705,
+    "blitz": 2798
    },
    "Erigaisi Arjun": {
-    "std": 2761,
-    "rapid": null,
-    "blitz": null
-   },
-   "Firouzja, Alireza": {
-    "std": 2744,
-    "rapid": null,
-    "blitz": null
-   },
-   "Giri, Anish": {
-    "std": 2764,
-    "rapid": null,
-    "blitz": null
-   },
-   "Gukesh D": {
-    "std": 2732,
-    "rapid": null,
-    "blitz": null
-   },
-   "Keymer, Vincent": {
-    "std": 2767,
-    "rapid": null,
-    "blitz": null
-   },
-   "Mamedyarov, Shakhriyar": {
-    "std": 2717,
-    "rapid": null,
-    "blitz": null
-   },
-   "Nakamura, Hikaru": {
-    "std": 2792,
-    "rapid": null,
-    "blitz": null
-   },
-   "Praggnanandhaa R": {
-    "std": 2735,
-    "rapid": null,
-    "blitz": null
+    "std": 2751,
+    "rapid": 2741,
+    "blitz": 2776
    },
    "Radjabov, Teimour": {
     "std": 2689,
-    "rapid": null,
-    "blitz": null
-   },
-   "So, Wesley": {
-    "std": 2753,
-    "rapid": null,
-    "blitz": null
-   },
-   "Topalov, Veselin": {
-    "std": 2695,
-    "rapid": null,
-    "blitz": null
+    "rapid": 2646,
+    "blitz": 2676
    },
    "Vachier-Lagrave, Maxime": {
-    "std": 2721,
-    "rapid": null,
-    "blitz": null
+    "std": 2717,
+    "rapid": 2735,
+    "blitz": 2761
+   },
+   "Keymer, Vincent": {
+    "std": 2759,
+    "rapid": 2627,
+    "blitz": 2621
+   },
+   "Abdusattorov, Nodirbek": {
+    "std": 2780,
+    "rapid": 2703,
+    "blitz": 2785
+   },
+   "Nakamura, Hikaru": {
+    "std": 2792,
+    "rapid": 2742,
+    "blitz": 2838
+   },
+   "Giri, Anish": {
+    "std": 2767,
+    "rapid": 2689,
+    "blitz": 2666
    },
    "Wei, Yi": {
     "std": 2753,
-    "rapid": null,
-    "blitz": null
+    "rapid": 2726,
+    "blitz": 2698
+   },
+   "Wang, Hao": {
+    "std": 2684,
+    "rapid": 2667,
+    "blitz": 2639
+   },
+   "Caruana, Fabiano": {
+    "std": 2788,
+    "rapid": 2727,
+    "blitz": 2749
+   },
+   "Gukesh D": {
+    "std": 2732,
+    "rapid": 2682,
+    "blitz": 2646
+   },
+   "Carlsen, Magnus": {
+    "std": 2840,
+    "rapid": 2832,
+    "blitz": 2869
+   },
+   "Firouzja, Alireza": {
+    "std": 2759,
+    "rapid": 2755,
+    "blitz": 2796
+   },
+   "Praggnanandhaa R": {
+    "std": 2733,
+    "rapid": 2663,
+    "blitz": 2698
+   },
+   "Anand, Viswanathan": {
+    "std": 2739,
+    "rapid": 2729,
+    "blitz": 2704
+   },
+   "Tari, Aryan": {
+    "std": 2641,
+    "rapid": 2550,
+    "blitz": 2598
+   },
+   "Topalov, Veselin": {
+    "std": 2695,
+    "rapid": 2607,
+    "blitz": 2627
+   },
+   "Ding, Liren": {
+    "std": 2738,
+    "rapid": 2716,
+    "blitz": 2757
+   },
+   "Mamedyarov, Shakhriyar": {
+    "std": 2717,
+    "rapid": 2707,
+    "blitz": 2632
    }
   }
  },
  "monthly": {
-  "Carlsen, Magnus": {
-   "2022-06": {
-    "std": 2864,
-    "rapid": null,
-    "blitz": null
+  "Abdusattorov, Nodirbek": {
+   "2022-05": {
+    "std": 2661,
+    "rapid": 2670,
+    "blitz": 2663
    },
-   "2023-06": {
-    "std": 2853,
-    "rapid": null,
-    "blitz": null
+   "2023-05": {
+    "std": 2731,
+    "rapid": 2703,
+    "blitz": 2683
    },
-   "2024-06": {
-    "std": 2830,
-    "rapid": null,
-    "blitz": null
-   },
-   "2025-06": {
-    "std": 2837,
-    "rapid": null,
-    "blitz": null
-   },
-   "2026-06": {
-    "std": 2841,
-    "rapid": null,
-    "blitz": null
-   }
-  },
-  "Nakamura, Hikaru": {
-   "2022-06": {
-    "std": 2760,
-    "rapid": null,
-    "blitz": null
-   },
-   "2023-06": {
-    "std": 2775,
-    "rapid": null,
-    "blitz": null
-   },
-   "2024-06": {
-    "std": 2794,
-    "rapid": null,
-    "blitz": null
-   },
-   "2025-06": {
-    "std": 2804,
-    "rapid": null,
-    "blitz": null
-   },
-   "2026-06": {
-    "std": 2792,
-    "rapid": null,
-    "blitz": null
-   }
-  },
-  "Caruana, Fabiano": {
-   "2022-06": {
-    "std": 2783,
-    "rapid": null,
-    "blitz": null
-   },
-   "2023-06": {
-    "std": 2773,
-    "rapid": null,
-    "blitz": null
-   },
-   "2024-06": {
-    "std": 2805,
-    "rapid": null,
-    "blitz": null
-   },
-   "2025-06": {
-    "std": 2777,
-    "rapid": null,
-    "blitz": null
-   },
-   "2026-06": {
-    "std": 2792,
-    "rapid": null,
-    "blitz": null
-   }
-  },
-  "Firouzja, Alireza": {
-   "2022-06": {
-    "std": 2793,
-    "rapid": null,
-    "blitz": null
-   },
-   "2023-06": {
-    "std": 2786,
-    "rapid": null,
-    "blitz": null
-   },
-   "2024-06": {
-    "std": 2737,
-    "rapid": null,
-    "blitz": null
-   },
-   "2025-06": {
-    "std": 2766,
-    "rapid": null,
-    "blitz": null
-   },
-   "2026-06": {
-    "std": 2744,
-    "rapid": null,
-    "blitz": null
-   }
-  },
-  "Gukesh D": {
-   "2022-06": {
-    "std": 2675,
-    "rapid": null,
-    "blitz": null
-   },
-   "2023-06": {
-    "std": 2736,
-    "rapid": null,
-    "blitz": null
-   },
-   "2024-06": {
-    "std": 2763,
-    "rapid": null,
-    "blitz": null
-   },
-   "2025-06": {
-    "std": 2776,
-    "rapid": null,
-    "blitz": null
-   },
-   "2026-06": {
-    "std": 2732,
-    "rapid": null,
-    "blitz": null
-   }
-  },
-  "Praggnanandhaa R": {
-   "2022-06": {
-    "std": 2642,
-    "rapid": null,
-    "blitz": null
-   },
-   "2023-06": {
-    "std": 2690,
-    "rapid": null,
-    "blitz": null
-   },
-   "2024-06": {
-    "std": 2747,
-    "rapid": null,
-    "blitz": null
-   },
-   "2025-06": {
-    "std": 2767,
-    "rapid": null,
-    "blitz": null
-   },
-   "2026-06": {
-    "std": 2735,
-    "rapid": null,
-    "blitz": null
-   }
-  },
-  "So, Wesley": {
-   "2022-06": {
-    "std": 2775,
-    "rapid": null,
-    "blitz": null
-   },
-   "2023-06": {
+   "2024-05": {
     "std": 2765,
-    "rapid": null,
-    "blitz": null
+    "rapid": 2733,
+    "blitz": 2661
    },
-   "2024-06": {
-    "std": 2757,
-    "rapid": null,
-    "blitz": null
+   "2025-05": {
+    "std": 2771,
+    "rapid": 2732,
+    "blitz": 2694
    },
-   "2025-06": {
-    "std": 2745,
-    "rapid": null,
-    "blitz": null
-   },
-   "2026-06": {
-    "std": 2753,
-    "rapid": null,
-    "blitz": null
-   }
-  },
-  "Giri, Anish": {
-   "2022-06": {
-    "std": 2761,
-    "rapid": null,
-    "blitz": null
-   },
-   "2023-06": {
-    "std": 2772,
-    "rapid": null,
-    "blitz": null
-   },
-   "2024-06": {
-    "std": 2745,
-    "rapid": null,
-    "blitz": null
-   },
-   "2025-06": {
-    "std": 2748,
-    "rapid": null,
-    "blitz": null
-   },
-   "2026-06": {
-    "std": 2764,
-    "rapid": null,
-    "blitz": null
-   }
-  },
-  "Mamedyarov, Shakhriyar": {
-   "2022-06": {
-    "std": 2751,
-    "rapid": null,
-    "blitz": null
-   },
-   "2023-06": {
-    "std": 2740,
-    "rapid": null,
-    "blitz": null
-   },
-   "2024-06": {
-    "std": 2734,
-    "rapid": null,
-    "blitz": null
-   },
-   "2025-06": {
-    "std": 2746,
-    "rapid": null,
-    "blitz": null
-   },
-   "2026-06": {
-    "std": 2717,
-    "rapid": null,
-    "blitz": null
-   }
-  },
-  "Vachier-Lagrave, Maxime": {
-   "2022-06": {
-    "std": 2760,
-    "rapid": null,
-    "blitz": null
-   },
-   "2023-06": {
-    "std": 2747,
-    "rapid": null,
-    "blitz": null
-   },
-   "2024-06": {
-    "std": 2732,
-    "rapid": null,
-    "blitz": null
-   },
-   "2025-06": {
-    "std": 2736,
-    "rapid": null,
-    "blitz": null
-   },
-   "2026-06": {
-    "std": 2721,
-    "rapid": null,
-    "blitz": null
+   "2026-05": {
+    "std": 2780,
+    "rapid": 2703,
+    "blitz": 2785
    }
   },
   "Anand, Viswanathan": {
-   "2022-06": {
+   "2022-05": {
     "std": 2751,
-    "rapid": null,
-    "blitz": null
+    "rapid": 2675,
+    "blitz": 2758
    },
-   "2023-06": {
+   "2023-05": {
     "std": 2754,
-    "rapid": null,
-    "blitz": null
+    "rapid": 2731,
+    "blitz": 2733
    },
-   "2024-06": {
+   "2024-05": {
     "std": 2751,
-    "rapid": null,
-    "blitz": null
+    "rapid": 2749,
+    "blitz": 2709
    },
-   "2025-06": {
+   "2025-05": {
     "std": 2743,
-    "rapid": null,
-    "blitz": null
+    "rapid": 2719,
+    "blitz": 2739
    },
-   "2026-06": {
+   "2026-05": {
     "std": 2739,
-    "rapid": null,
-    "blitz": null
+    "rapid": 2729,
+    "blitz": 2704
    }
   },
-  "Topalov, Veselin": {
-   "2022-06": {
-    "std": 2730,
-    "rapid": null,
-    "blitz": null
+  "Carlsen, Magnus": {
+   "2022-05": {
+    "std": 2864,
+    "rapid": 2847,
+    "blitz": 2832
    },
-   "2023-06": {
-    "std": 2728,
-    "rapid": null,
-    "blitz": null
+   "2023-05": {
+    "std": 2853,
+    "rapid": 2839,
+    "blitz": 2852
    },
-   "2024-06": {
-    "std": 2727,
-    "rapid": null,
-    "blitz": null
+   "2024-05": {
+    "std": 2830,
+    "rapid": 2828,
+    "blitz": 2886
    },
-   "2025-06": {
-    "std": 2717,
-    "rapid": null,
-    "blitz": null
+   "2025-05": {
+    "std": 2837,
+    "rapid": 2819,
+    "blitz": 2883
    },
-   "2026-06": {
-    "std": 2695,
-    "rapid": null,
-    "blitz": null
+   "2026-05": {
+    "std": 2840,
+    "rapid": 2832,
+    "blitz": 2869
    }
   },
-  "Radjabov, Teimour": {
-   "2022-06": {
-    "std": 2753,
-    "rapid": null,
-    "blitz": null
+  "Caruana, Fabiano": {
+   "2022-05": {
+    "std": 2786,
+    "rapid": 2790,
+    "blitz": 2744
    },
-   "2023-06": {
-    "std": 2747,
-    "rapid": null,
-    "blitz": null
+   "2023-05": {
+    "std": 2764,
+    "rapid": 2752,
+    "blitz": 2837
    },
-   "2024-06": {
-    "std": 2704,
-    "rapid": null,
-    "blitz": null
+   "2024-05": {
+    "std": 2805,
+    "rapid": 2738,
+    "blitz": 2777
    },
-   "2025-06": {
-    "std": 2692,
-    "rapid": null,
-    "blitz": null
+   "2025-05": {
+    "std": 2776,
+    "rapid": 2756,
+    "blitz": 2782
    },
-   "2026-06": {
-    "std": 2689,
-    "rapid": null,
-    "blitz": null
+   "2026-05": {
+    "std": 2788,
+    "rapid": 2727,
+    "blitz": 2749
    }
   },
   "Ding, Liren": {
-   "2022-06": {
+   "2022-05": {
     "std": 2806,
-    "rapid": null,
-    "blitz": null
+    "rapid": 2836,
+    "blitz": 2788
    },
-   "2023-06": {
-    "std": 2780,
-    "rapid": null,
-    "blitz": null
+   "2023-05": {
+    "std": 2789,
+    "rapid": 2830,
+    "blitz": 2787
    },
-   "2024-06": {
+   "2024-05": {
     "std": 2762,
-    "rapid": null,
-    "blitz": null
+    "rapid": 2775,
+    "blitz": 2787
    },
-   "2025-06": {
+   "2025-05": {
     "std": 2734,
-    "rapid": null,
-    "blitz": null
+    "rapid": 2776,
+    "blitz": 2785
    },
-   "2026-06": {
+   "2026-05": {
     "std": 2738,
-    "rapid": null,
-    "blitz": null
-   }
-  },
-  "Wei, Yi": {
-   "2022-06": {
-    "std": 2727,
-    "rapid": null,
-    "blitz": null
-   },
-   "2023-06": {
-    "std": 2722,
-    "rapid": null,
-    "blitz": null
-   },
-   "2024-06": {
-    "std": 2755,
-    "rapid": null,
-    "blitz": null
-   },
-   "2025-06": {
-    "std": 2758,
-    "rapid": null,
-    "blitz": null
-   },
-   "2026-06": {
-    "std": 2753,
-    "rapid": null,
-    "blitz": null
+    "rapid": 2716,
+    "blitz": 2757
    }
   },
   "Erigaisi Arjun": {
-   "2022-06": {
-    "std": 2681,
-    "rapid": null,
-    "blitz": null
+   "2022-05": {
+    "std": 2675,
+    "rapid": 2450,
+    "blitz": 2745
    },
-   "2023-06": {
-    "std": 2702,
-    "rapid": null,
-    "blitz": null
+   "2023-05": {
+    "std": 2701,
+    "rapid": 2714,
+    "blitz": 2719
    },
-   "2024-06": {
+   "2024-05": {
     "std": 2761,
-    "rapid": null,
-    "blitz": null
+    "rapid": 2671,
+    "blitz": 2744
    },
-   "2025-06": {
+   "2025-05": {
     "std": 2782,
-    "rapid": null,
-    "blitz": null
+    "rapid": 2708,
+    "blitz": 2738
    },
-   "2026-06": {
-    "std": 2761,
-    "rapid": null,
-    "blitz": null
+   "2026-05": {
+    "std": 2751,
+    "rapid": 2741,
+    "blitz": 2776
    }
   },
-  "Abdusattorov, Nodirbek": {
-   "2022-06": {
-    "std": 2661,
-    "rapid": null,
-    "blitz": null
+  "Firouzja, Alireza": {
+   "2022-05": {
+    "std": 2804,
+    "rapid": 2670,
+    "blitz": 2791
    },
-   "2023-06": {
-    "std": 2732,
-    "rapid": null,
-    "blitz": null
+   "2023-05": {
+    "std": 2785,
+    "rapid": 2745,
+    "blitz": 2904
    },
-   "2024-06": {
-    "std": 2766,
-    "rapid": null,
-    "blitz": null
+   "2024-05": {
+    "std": 2737,
+    "rapid": 2724,
+    "blitz": 2863
    },
-   "2025-06": {
+   "2025-05": {
+    "std": 2757,
+    "rapid": 2753,
+    "blitz": 2857
+   },
+   "2026-05": {
+    "std": 2759,
+    "rapid": 2755,
+    "blitz": 2796
+   }
+  },
+  "Giri, Anish": {
+   "2022-05": {
+    "std": 2761,
+    "rapid": 2730,
+    "blitz": 2766
+   },
+   "2023-05": {
+    "std": 2768,
+    "rapid": 2714,
+    "blitz": 2807
+   },
+   "2024-05": {
+    "std": 2745,
+    "rapid": 2687,
+    "blitz": 2715
+   },
+   "2025-05": {
+    "std": 2738,
+    "rapid": 2688,
+    "blitz": 2663
+   },
+   "2026-05": {
     "std": 2767,
-    "rapid": null,
-    "blitz": null
+    "rapid": 2689,
+    "blitz": 2666
+   }
+  },
+  "Gukesh D": {
+   "2022-05": {
+    "std": 2659,
+    "rapid": 2223,
+    "blitz": 2598
    },
-   "2026-06": {
-    "std": 2777,
-    "rapid": null,
-    "blitz": null
+   "2023-05": {
+    "std": 2732,
+    "rapid": 2629,
+    "blitz": 2629
+   },
+   "2024-05": {
+    "std": 2763,
+    "rapid": 2649,
+    "blitz": 2651
+   },
+   "2025-05": {
+    "std": 2787,
+    "rapid": 2654,
+    "blitz": 2615
+   },
+   "2026-05": {
+    "std": 2732,
+    "rapid": 2682,
+    "blitz": 2646
    }
   },
   "Keymer, Vincent": {
-   "2022-06": {
-    "std": 2675,
-    "rapid": null,
-    "blitz": null
+   "2022-05": {
+    "std": 2667,
+    "rapid": 2552,
+    "blitz": 2548
    },
-   "2023-06": {
-    "std": 2690,
-    "rapid": null,
-    "blitz": null
+   "2023-05": {
+    "std": 2700,
+    "rapid": 2617,
+    "blitz": 2669
    },
-   "2024-06": {
-    "std": 2721,
-    "rapid": null,
-    "blitz": null
+   "2024-05": {
+    "std": 2726,
+    "rapid": 2647,
+    "blitz": 2610
    },
-   "2025-06": {
+   "2025-05": {
+    "std": 2720,
+    "rapid": 2649,
+    "blitz": 2585
+   },
+   "2026-05": {
+    "std": 2759,
+    "rapid": 2627,
+    "blitz": 2621
+   }
+  },
+  "Mamedyarov, Shakhriyar": {
+   "2022-05": {
+    "std": 2770,
+    "rapid": 2699,
+    "blitz": 2778
+   },
+   "2023-05": {
+    "std": 2738,
+    "rapid": 2694,
+    "blitz": 2704
+   },
+   "2024-05": {
+    "std": 2734,
+    "rapid": 2676,
+    "blitz": 2708
+   },
+   "2025-05": {
+    "std": 2746,
+    "rapid": 2701,
+    "blitz": 2680
+   },
+   "2026-05": {
+    "std": 2717,
+    "rapid": 2707,
+    "blitz": 2632
+   }
+  },
+  "Nakamura, Hikaru": {
+   "2022-05": {
+    "std": 2760,
+    "rapid": 2851,
+    "blitz": 2850
+   },
+   "2023-05": {
+    "std": 2775,
+    "rapid": 2748,
+    "blitz": 2885
+   },
+   "2024-05": {
+    "std": 2794,
+    "rapid": 2746,
+    "blitz": 2874
+   },
+   "2025-05": {
+    "std": 2804,
+    "rapid": 2734,
+    "blitz": 2837
+   },
+   "2026-05": {
+    "std": 2792,
+    "rapid": 2742,
+    "blitz": 2838
+   }
+  },
+  "Praggnanandhaa R": {
+   "2022-05": {
+    "std": 2642,
+    "rapid": 1927,
+    "blitz": 2599
+   },
+   "2023-05": {
+    "std": 2688,
+    "rapid": 2587,
+    "blitz": 2623
+   },
+   "2024-05": {
+    "std": 2747,
+    "rapid": 2704,
+    "blitz": 2675
+   },
+   "2025-05": {
+    "std": 2758,
+    "rapid": 2688,
+    "blitz": 2717
+   },
+   "2026-05": {
+    "std": 2733,
+    "rapid": 2663,
+    "blitz": 2698
+   }
+  },
+  "Radjabov, Teimour": {
+   "2022-05": {
+    "std": 2753,
+    "rapid": 2747,
+    "blitz": 2705
+   },
+   "2023-05": {
+    "std": 2747,
+    "rapid": 2694,
+    "blitz": 2707
+   },
+   "2024-05": {
+    "std": 2723,
+    "rapid": 2668,
+    "blitz": 2674
+   },
+   "2025-05": {
+    "std": 2692,
+    "rapid": 2668,
+    "blitz": 2663
+   },
+   "2026-05": {
+    "std": 2689,
+    "rapid": 2646,
+    "blitz": 2676
+   }
+  },
+  "So, Wesley": {
+   "2022-05": {
+    "std": 2766,
+    "rapid": 2770,
+    "blitz": 2814
+   },
+   "2023-05": {
+    "std": 2760,
+    "rapid": 2788,
+    "blitz": 2749
+   },
+   "2024-05": {
+    "std": 2757,
+    "rapid": 2722,
+    "blitz": 2773
+   },
+   "2025-05": {
+    "std": 2751,
+    "rapid": 2714,
+    "blitz": 2783
+   },
+   "2026-05": {
+    "std": 2754,
+    "rapid": 2705,
+    "blitz": 2798
+   }
+  },
+  "Tari, Aryan": {
+   "2022-05": {
+    "std": 2654,
+    "rapid": 2531,
+    "blitz": 2567
+   },
+   "2023-05": {
+    "std": 2642,
+    "rapid": 2539,
+    "blitz": 2571
+   },
+   "2024-05": {
+    "std": 2634,
+    "rapid": 2556,
+    "blitz": 2575
+   },
+   "2025-05": {
+    "std": 2636,
+    "rapid": 2564,
+    "blitz": 2593
+   },
+   "2026-05": {
+    "std": 2641,
+    "rapid": 2550,
+    "blitz": 2598
+   }
+  },
+  "Topalov, Veselin": {
+   "2022-05": {
     "std": 2730,
-    "rapid": null,
-    "blitz": null
+    "rapid": 2627,
+    "blitz": 2667
    },
-   "2026-06": {
-    "std": 2767,
-    "rapid": null,
-    "blitz": null
+   "2023-05": {
+    "std": 2728,
+    "rapid": 2630,
+    "blitz": 2657
+   },
+   "2024-05": {
+    "std": 2727,
+    "rapid": 2632,
+    "blitz": 2657
+   },
+   "2025-05": {
+    "std": 2717,
+    "rapid": 2618,
+    "blitz": 2657
+   },
+   "2026-05": {
+    "std": 2695,
+    "rapid": 2607,
+    "blitz": 2627
+   }
+  },
+  "Vachier-Lagrave, Maxime": {
+   "2022-05": {
+    "std": 2750,
+    "rapid": 2743,
+    "blitz": 2813
+   },
+   "2023-05": {
+    "std": 2742,
+    "rapid": 2762,
+    "blitz": 2723
+   },
+   "2024-05": {
+    "std": 2732,
+    "rapid": 2747,
+    "blitz": 2764
+   },
+   "2025-05": {
+    "std": 2723,
+    "rapid": 2735,
+    "blitz": 2748
+   },
+   "2026-05": {
+    "std": 2717,
+    "rapid": 2735,
+    "blitz": 2761
+   }
+  },
+  "Wang, Hao": {
+   "2022-05": {
+    "std": 2744,
+    "rapid": 2750,
+    "blitz": 2712
+   },
+   "2023-05": {
+    "std": 2722,
+    "rapid": 2716,
+    "blitz": 2624
+   },
+   "2024-05": {
+    "std": 2702,
+    "rapid": 2700,
+    "blitz": 2628
+   },
+   "2025-05": {
+    "std": 2701,
+    "rapid": 2692,
+    "blitz": 2628
+   },
+   "2026-05": {
+    "std": 2684,
+    "rapid": 2667,
+    "blitz": 2639
+   }
+  },
+  "Wei, Yi": {
+   "2022-05": {
+    "std": 2727,
+    "rapid": 2752,
+    "blitz": 2686
+   },
+   "2023-05": {
+    "std": 2722,
+    "rapid": 2716,
+    "blitz": 2686
+   },
+   "2024-05": {
+    "std": 2755,
+    "rapid": 2758,
+    "blitz": 2684
+   },
+   "2025-05": {
+    "std": 2758,
+    "rapid": 2746,
+    "blitz": 2711
+   },
+   "2026-05": {
+    "std": 2753,
+    "rapid": 2726,
+    "blitz": 2698
    }
   }
  }

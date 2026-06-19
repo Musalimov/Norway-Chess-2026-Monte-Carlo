@@ -275,40 +275,48 @@ So the feature was **not deployed**. The real lever for decisive-game prediction
 is better strength/form modelling (recent-form velocity, speed-rating
 cross-control), which is the next direction.
 
-## Speed cross-control: implemented, parked pending data (improvement #3)
+## Tested and rejected: speed cross-control (improvement #3)
 
-The multi-year backtest showed that decisive-game accuracy is governed by the
-**strength/form signal**, not the draw band. The natural strength-signal upgrade
-is *cross-control*: blend each player's rapid/blitz strength into their classical
-rating, on the hypothesis that a player who is strong at speed *relative to the
-field* is in sharper current form. It is implemented as a single parameter `CC`
-folded into `Model.eff0` (so the engine and dashboard pick it up unchanged), and
-is **off by default (`CC = 0`)**.
+The multi-year backtest pointed at the strength/form signal as the lever for
+decisive games, and the natural upgrade was *cross-control*: blend each player's
+rapid/blitz strength into their classical rating, on the idea that a player who
+is strong at speed *relative to the field* is in sharper current form.
 
-It is off for a principled reason: **it cannot be validated out-of-sample with
-the current data.** `history.json` (2022-2025) stores only classical Elo per
-game — no historical rapid/blitz ratings — so the leave-one-year-out method that
-justified strength sampling and rejected draw dynamics is unavailable here. The
-only check possible is in-sample on 2026 (`tools/experiment_crosscontrol.py`):
+This needed data the project did not have — historical rapid/blitz ratings per
+edition. So a small FIDE parser was built (`tools/fetch_fide_ratings.py`): it
+reads FIDE IDs straight from the broadcast PGNs (15/20 players; the rest by name)
+and parses FIDE's monthly rating lists (combined or separate standard/rapid/
+blitz, any compression) into `data/fide/speed_ratings.json` — each player's
+rapid/blitz as of every edition (the **May** list, i.e. the pre-tournament
+information set). Classical stays as the model already had it, from the PGNs.
 
-| CC   | RPS (2026, in-sample) | Directional | Note |
-| ---- | --------------------: | ----------: | ---- |
-| 0.0  |                0.2144 |        7/15 | deployed |
-| 0.5  |                0.2087 |        7/15 | |
-| 0.75 |                0.2078 |        8/15 | |
+With the data in hand, cross-control was validated exactly like strength
+sampling — a single parameter `CC` (field-centred speed gap added to the
+classical rating, folded into `Model.eff0`), fitted per fold on the other four
+editions at sigma=60. Reproduce with `tools/backtest_crosscontrol.py`.
 
-The effect is small and **not trustworthy**: tuning on 2026's 30 (unusually
-decisive) games overfits, and tellingly cross-control *down-weights the actual
-champion* (Praggnanandhaa's speed gap is −14 vs the field), so its apparent gain
-comes from sharpening favourites who happened to start fast. Deploying it on this
-evidence would repeat exactly the mistake the project is a post-mortem of.
+| Year | fitted CC | RPS (CC=0 → CC) | Directional (CC=0 → CC) |
+| ---- | --------: | --------------: | ----------------------: |
+| 2022 |      0.25 | 0.1250 → 0.1264 | 10/14 → 10/14 |
+| 2023 |      0    | 0.1426 → 0.1426 | 10/16 → 10/16 |
+| 2024 |      0.10 | 0.1225 → 0.1224 |   5/9 → 5/9 |
+| 2025 |      0.10 | 0.1726 → 0.1724 | 12/15 → 12/15 |
+| 2026 |      0.10 | 0.1910 → 0.1906 |  9/15 → 9/15 |
+| **All** | — | **0.1479 → 0.1481** | **46/69 → 46/69** |
 
-**So `CC` stays 0, and the real next step is a data task:** archive each player's
-FIDE **rapid and blitz rating as of each edition** (2022-2025) — extend
-`tools/download.sh` to save the per-period FIDE lists into `data/fide/` and join
-them in `build_dataset.py` — after which cross-control can be cross-validated and
-deployed (or rejected) on the same honest footing as strength sampling. The
-capability is built and tested; only the evidence is missing.
+The fitted `CC` is near zero in every fold, aggregate RPS and Brier are
+unchanged-to-slightly-worse, and — the point of the whole exercise —
+**directional accuracy on decisive games does not move at all** (46/69). Like
+the draw-dynamics experiment, cross-control shifts ratings without flipping who
+is favoured, so it cannot improve decisive-game calls. It was **not deployed**
+(`CC` stays 0, now on evidence rather than for lack of data).
+
+A broader lesson emerged across all three experiments: strength sampling, draw
+dynamics and speed cross-control **all leave directional accuracy at ~46/69**.
+The remaining decisive-game error is dominated by genuine upsets that no
+pre-game rating, draw, or speed signal anticipates — i.e. it is close to the
+irreducible ceiling of the problem, not a missing feature. The FIDE data and
+parser remain in the repo and still enable the monthly-velocity idea (#5).
 
 ## Round-by-round commentary
 
