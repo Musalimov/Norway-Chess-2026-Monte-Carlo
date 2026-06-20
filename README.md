@@ -41,17 +41,15 @@ The dashboard is the final inspection layer for the simulation engine, calibrati
 * [Dashboard](#dashboard)
 * [What it does](#what-it-does)
 * [2026 Norway Chess: result vs forecast](#2026-norway-chess-result-vs-forecast)
-  * [The one-line story](#the-one-line-story)
-  * [Forecast vs reality](#forecast-vs-reality)
-  * [How the title race moved](#how-the-title-race-moved)
-  * [Model performance](#model-performance)
-  * [What the model got right and wrong](#what-the-model-got-right-and-wrong)
-  * [Round-by-round commentary](#round-by-round-commentary)
+* [Round-by-round commentary](#round-by-round-commentary)
 * [How it works](#how-it-works)
 * [Build and run](#build-and-run)
 * [Methodology and parameters](#methodology-and-parameters)
+* [Strength sampling: the overconfidence fix (v5)](#strength-sampling-the-overconfidence-fix-v5)
+* [Multi-year backtest (leave-one-year-out)](#multi-year-backtest-leave-one-year-out)
+* [Tested and rejected: standings-aware draw dynamics](#tested-and-rejected-standings-aware-draw-dynamics)
+* [Tested and rejected: speed cross-control (improvement #3)](#tested-and-rejected-speed-cross-control-improvement-3)
 * [Repository layout](#repository-layout)
-* [Generated outputs](#generated-outputs)
 * [Validation](#validation)
 * [Acknowledgements](#acknowledgements)
 
@@ -171,152 +169,6 @@ The model was not useless: it was sharper than a flat 25% four-way guess and pro
 * **Directional accuracy was weak in decisive games.** On games that produced a classical win, the model favored the eventual winner only **7/15** times.
 
 **Takeaway:** the model was calibrated on average, but too conservative in decisive games and too slow to react to extreme in-event form. A **4.6%** outcome is not impossible — and Norway Chess 2026 landed in that tail.
-
-## Strength sampling: the overconfidence fix (v5)
-
-The first version used **point ratings** — every simulated tournament started each player at exactly their rating. That made the favorite too sharp and the tail too thin: an earlier build put Carlsen at **57%** and the eventual champion at **2.5%**. But elite players run hot or cold for a whole event, so v5 draws each player's strength for a given simulated tournament once from `N(rating, σ)`, modelling whole-event form variance.
-
-`σ` is chosen by the **same leave-one-tournament-out cross-validation** as the other parameters — on 2022–2025 only, never on 2026. CV shows a clear minimum at **σ = 60 Elo** (CV-RPS `0.1382` at σ=60 vs `0.1395` at σ=0, rising again by σ=100), close to the well-known empirical figure of ~50 Elo for the standard error of a single-event performance. The C++ engine samples it per iteration; the analytic per-game model marginalizes over it with Gauss–Hermite quadrature, and a unit test checks the two agree to Monte-Carlo tolerance.
-
-Measured out-of-sample on 2026:
-
-| Metric (2026, out-of-sample)  | v4 (σ=0) | v5 (σ=60) |
-| ----------------------------- | -------: | --------: |
-| Favorite (Carlsen) win prob.  |    57.4% |     47.3% |
-| Champion (Pragg) win prob.    |     2.5% |      4.6% |
-| Champion surprise (bits)      |     5.30 |      4.40 |
-| Per-game RPS (classical 3-way)|   0.1936 |    0.1910 |
-| Rank RPS of actual finish     |   0.2753 |    0.2528 |
-
-Strength sampling does not turn a near-random problem into a solved one — the champion is still a long shot — but the distribution is honestly wider and better calibrated at both the game and the tournament level. Reproduce with `tools/experiment_sigma.py`.
-
-## Multi-year backtest (leave-one-year-out)
-
-Norway Chess 2022-2026 are five independent editions, so the model can be
-tested the way it would be deployed: for each year it is fitted on the **other
-four** editions (RPS + MAP, lambda=0.1) and scored out-of-sample on the held-out
-year. This separates a real edge from a lucky fit to 2026. Reproduce with
-`tools/backtest.py`; results are written to `out/backtest.json`. The backtest is
-intentionally **ratings-only** (style 1, no live adjustments, Armageddon on
-classical Elo) so the comparison is identical across years and isolates the
-strength-sampling effect — the deployed model adds the extra signals on top.
-
-**Per-game (classical win/draw/loss).** The model beats a uniform guess in
-*every* edition, not just 2026:
-
-| Year |  n | RPS (σ=0) | RPS (σ fit) | RPS uniform | Brier (fit) | Brier uniform |
-| ---- | -: | --------: | ----------: | ----------: | ----------: | ------------: |
-| 2022 | 45 |    0.1267 |      0.1267 |      0.1630 |       0.485 |         0.667 |
-| 2023 | 45 |    0.1435 |      0.1426 |      0.1704 |       0.511 |         0.667 |
-| 2024 | 30 |    0.1232 |      0.1218 |      0.1611 |       0.459 |         0.667 |
-| 2025 | 30 |    0.1711 |      0.1716 |      0.1944 |       0.608 |         0.667 |
-| 2026 | 30 |    0.1902 |      0.1910 |      0.1944 |       0.642 |         0.667 |
-| **All** | **180** | **0.1483** | **0.1480** | **0.1750** | **0.534** | **0.667** |
-
-At the per-game level strength sampling is essentially **neutral** (0.1480 vs
-0.1483 aggregate): it barely changes how single games are scored.
-
-**Tournament (probability assigned to the actual champion).** This is where
-strength sampling shows its real character — it is a tail-risk hedge, not a free
-lunch:
-
-| Year | Champion | Players | P(champ), σ=0 | P(champ), σ fit | Surprise σ=0 → fit (bits) |
-| ---- | -------- | ------: | ------------: | --------------: | ------------------------: |
-| 2022 | Carlsen        | 10 | 51.7% | 51.7% | 0.95 → 0.95 |
-| 2023 | Nakamura       | 10 |  9.0% |  9.4% | 3.47 → 3.41 |
-| 2024 | Carlsen        |  6 | 37.3% | 31.3% | 1.42 → 1.68 |
-| 2025 | Carlsen        |  6 | 39.2% | 31.2% | 1.35 → 1.68 |
-| 2026 | Praggnanandhaa |  6 |  5.9% |  7.7% | 4.08 → 3.70 |
-
-Strength sampling **helps in upset years** (2023, 2026 — an underdog wins, the
-wider distribution is less surprised) and **costs a little in chalk years**
-(2024, 2025 — the favourite wins, so widening lowers the favourite's
-probability). Across the five editions it is roughly a wash on average champion
-surprise, but it shrinks the **worst case** (2026: 4.08 → 3.70 bits). Whether
-that trade is worth it depends on whether you value robustness to upsets over
-sharpness on favourites; for a forecaster reporting calibrated probabilities, it
-is — which is why σ stays in the deployed model, chosen by cross-validation
-rather than by fitting any single year.
-
-## Tested and rejected: standings-aware draw dynamics
-
-A natural next idea was **motivational draw dynamics**: Norway Chess rewards
-decisive play, and players push harder late and when chasing the lead, so a
-draw should be less likely in late, high-stakes games. This was prototyped as a
-single parameter `AGG` that shrinks the draw probability by
-`exp(-AGG · lateness · pressure)`, where `pressure` rises for players still
-within reach of the leader (`pressure` is computed from the standings *before*
-the game, so the model stays analytic and backtestable). Prototype in
-`tools/experiment_aggression.py`.
-
-Leave-one-year-out cross-validation **set `AGG` to zero in every fold** — the
-data does not support it. Forcing it on shows why:
-
-| AGG | RPS (pooled) | Brier | Draw is modal | Directional on decisive |
-| --: | -----------: | ----: | ------------: | ----------------------: |
-| 0   |       0.1470 | 0.529 |       180/180 |                   46/69 |
-| 0.6 |       0.1510 | 0.553 |       166/180 |                   46/69 |
-| 1.5 |       0.1638 | 0.630 |        94/180 |                   46/69 |
-| 3.0 |       0.1830 | 0.745 |        49/180 |                   46/69 |
-
-Two lessons came out of this, both more useful than the feature would have been:
-
-1. **The draw band is not the lever for directional accuracy.** Shrinking the
-   draw probability and returning the mass to win/loss *around the Elo
-   expectation* preserves the favourite-vs-underdog ordering, so directional
-   accuracy is **completely unchanged** (46/69 at every `AGG`). Decisive-game
-   accuracy is governed by the *strength/form* signal, not the draw model.
-2. **"Draw over-firing" was a misdiagnosis.** A draw being the single most
-   likely outcome in almost every elite game is *correct* calibration — elite
-   draw rates exceed 50% per game — even though only half of games end drawn.
-   Pushing the model away from draws monotonically worsens RPS and Brier.
-
-So the feature was **not deployed**. The real lever for decisive-game prediction
-is better strength/form modelling (recent-form velocity, speed-rating
-cross-control), which is the next direction.
-
-## Tested and rejected: speed cross-control (improvement #3)
-
-The multi-year backtest pointed at the strength/form signal as the lever for
-decisive games, and the natural upgrade was *cross-control*: blend each player's
-rapid/blitz strength into their classical rating, on the idea that a player who
-is strong at speed *relative to the field* is in sharper current form.
-
-This needed data the project did not have — historical rapid/blitz ratings per
-edition. So a small FIDE parser was built (`tools/fetch_fide_ratings.py`): it
-reads FIDE IDs straight from the broadcast PGNs (15/20 players; the rest by name)
-and parses FIDE's monthly rating lists (combined or separate standard/rapid/
-blitz, any compression) into `data/fide/speed_ratings.json` — each player's
-rapid/blitz as of every edition (the **May** list, i.e. the pre-tournament
-information set). Classical stays as the model already had it, from the PGNs.
-
-With the data in hand, cross-control was validated exactly like strength
-sampling — a single parameter `CC` (field-centred speed gap added to the
-classical rating, folded into `Model.eff0`), fitted per fold on the other four
-editions at sigma=60. Reproduce with `tools/backtest_crosscontrol.py`.
-
-| Year | fitted CC | RPS (CC=0 → CC) | Directional (CC=0 → CC) |
-| ---- | --------: | --------------: | ----------------------: |
-| 2022 |      0.25 | 0.1250 → 0.1264 | 10/14 → 10/14 |
-| 2023 |      0    | 0.1426 → 0.1426 | 10/16 → 10/16 |
-| 2024 |      0.10 | 0.1225 → 0.1224 |   5/9 → 5/9 |
-| 2025 |      0.10 | 0.1726 → 0.1724 | 12/15 → 12/15 |
-| 2026 |      0.10 | 0.1910 → 0.1906 |  9/15 → 9/15 |
-| **All** | — | **0.1479 → 0.1481** | **46/69 → 46/69** |
-
-The fitted `CC` is near zero in every fold, aggregate RPS and Brier are
-unchanged-to-slightly-worse, and — the point of the whole exercise —
-**directional accuracy on decisive games does not move at all** (46/69). Like
-the draw-dynamics experiment, cross-control shifts ratings without flipping who
-is favoured, so it cannot improve decisive-game calls. It was **not deployed**
-(`CC` stays 0, now on evidence rather than for lack of data).
-
-A broader lesson emerged across all three experiments: strength sampling, draw
-dynamics and speed cross-control **all leave directional accuracy at ~46/69**.
-The remaining decisive-game error is dominated by genuine upsets that no
-pre-game rating, draw, or speed signal anticipates — i.e. it is close to the
-irreducible ceiling of the problem, not a missing feature. The FIDE data and
-parser remain in the repo and still enable the monthly-velocity idea (#5).
 
 ## Round-by-round commentary
 
@@ -608,16 +460,165 @@ The headline result is not an artifact of one tiebreak assumption.
 
 Across all four variants, Carlsen remains the clear favorite and Praggnanandhaa remains a long shot.
 
+## Strength sampling: the overconfidence fix (v5)
+
+The first version used **point ratings** — every simulated tournament started each player at exactly their rating. That made the favorite too sharp and the tail too thin: an earlier build put Carlsen at **57%** and the eventual champion at **2.5%**. But elite players run hot or cold for a whole event, so v5 draws each player's strength for a given simulated tournament once from `N(rating, σ)`, modelling whole-event form variance.
+
+`σ` is chosen by the **same leave-one-tournament-out cross-validation** as the other parameters — on 2022–2025 only, never on 2026. CV shows a clear minimum at **σ = 60 Elo** (CV-RPS `0.1382` at σ=60 vs `0.1395` at σ=0, rising again by σ=100), close to the well-known empirical figure of ~50 Elo for the standard error of a single-event performance. The C++ engine samples it per iteration; the analytic per-game model marginalizes over it with Gauss–Hermite quadrature, and a unit test checks the two agree to Monte-Carlo tolerance.
+
+Measured out-of-sample on 2026:
+
+| Metric (2026, out-of-sample)  | v4 (σ=0) | v5 (σ=60) |
+| ----------------------------- | -------: | --------: |
+| Favorite (Carlsen) win prob.  |    57.4% |     47.3% |
+| Champion (Pragg) win prob.    |     2.5% |      4.6% |
+| Champion surprise (bits)      |     5.30 |      4.40 |
+| Per-game RPS (classical 3-way)|   0.1936 |    0.1910 |
+| Rank RPS of actual finish     |   0.2753 |    0.2528 |
+
+Strength sampling does not turn a near-random problem into a solved one — the champion is still a long shot — but the distribution is honestly wider and better calibrated at both the game and the tournament level. Reproduce with `tools/experiment_sigma.py`.
+
+## Multi-year backtest (leave-one-year-out)
+
+Norway Chess 2022-2026 are five independent editions, so the model can be
+tested the way it would be deployed: for each year it is fitted on the **other
+four** editions (RPS + MAP, lambda=0.1) and scored out-of-sample on the held-out
+year. This separates a real edge from a lucky fit to 2026. Reproduce with
+`tools/backtest.py`; results are written to `out/backtest.json`. The backtest is
+intentionally **ratings-only** (style 1, no live adjustments, Armageddon on
+classical Elo) so the comparison is identical across years and isolates the
+strength-sampling effect — the deployed model adds the extra signals on top.
+
+**Per-game (classical win/draw/loss).** The model beats a uniform guess in
+*every* edition, not just 2026:
+
+| Year |  n | RPS (σ=0) | RPS (σ fit) | RPS uniform | Brier (fit) | Brier uniform |
+| ---- | -: | --------: | ----------: | ----------: | ----------: | ------------: |
+| 2022 | 45 |    0.1267 |      0.1267 |      0.1630 |       0.485 |         0.667 |
+| 2023 | 45 |    0.1435 |      0.1426 |      0.1704 |       0.511 |         0.667 |
+| 2024 | 30 |    0.1232 |      0.1218 |      0.1611 |       0.459 |         0.667 |
+| 2025 | 30 |    0.1711 |      0.1716 |      0.1944 |       0.608 |         0.667 |
+| 2026 | 30 |    0.1902 |      0.1910 |      0.1944 |       0.642 |         0.667 |
+| **All** | **180** | **0.1483** | **0.1480** | **0.1750** | **0.534** | **0.667** |
+
+At the per-game level strength sampling is essentially **neutral** (0.1480 vs
+0.1483 aggregate): it barely changes how single games are scored.
+
+**Tournament (probability assigned to the actual champion).** This is where
+strength sampling shows its real character — it is a tail-risk hedge, not a free
+lunch:
+
+| Year | Champion | Players | P(champ), σ=0 | P(champ), σ fit | Surprise σ=0 → fit (bits) |
+| ---- | -------- | ------: | ------------: | --------------: | ------------------------: |
+| 2022 | Carlsen        | 10 | 51.7% | 51.7% | 0.95 → 0.95 |
+| 2023 | Nakamura       | 10 |  9.0% |  9.4% | 3.47 → 3.41 |
+| 2024 | Carlsen        |  6 | 37.3% | 31.3% | 1.42 → 1.68 |
+| 2025 | Carlsen        |  6 | 39.2% | 31.2% | 1.35 → 1.68 |
+| 2026 | Praggnanandhaa |  6 |  5.9% |  7.7% | 4.08 → 3.70 |
+
+Strength sampling **helps in upset years** (2023, 2026 — an underdog wins, the
+wider distribution is less surprised) and **costs a little in chalk years**
+(2024, 2025 — the favourite wins, so widening lowers the favourite's
+probability). Across the five editions it is roughly a wash on average champion
+surprise, but it shrinks the **worst case** (2026: 4.08 → 3.70 bits). Whether
+that trade is worth it depends on whether you value robustness to upsets over
+sharpness on favourites; for a forecaster reporting calibrated probabilities, it
+is — which is why σ stays in the deployed model, chosen by cross-validation
+rather than by fitting any single year.
+
+## Tested and rejected: standings-aware draw dynamics
+
+A natural next idea was **motivational draw dynamics**: Norway Chess rewards
+decisive play, and players push harder late and when chasing the lead, so a
+draw should be less likely in late, high-stakes games. This was prototyped as a
+single parameter `AGG` that shrinks the draw probability by
+`exp(-AGG · lateness · pressure)`, where `pressure` rises for players still
+within reach of the leader (`pressure` is computed from the standings *before*
+the game, so the model stays analytic and backtestable). Prototype in
+`tools/experiment_aggression.py`.
+
+Leave-one-year-out cross-validation **set `AGG` to zero in every fold** — the
+data does not support it. Forcing it on shows why:
+
+| AGG | RPS (pooled) | Brier | Draw is modal | Directional on decisive |
+| --: | -----------: | ----: | ------------: | ----------------------: |
+| 0   |       0.1470 | 0.529 |       180/180 |                   46/69 |
+| 0.6 |       0.1510 | 0.553 |       166/180 |                   46/69 |
+| 1.5 |       0.1638 | 0.630 |        94/180 |                   46/69 |
+| 3.0 |       0.1830 | 0.745 |        49/180 |                   46/69 |
+
+Two lessons came out of this, both more useful than the feature would have been:
+
+1. **The draw band is not the lever for directional accuracy.** Shrinking the
+   draw probability and returning the mass to win/loss *around the Elo
+   expectation* preserves the favourite-vs-underdog ordering, so directional
+   accuracy is **completely unchanged** (46/69 at every `AGG`). Decisive-game
+   accuracy is governed by the *strength/form* signal, not the draw model.
+2. **"Draw over-firing" was a misdiagnosis.** A draw being the single most
+   likely outcome in almost every elite game is *correct* calibration — elite
+   draw rates exceed 50% per game — even though only half of games end drawn.
+   Pushing the model away from draws monotonically worsens RPS and Brier.
+
+So the feature was **not deployed**. The real lever for decisive-game prediction
+is better strength/form modelling (recent-form velocity, speed-rating
+cross-control), which is the next direction.
+
+## Tested and rejected: speed cross-control (improvement #3)
+
+The multi-year backtest pointed at the strength/form signal as the lever for
+decisive games, and the natural upgrade was *cross-control*: blend each player's
+rapid/blitz strength into their classical rating, on the idea that a player who
+is strong at speed *relative to the field* is in sharper current form.
+
+This needed data the project did not have — historical rapid/blitz ratings per
+edition. So a small FIDE parser was built (`tools/fetch_fide_ratings.py`): it
+reads FIDE IDs straight from the broadcast PGNs (15/20 players; the rest by name)
+and parses FIDE's monthly rating lists (combined or separate standard/rapid/
+blitz, any compression) into `data/fide/speed_ratings.json` — each player's
+rapid/blitz as of every edition (the **May** list, i.e. the pre-tournament
+information set). Classical stays as the model already had it, from the PGNs.
+
+With the data in hand, cross-control was validated exactly like strength
+sampling — a single parameter `CC` (field-centred speed gap added to the
+classical rating, folded into `Model.eff0`), fitted per fold on the other four
+editions at sigma=60. Reproduce with `tools/backtest_crosscontrol.py`.
+
+| Year | fitted CC | RPS (CC=0 → CC) | Directional (CC=0 → CC) |
+| ---- | --------: | --------------: | ----------------------: |
+| 2022 |      0.25 | 0.1250 → 0.1264 | 10/14 → 10/14 |
+| 2023 |      0    | 0.1426 → 0.1426 | 10/16 → 10/16 |
+| 2024 |      0.10 | 0.1225 → 0.1224 |   5/9 → 5/9 |
+| 2025 |      0.10 | 0.1726 → 0.1724 | 12/15 → 12/15 |
+| 2026 |      0.10 | 0.1910 → 0.1906 |  9/15 → 9/15 |
+| **All** | — | **0.1479 → 0.1481** | **46/69 → 46/69** |
+
+The fitted `CC` is near zero in every fold, aggregate RPS and Brier are
+unchanged-to-slightly-worse, and — the point of the whole exercise —
+**directional accuracy on decisive games does not move at all** (46/69). Like
+the draw-dynamics experiment, cross-control shifts ratings without flipping who
+is favoured, so it cannot improve decisive-game calls. It was **not deployed**
+(`CC` stays 0, now on evidence rather than for lack of data).
+
+A broader lesson emerged across all three experiments: strength sampling, draw
+dynamics and speed cross-control **all leave directional accuracy at ~46/69**.
+The remaining decisive-game error is dominated by genuine upsets that no
+pre-game rating, draw, or speed signal anticipates — i.e. it is close to the
+irreducible ceiling of the problem, not a missing feature. The FIDE data and
+parser remain in the repo and still enable the monthly-velocity idea (#5).
+
 ## Repository layout
 
 ```text
 data/
+  history.json               180 historical games 2022–2026 (classical Elo + Armageddon)
   tournaments/
     norway2026.json          Players, ratings, schedule, actual results
   formats/
     norway_chess.json        Norway Chess scoring rules
   raw/
     *.pgn                    Norway Chess broadcasts, 2022–2026
+  fide/
+    speed_ratings.json       Rapid/blitz per edition (cross-control backtest input)
 
 configs/
   model_v4.json              Structural model config (Armageddon strength, caps, form K)
@@ -633,10 +634,16 @@ src/
   eval_rounds.py             Round-by-round prediction report
 
 tools/
+  download.sh                Fetches Norway Chess PGNs + FIDE lists into data/
   make_sim_input.py          JSON → flat C++ input bridge
   build_dataset.py           Historical PGN parser → data/history.json
   calibrate.py               RPS + MAP parameter calibration
   build_dashboard_data.py    Combines generated JSON outputs for the dashboard
+  backtest.py                Leave-one-year-out multi-edition backtest
+  backtest_crosscontrol.py   Speed cross-control LOYO backtest (rejected feature)
+  experiment_sigma.py        Strength-sampling (sigma) before/after experiment
+  experiment_aggression.py   Draw-dynamics prototype/backtest (rejected feature)
+  fetch_fide_ratings.py      Builds data/fide/speed_ratings.json from FIDE lists
   run_tests.py               Project smoke/unit tests
   viz/
     generate_html.py         Builds the self-contained HTML dashboard
@@ -651,34 +658,14 @@ out/
 
 dashboards/
   norway2026_dashboard.html  Generated self-contained dashboard (not included)
+
+imgs/
+  dashboard/title.png        Dashboard screenshot shown in this README
 ```
+
+For a complete, formula-level account of every method and parameter — the rating model, the draw band, Armageddon scoring, strength sampling and its Gauss–Hermite marginalisation, calibration, the metrics, and the rejected experiments — see [`docs/METHODS.md`](docs/METHODS.md).
 
 `bin/` contains no source code. It is reserved for local compiled binaries such as `bin/test_model`, which are ignored by Git along with the top-level `sim` binary and Python caches.
-
----
-
-## Generated outputs
-
-The dashboard is part of the deliverable, so generated JSON outputs are committed intentionally.
-
-```text
-out/tournament_sim_v4.json
-out/timeline_*.json
-out/variant_*.json
-out/variants_combined.json
-out/dashboard_data.json
-dashboards/norway2026_dashboard.html
-```
-
-The dashboard can be opened directly from the repository or published through GitHub Pages.
-
-Its visual identity is generated from CSS variables in:
-
-```text
-tools/viz/viz.css
-```
-
-The theme uses a light glacier-gray background with Norway red and navy accents.
 
 ## Validation
 
@@ -707,4 +694,4 @@ ALL TESTS PASS
 ## Acknowledgements
 
 * Inspired by [vltanh](https://github.com/vltanh)'s Candidates simulations.
-* Historical Norway Chess PGN data is used for calibration and validation.
+* Historical Norway Chess PGN data & FIDE Ratings data is used for calibration and validation.
