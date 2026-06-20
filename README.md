@@ -659,6 +659,9 @@ out/
 dashboards/
   norway2026_dashboard.html  Generated self-contained dashboard (not included)
 
+docs/
+  METHODS.md                 Full method & parameter reference
+
 imgs/
   dashboard/title.png        Dashboard screenshot shown in this README
 ```
